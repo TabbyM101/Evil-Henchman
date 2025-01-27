@@ -6,7 +6,7 @@ public class MinigameManager : MonoBehaviour
     public static MinigameManager Current;
 
     // Will the minigame also be a singleton? If so we don't need to serialize here
-    private IMinigame minigame;
+    [SerializeField] private SimonSays minigame;
 
     /// <summary>
     /// Initialize singleton var and start the minigame.
