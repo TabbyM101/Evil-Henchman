@@ -18,8 +18,8 @@ public class MinigameManager : MonoBehaviour
         minigame.StartMinigame();
     }
 
-    private void EndMinigame()
+    public void EndMinigame(CompletionState state)
     {
-        
+        Debug.Log($"MinigameManager: Game ended with state {state}");
     }
 }

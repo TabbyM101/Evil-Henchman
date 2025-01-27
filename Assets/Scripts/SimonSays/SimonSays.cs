@@ -136,10 +136,12 @@ public class SimonSays : MonoBehaviour, IMinigame
     private void MinigameWon()
     {
         Debug.Log("Won Simon Says!");
+        MinigameManager.Current.EndMinigame(CompletionState.Completed);
     }
 
     private void MinigameLost()
     {
+        MinigameManager.Current.EndMinigame(CompletionState.Failed);
         Debug.Log("Picked incorrect color! Restarting the game...");
         StartMinigame();
     }
