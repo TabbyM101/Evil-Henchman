@@ -724,11 +724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659c2675bfbe04d9dbbc2233ee4cc3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfRounds: 5
+  flashDuration: 0.5
   red: {fileID: 1247402241}
   blue: {fileID: 756374332}
   yellow: {fileID: 258386427}
   green: {fileID: 454792154}
-  colorSequence: 00000000000000000000000002000000
 --- !u!1 &1023098056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,12 +1141,12 @@ GameObject:
   - component: {fileID: 1840463632}
   - component: {fileID: 1840463635}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: cam_enable_to_test
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1840463632
 AudioListener:
   m_ObjectHideFlags: 0

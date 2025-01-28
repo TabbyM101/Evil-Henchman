@@ -142,8 +142,8 @@ public class SimonSays : MonoBehaviour, IMinigame
     private void MinigameLost()
     {
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
-        Debug.Log("Picked incorrect color! Restarting the game...");
-        StartMinigame();
+        Debug.Log("Picked incorrect color! Closing the game...");
+        // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
     }
     
     private void GenerateColorSequence()

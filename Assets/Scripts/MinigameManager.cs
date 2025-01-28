@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -21,5 +22,7 @@ public class MinigameManager : MonoBehaviour
     public void EndMinigame(CompletionState state)
     {
         Debug.Log($"MinigameManager: Game ended with state {state}");
+        Ticket.MinigameEnded.Invoke();
+        SceneManager.UnloadSceneAsync(1); // TODO don't hardcode this
     }
 }
