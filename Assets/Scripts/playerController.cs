@@ -1,0 +1,73 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] private int limitAmount;
+    [SerializeField] private float edgePercentage;
+    [SerializeField] private float cameraSpeed;
+    private Camera camera;
+    private Vector2 mousePosition;
+    private float startYRotation;
+    private float movement;
+    private bool lookRight, lookLeft, canMoveLeft, canMoveRight = false;
+    void Start()
+    {
+        camera = Camera.main;
+        startYRotation = camera.transform.localEulerAngles.y;
+        movement = cameraSpeed * Time.deltaTime;
+    }
+
+    void Update()
+    {
+        canMoveHelper();
+        if (lookRight && canMoveRight)
+        {
+            camera.transform.Rotate(0, movement, 0);
+        }
+        else if (lookLeft && canMoveLeft)
+        {
+            camera.transform.Rotate(0, -movement, 0);
+        }
+    }
+
+    void OnLook()
+    {
+        canMoveHelper();
+        mousePosition = Mouse.current.position.ReadValue();
+
+        if (mousePosition.x < Screen.width * edgePercentage && canMoveLeft)
+        {
+            lookLeft = true;
+        }
+        else 
+        {
+            lookLeft = false;
+        }
+        if (mousePosition.x > Screen.width * (1 - edgePercentage) && canMoveRight)
+        {
+            lookRight = true;
+        }
+        else 
+        {
+            lookRight = false;
+        }
+    }
+
+    void canMoveHelper()
+    {
+        canMoveLeft = (-movement + camera.transform.localEulerAngles.y) > (startYRotation - limitAmount);
+        canMoveRight = (movement + camera.transform.localEulerAngles.y) < (startYRotation + limitAmount);
+    }
+
+    void OnInteract()
+    {
+        Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
+    }
+}
+
