@@ -8,6 +8,7 @@ public class Ticket : MonoBehaviour
 {
     [SerializeField] private Transform zoomInPos;
     [SerializeField] private Transform zoomOutPos;
+    [SerializeField] private CameraUtils cameraMovement;
 
     public static UnityAction MinigameEnded;
     public static bool minigameIsOpen;
@@ -31,7 +32,8 @@ public class Ticket : MonoBehaviour
     // TODO This is called from a static callback, so we'll want to make this safer if multiple tickets simultaneously receive the callback
     public void OnMinigameEnded()
     {
-        StartCoroutine(ZoomCoroutine(zoomOutPos, false));
+        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos)); // Delete line below and change to this line for camera util system, can also remove zoom couroutine function
+        //StartCoroutine(ZoomCoroutine(zoomOutPos, false));
     }
 
     void LoadMinigameScene()
@@ -43,7 +45,8 @@ public class Ticket : MonoBehaviour
         }
 
         minigameIsOpen = true;
-        StartCoroutine(ZoomCoroutine(zoomInPos, true));
+        StartCoroutine(cameraMovement.ZoomCoroutine(zoomInPos, () => {SceneManager.LoadScene("SimonSays", LoadSceneMode.Additive);})); // Delete line below and change to this line for camera util system, can also remove zoom couroutine function
+        //StartCoroutine(ZoomCoroutine(zoomInPos, true));
     }
 
     // TODO  We should use some sort of Camera Manager system to do this instead of whatever this coroutine is.
