@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 // TODO this class is totally unfinished, right now it's just intended to test the scene swap tech
 public class Ticket : MonoBehaviour
 {
-    [SerializeField] private string minigameScene;
+    [SerializeField] public string minigameScene;
 
     public UnityAction MinigameEnded;
     public static bool minigameIsOpen;
