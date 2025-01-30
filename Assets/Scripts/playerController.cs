@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Ticket ticket;
     [SerializeField] private int limitAmount;
     [SerializeField] private float edgePercentage;
     [SerializeField] private float cameraSpeed;
@@ -66,6 +67,11 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
+            /*if (hit.collider.gameObject.name == "Screen")
+            {
+                ticket.LoadMinigameScene();
+            }*/
+            
             Debug.Log(hit.collider.gameObject.name);
         }
     }

@@ -28,7 +28,12 @@ public class SimonSays : MonoBehaviour, IMinigame
     private List<SimonSaysColor> colorSequence = new();
 
     private int colorIndex = 0;
-    
+
+    private void Start()
+    {
+        StartMinigame();
+    }
+
     // Entrypoint for the minigame (IMinigame implementation)
     public void StartMinigame()
     {
