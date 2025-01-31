@@ -27,6 +27,11 @@ public class CameraUtils : MonoBehaviour
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
     }
 
+    public void ZoomBillboardPosCoroutine(Action onComplete = null)
+    {
+        StartCoroutine(ZoomCoroutine(zoomBillboardPos, onComplete));
+    }
+
     public IEnumerator ZoomCoroutine(Transform targetTransform, Action onComplete = null)
     {
         if (isMoving) yield break;
