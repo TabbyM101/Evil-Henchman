@@ -29,11 +29,10 @@ public class Ticket : MonoBehaviour
         if (minigameIsOpen)
         {
             // let's not open a bunch of scenes
-            return; 
+            return;
         }
 
-        minigameIsOpen = true;
-        CameraUtils.Current.ZoomComputerCoroutine(() =>
+        minigameIsOpen = CameraUtils.Current.ZoomComputerCoroutine(() =>
         {
             MinigameManager.Current.curTicket = this;
             SceneManager.LoadScene(minigameScene, LoadSceneMode.Additive);
