@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535581150235440094, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.448
+      value: -0.438
       objectReference: {fileID: 0}
     - target: {fileID: 1535581150235440094, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 218855257}
   - component: {fileID: 218855256}
   - component: {fileID: 218855255}
+  - component: {fileID: 218855259}
   m_Layer: 0
   m_Name: Task Board
   m_TagString: Untagged
@@ -792,6 +793,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &218855259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218855254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ca3e35af99d467a9197b2a7f1aaa6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &223222289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,7 +823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535581150235440094, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.448
+      value: -0.438
       objectReference: {fileID: 0}
     - target: {fileID: 1535581150235440094, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -839,6 +852,10 @@ PrefabInstance:
     - target: {fileID: 1535581150235440094, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792927962132270286, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2992745692268610862, guid: c09d8dff8859d4ce494aa47e53c1141c, type: 3}
       propertyPath: m_Name
@@ -1855,7 +1872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomComputerPos: {fileID: 1887882395}
   zoomPlayerViewPos: {fileID: 447146874}
-  zoomBillboardPos: {fileID: 0}
+  zoomBillboardPos: {fileID: 1550869239}
 --- !u!1 &932331302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,6 +3722,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2101555739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1550869238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550869239}
+  m_Layer: 0
+  m_Name: BillboardZoomPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1550869239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550869238}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.518, y: 1.348, z: 0.82}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1632737496
 GameObject:
   m_ObjectHideFlags: 0
@@ -6138,6 +6186,7 @@ SceneRoots:
   - {fileID: 1888936294}
   - {fileID: 962037203}
   - {fileID: 447146874}
+  - {fileID: 1550869239}
   - {fileID: 1887882395}
   - {fileID: 1701157716}
   - {fileID: 1380991963}
