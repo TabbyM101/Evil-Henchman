@@ -67,11 +67,10 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            var clickableObject = hit.collider.gameObject.GetComponent<IClickableObject>();
-            if (clickableObject is not null)
+            /*if (hit.collider.gameObject.name == "Screen")
             {
-                clickableObject.OnClick();
-            }
+                ticket.LoadMinigameScene();
+            }*/
             
             Debug.Log(hit.collider.gameObject.name);
         }
