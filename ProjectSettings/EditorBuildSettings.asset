@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigames/SimonSays.unity
     guid: 8157dfc397eb4407caf262d346febe32
   - enabled: 1
+    path: Assets/Scenes/Minigames/CloggingPipes.unity
+    guid: 04ae6dc0a43a2443cab4e54e23a8f9d1
+  - enabled: 0
     path: Assets/Scenes/AdditiveTest.unity
     guid: e06e90fc134ddcf43986dd3ee3d3a5d3
   m_configObjects:
