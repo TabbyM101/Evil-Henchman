@@ -64,14 +64,12 @@ public class PlayerController : MonoBehaviour
     void OnInteract()
     {
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000))
+        
+        if (Physics.Raycast(ray, out var hit, 1000))
         {
-            /*if (hit.collider.gameObject.name == "Screen")
-            {
-                ticket.LoadMinigameScene();
-            }*/
-            
+            var clickableObject = hit.collider.gameObject.GetComponent<IClickableObject>();
+            clickableObject?.ClickableObject_Clicked();
+
             Debug.Log(hit.collider.gameObject.name);
         }
     }

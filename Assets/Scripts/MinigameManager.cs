@@ -19,7 +19,7 @@ public class MinigameManager : MonoBehaviour
     {
         Debug.Log($"MinigameManager: Game ended with state {state}");
         curTicket.MinigameEnded.Invoke();
-        SceneManager.UnloadSceneAsync(curTicket.minigameScene); // TODO don't hardcode this
+        SceneManager.UnloadSceneAsync(curTicket.minigameScene);
         curTicket = null;
     }
 }

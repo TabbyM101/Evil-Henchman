@@ -17,14 +17,28 @@ public class CameraUtils : MonoBehaviour
         cameraTransform = Camera.main.transform;
     }
 
-    public void ZoomComputerCoroutine(Action onComplete = null)
+    /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
+    public bool ZoomBillboard(Action onComplete = null)
     {
+        if (isMoving) return false;
+        StartCoroutine(ZoomCoroutine(zoomBillboardPos, onComplete));
+        return true;
+    }
+
+    /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
+    public bool ZoomComputerCoroutine(Action onComplete = null)
+    {
+        if (isMoving) return false;
         StartCoroutine(ZoomCoroutine(zoomComputerPos, onComplete));
+        return true;
     }
     
-    public void ZoomPlayerViewCoroutine(Action onComplete = null)
+    /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
+    public bool ZoomPlayerViewCoroutine(Action onComplete = null)
     {
+        if (isMoving) return false;
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
+        return true;
     }
 
     public IEnumerator ZoomCoroutine(Transform targetTransform, Action onComplete = null)

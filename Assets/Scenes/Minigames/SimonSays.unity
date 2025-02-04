@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfRounds: 20
-  flashDuration: 0.5
+  flashDuration: 0.25
   red: {fileID: 1247402241}
   blue: {fileID: 756374332}
   yellow: {fileID: 258386427}
