@@ -6,21 +6,20 @@ using UnityEngine.SceneManagement;
 public class Ticket : MonoBehaviour
 {
     [SerializeField] public string minigameScene;
-
-    public UnityAction MinigameEnded;
+    
     public static bool minigameIsOpen;
 
     void Start()
     {
-        MinigameEnded += OnMinigameEnded;
+        MinigameManager.Current.MinigameEnded += OnMinigameEnded;
     }
-    
-    public void OnMinigameEnded()
+
+    private void OnMinigameEnded(CompletionState state)
     {
+        // Zoom out player and allow another minigame to open
         CameraUtils.Current.ZoomPlayerViewCoroutine(() =>
         {
             minigameIsOpen = false;
-            Debug.Log("Ticket marked as done!");
         });
     }
 

@@ -1,16 +1,19 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MinigameManager : MonoBehaviour
 {
     // Singleton pattern
     public static MinigameManager Current;
-    public Ticket curTicket;
+    [NonSerialized] public Ticket curTicket;
+    public UnityAction<CompletionState> MinigameEnded;
 
     /// <summary>
     /// Initialize singleton var and start the minigame.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         Current = this;
     }
@@ -18,7 +21,7 @@ public class MinigameManager : MonoBehaviour
     public void EndMinigame(CompletionState state)
     {
         Debug.Log($"MinigameManager: Game ended with state {state}");
-        curTicket.MinigameEnded.Invoke();
+        MinigameEnded.Invoke(state);
         SceneManager.UnloadSceneAsync(curTicket.minigameScene);
         curTicket = null;
     }
