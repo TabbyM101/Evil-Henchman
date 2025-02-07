@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5714949710634310416}
+  - {fileID: 8502105572110238348}
   - {fileID: 8891586598485194190}
   m_Father: {fileID: 3210967957180806494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,9 +61,9 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &5557190229637056979
 MonoBehaviour:
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharactersPerLine: 21
-  textLine: {fileID: 6648337837697386421}
+  textLine: {fileID: 7939921784581701603}
   reactionImage: {fileID: 2726263732405884246}
   profilePicture: {fileID: 2992597977374785958}
   textSpawn: {fileID: 2888069146184827552}
@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 8502105572110238348}
   - component: {fileID: 2334806780309906313}
   - component: {fileID: 7939921784581701603}
+  - component: {fileID: 3690018835944713740}
   m_Layer: 5
   m_Name: MessageText
   m_TagString: Untagged
@@ -390,12 +391,12 @@ RectTransform:
   m_LocalScale: {x: 0.0002971625, y: 0.0002971625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5714949710634310416}
+  m_Father: {fileID: 2888069146184827552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 791.29, y: 67.39578}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.108295, y: -0.006640096}
+  m_SizeDelta: {x: 729.2684, y: 44.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2334806780309906313
 CanvasRenderer:
@@ -496,42 +497,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &6648337837697386421
-GameObject:
+--- !u!114 &3690018835944713740
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5714949710634310416}
-  m_Layer: 5
-  m_Name: TextLine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &5714949710634310416
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6648337837697386421}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8502105572110238348}
-  m_Father: {fileID: 2888069146184827552}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.108295, y: -0.010015}
-  m_SizeDelta: {x: 0.23496, y: 0.02003}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_GameObject: {fileID: 5924140644160381723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &6757518060222770420
 GameObject:
   m_ObjectHideFlags: 0

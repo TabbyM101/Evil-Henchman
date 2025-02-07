@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Message : MonoBehaviour
 {
     public int CharactersPerLine = 23;
-    [SerializeField] private GameObject textLine;
+    [SerializeField] private TextMeshProUGUI textLine;
     [SerializeField] private Image reactionImage;
     [SerializeField] private Image profilePicture;
     [SerializeField] private RectTransform textSpawn;
@@ -15,60 +15,16 @@ public class Message : MonoBehaviour
     [SerializeField] private RectTransform outerObject;
 
     public void PopulateMessage(string messageText, Sprite pfp) {
-        string line = "";
-        int textLines = 1;
-        GameObject textObject = Instantiate(textLine, textSpawn);
-        TextMeshProUGUI textObjectTextChild = textObject.GetComponentInChildren<TextMeshProUGUI>();
-        textObjectTextChild.text = line;
-        textObject.gameObject.SetActive(true);
-        for (int i = 0; i < messageText.Length; i++) {
-            if (messageText[i] == ' ') {
-                if (line.Length >= 23) {
-                    textLines++;
-                    textObjectTextChild.text = line;
-                    textObject = Instantiate(textLine, textSpawn);
-                    textObjectTextChild = textObject.GetComponentInChildren<TextMeshProUGUI>();
-                    textObject.gameObject.SetActive(true);
-                    line = "";
-                }
-                else {
-                    line += messageText[i];
-                }
-            }
-            else {
-                line += messageText[i];
-            }
-        }
-        textObjectTextChild.text = line;
+        textLine.text = messageText;
+        textLine.gameObject.SetActive(true);
 
-        // textObjectTextChild.text = line;
-        // int startIndex = 0;
-        // bool help = textObjectTextChild.isTextOverflowing;
-        // Debug.Log(help);
-        // while (textObjectTextChild.isTextOverflowing) {
-        //     Debug.Log("new line!!");
-        //     int endIndex = textObjectTextChild.firstOverflowCharacterIndex;
-        //     Debug.Log("start index " + startIndex + "end index " + endIndex);
-        //     textLines++;
-        //     textObjectTextChild.text = line.Substring(startIndex, endIndex);
-        //     Debug.Log(textObjectTextChild.text);
-        //     line = line.Substring(endIndex);
-        //     Debug.Log(line);
-        //     startIndex = endIndex;
-    
-        //     textObject = Instantiate(textLine, textSpawn);
-        //     textObjectTextChild = textObject.GetComponentInChildren<TextMeshProUGUI>();
-        //     textObject.gameObject.SetActive(true);
-        //     Debug.Log("new objects made");
-        // }
-
-        Debug.Log("lkines: " + textLines);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(textSpawn);
 
         //format stuff
         profilePicture.sprite = pfp;
-        float textLineHeight = textObject.GetComponent<RectTransform>().rect.height;
+        float textLineHeight = textSpawn.rect.height + 0.008f;
         Vector2 updatedSizeDelta = messageBackground.sizeDelta;
-        updatedSizeDelta.y = Mathf.Max(textLineHeight * textLines, profilePicture.GetComponent<RectTransform>().rect.height);
+        updatedSizeDelta.y = Mathf.Max(textLineHeight, profilePicture.GetComponent<RectTransform>().rect.height);
         messageBackground.sizeDelta = updatedSizeDelta;
 
         updatedSizeDelta = outerObject.sizeDelta;

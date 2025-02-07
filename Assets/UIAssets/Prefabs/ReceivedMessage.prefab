@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.108295, y: -0.006705}
-  m_SizeDelta: {x: 0.21659, y: 0.01341}
+  m_AnchoredPosition: {x: 0.108295, y: -0.013280192}
+  m_SizeDelta: {x: 0.21659, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &759947428641672974
 CanvasRenderer:
@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 3308235453045583500}
   - component: {fileID: 3349896354363508992}
   - component: {fileID: 4075478134641168022}
+  - component: {fileID: 5508220362075100853}
   m_Layer: 5
   m_Name: MessageText
   m_TagString: Untagged
@@ -102,12 +103,12 @@ RectTransform:
   m_LocalScale: {x: 0.0002971625, y: 0.0002971625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8539203167122823075}
+  m_Father: {fileID: 6224465470062022217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0001221, y: 0}
-  m_SizeDelta: {x: 790.06, y: 67.39578}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0.108295, y: -0.006640096}
+  m_SizeDelta: {x: 730.08, y: 44.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3349896354363508992
 CanvasRenderer:
@@ -208,6 +209,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5508220362075100853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777312081114332606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &2534911592733993282
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +253,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8539203167122823075}
+  - {fileID: 3308235453045583500}
   - {fileID: 2774964903810945432}
   m_Father: {fileID: 1781069205189472546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -269,9 +284,9 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &1145012653550938178
 MonoBehaviour:
@@ -513,42 +528,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &7721512362746179166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8539203167122823075}
-  m_Layer: 5
-  m_Name: TextLine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &8539203167122823075
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7721512362746179166}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3308235453045583500}
-  m_Father: {fileID: 6224465470062022217}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.108295, y: -0.010015}
-  m_SizeDelta: {x: 0.23496, y: 0.02003}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8687885673283660961
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharactersPerLine: 21
-  textLine: {fileID: 7721512362746179166}
+  textLine: {fileID: 4075478134641168022}
   reactionImage: {fileID: 7424001451733115374}
   profilePicture: {fileID: 3535586798561326930}
   textSpawn: {fileID: 6224465470062022217}
