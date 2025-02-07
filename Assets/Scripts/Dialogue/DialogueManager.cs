@@ -6,6 +6,7 @@ public class DialogueManager : MonoBehaviour
     private bool dialogueRunning = false;
     private Dialogue dialogue;
     public Queue<Line> sentences = new Queue<Line>();
+    [SerializeField] private GameObject dialogueBackground;
     [SerializeField] private Message receivedMessagePrefab;
     [SerializeField] private Message sentMessagePrefab;
     [SerializeField] private RectTransform messageSpawn;
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogueToStart) {
         Debug.Log("starting dialogue");
+        dialogueBackground.SetActive(true);
         dialogueRunning = true;
         sentences.Clear();
         cameraZoom.ZoomComputerCoroutine();
