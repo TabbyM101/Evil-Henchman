@@ -10,7 +10,8 @@ public class TicketManager : MonoBehaviour
     // Singleton pattern
     public static TicketManager Current;
     [SerializeField] private GameObject ticketPrefab;
-    [SerializeField] public List<TicketObj> ticketsForTheDay;
+    [SerializeField] private GameObject ticketSpawnObject;
+    [SerializeField] public List<TicketObj> ticketsForTheDay; 
 
     private Queue<TicketObj> pendingTickets;
 
@@ -37,7 +38,25 @@ public class TicketManager : MonoBehaviour
 
         var ticketData = pendingTickets.Dequeue();
         var ticket = Instantiate(ticketPrefab);
-        ticket.transform.position += new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+        TicketPosition(ticket);
         ticket.GetComponent<Ticket>().minigameScene = ticketData.minigameScene;
+    }
+
+    private void TicketPosition(GameObject ticket)
+    {
+        var spawnBounds = ticketSpawnObject.GetComponent<Collider>().bounds;
+
+        ticket.transform.position = new Vector3(Random.Range(spawnBounds.min.x, spawnBounds.max.x), 
+        Random.Range(spawnBounds.min.y, spawnBounds.max.y), 0);
+
+        Collider[] hitColliders = Physics.OverlapSphere(ticket.transform.position, 5f);
+
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject != ticket)
+            {
+                Debug.Log("Overlap");
+            }
+        }
     }
 }

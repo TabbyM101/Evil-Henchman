@@ -10,6 +10,8 @@ public class CameraUtils : MonoBehaviour
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
+    [SerializeField] private Transform zoomEscMenuPos;
+
 
     void Start()
     {
@@ -18,7 +20,7 @@ public class CameraUtils : MonoBehaviour
     }
 
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
-    public bool ZoomBillboard(Action onComplete = null)
+    public bool ZoomBillboardCoroutine(Action onComplete = null)
     {
         if (isMoving) return false;
         StartCoroutine(ZoomCoroutine(zoomBillboardPos, onComplete));
@@ -38,6 +40,14 @@ public class CameraUtils : MonoBehaviour
     {
         if (isMoving) return false;
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
+        return true;
+    }
+
+    /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
+    public bool ZoomEscMenuCoroutine(Action onComplete = null)
+    {
+        if (isMoving) return false;
+        StartCoroutine(ZoomCoroutine(zoomEscMenuPos, onComplete));
         return true;
     }
 

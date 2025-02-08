@@ -73,5 +73,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log(hit.collider.gameObject.name);
         }
     }
+
+    void OnEscMenu()
+    {
+        CameraUtils.Current.ZoomEscMenuCoroutine();
+    }
+
+    void OnMoveBack()
+    {
+        CameraUtils.Current.ZoomPlayerViewCoroutine();
+    }
 }
 
