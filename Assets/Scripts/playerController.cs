@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,21 @@ public class PlayerController : MonoBehaviour
         camera = Camera.main;
         startYRotation = camera.transform.localEulerAngles.y;
         movement = cameraSpeed * Time.deltaTime;
+    }
+
+    private void OnEnable()
+    {
+        PlaytimeInputManager.inputActions.Player.Interact.performed += InvokeInteract;
+    }
+
+    private void OnDisable()
+    {
+        PlaytimeInputManager.inputActions.Player.Interact.performed += InvokeInteract;
+    }
+
+    private void InvokeInteract(InputAction.CallbackContext callbackContext)
+    {
+        OnInteract();
     }
 
     void Update()
