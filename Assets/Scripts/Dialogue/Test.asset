@@ -51,8 +51,8 @@ MonoBehaviour:
       CharacterName: Quentin
       receivedMessage: 0
       CharacterPhoto: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-      DialogueLine: You are so poop fart icky stinky ross baby boyu. I quit and forsake
-        you good sir. Please eat dirt.
+      DialogueLine: You are so gross yuck yucky i hate you and i want to fire you
+        but big boss man must see you suffer first
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
