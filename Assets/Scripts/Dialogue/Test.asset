@@ -13,21 +13,48 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   DialogueLines:
-  - CharacterName: Manager
-    receivedMessage: 1
-    CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
-    DialogueLine: I need to talk to you
-  - CharacterName: Jeff
-    receivedMessage: 0
-    CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
-    DialogueLine: Hi sir
-  - CharacterName: Manager
-    receivedMessage: 1
-    CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
-    DialogueLine: I donkt like you
-  - CharacterName: Manager
-    receivedMessage: 1
-    CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
-    DialogueLine: you suck at your job you stink like hell you are mean and icky
-      and i think you should be fired byut i dont have the heiracrhical powder to
-      do this.
+  - Type: 0
+    DialogueLine:
+      CharacterName: Manager
+      receivedMessage: 1
+      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
+      DialogueLine: You suck i dont like you.
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+  - Type: 1
+    DialogueLine:
+      CharacterName: 
+      receivedMessage: 0
+      CharacterPhoto: {fileID: 0}
+      DialogueLine: 
+    DialogueReation:
+      reactionImage: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
+    DialogueEvent:
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+  - Type: 2
+    DialogueLine:
+      CharacterName: 
+      receivedMessage: 0
+      CharacterPhoto: {fileID: 0}
+      DialogueLine: 
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      targetLocation: {fileID: 8563263149660181371, guid: b787fbfe8ac579c4b832ae1393b99e83, type: 3}
+      returnLocation: {fileID: 4824813645785119340, guid: ae7e54bad7f1e1343bc612c9323c4c25, type: 3}
+  - Type: 0
+    DialogueLine:
+      CharacterName: Quentin
+      receivedMessage: 0
+      CharacterPhoto: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      DialogueLine: You are so poop fart icky stinky ross baby boyu. I quit and forsake
+        you good sir. Please eat dirt.
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}

@@ -33,12 +33,10 @@ public class Message : MonoBehaviour
         reactionSpawn.SetAsLastSibling();
     }
 
-    public void SpawnReactions(Sprite[] reactions) {
+    public void SpawnReaction(Sprite reaction) {
         reactionSpawn.gameObject.SetActive(true);
-        foreach(Sprite reaction in reactions) {
-            Image obj = Instantiate(reactionImage, reactionSpawn);
-            obj.sprite = reaction;
-            obj.gameObject.SetActive(true);
-        }
+        Image obj = Instantiate(reactionImage, reactionSpawn);
+        obj.sprite = reaction;
+        obj.gameObject.SetActive(true);
     }
 }

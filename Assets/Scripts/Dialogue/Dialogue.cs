@@ -1,6 +1,13 @@
 using UnityEngine;
 using System;
 
+public enum DialogueActionType 
+{
+    DialogueLine, 
+    DialogueReaction,
+    DialogueEvent
+}
+
 [Serializable]
 public class Line
 {
@@ -10,9 +17,31 @@ public class Line
     public string DialogueLine;
 }
 
+[Serializable]
+public class Reaction 
+{
+    public Sprite reactionImage;
+}
+
+[Serializable]
+public class Event
+{
+    public Transform targetLocation;
+    public Transform returnLocation;
+}
+
+[Serializable]
+public class DialogueAction
+{
+    public DialogueActionType Type;
+    public Line DialogueLine;
+    public Reaction DialogueReation;
+    public Event DialogueEvent;
+}
+
 
 [CreateAssetMenu(menuName = "ScriptableObjects/DialogueObject")]
 public class Dialogue: ScriptableObject
 {
-    public Line[] DialogueLines;
+    public DialogueAction[] DialogueLines;
 }
