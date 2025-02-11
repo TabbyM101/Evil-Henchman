@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: SimonSays
   m_EditorClassIdentifier: 
   minigameScene: SimonSays
+  ticketColor: {r: 1, g: 0.4669811, b: 0.4669811, a: 1}
+  ticketName: Simon Says
+  ticketDescription: Hey guys it's me Simon and I have a really important task where
+    I will say stuff and you listen! So exciting!

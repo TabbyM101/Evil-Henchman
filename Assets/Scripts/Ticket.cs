@@ -1,17 +1,28 @@
+using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-// TODO this class is totally unfinished, right now it's just intended to test the scene swap tech
 public class Ticket : MonoBehaviour
 {
-    [SerializeField] public string minigameScene;
+    [NonSerialized] public string minigameScene;
+    [NonSerialized] public string ticketName;
+    [NonSerialized] public string ticketDesc;
+    [NonSerialized] public Color ticketColor;
+    
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descText;
+    public Image bg;
     
     public static bool minigameIsOpen;
 
     void Start()
     {
         MinigameManager.Current.MinigameEnded += OnMinigameEnded;
+        nameText.text = ticketName;
+        descText.text = ticketDesc;
+        bg.color = ticketColor;
     }
 
     private void OnMinigameEnded(CompletionState state)

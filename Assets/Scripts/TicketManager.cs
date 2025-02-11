@@ -39,7 +39,11 @@ public class TicketManager : MonoBehaviour
         var ticketData = pendingTickets.Dequeue();
         var ticket = Instantiate(ticketPrefab);
         TicketPosition(ticket);
-        ticket.GetComponent<Ticket>().minigameScene = ticketData.minigameScene;
+        var ticketComponent = ticket.GetComponent<Ticket>();
+        ticketComponent.minigameScene = ticketData.minigameScene;
+        ticketComponent.ticketName = ticketData.ticketName;
+        ticketComponent.ticketDesc = ticketData.ticketDescription;
+        ticketComponent.ticketColor = ticketData.ticketColor;
     }
 
     private void TicketPosition(GameObject ticket)
