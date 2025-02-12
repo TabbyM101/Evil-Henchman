@@ -6691,6 +6691,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 431044268}
+    - target: {fileID: 7352067859267939491, guid: 2e475dc3b55d27f44bae8f52f2ea9e80, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c7aba9777eda432f8e839f53033c0d5, type: 2}
     - target: {fileID: 8875365477577004092, guid: 2e475dc3b55d27f44bae8f52f2ea9e80, type: 3}
       propertyPath: m_Name
       value: ComputerCanvas
