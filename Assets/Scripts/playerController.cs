@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Ticket ticket;
     [SerializeField] private int limitAmount;
     [SerializeField] private float edgePercentage;
     [SerializeField] private float cameraSpeed;
@@ -20,21 +19,6 @@ public class PlayerController : MonoBehaviour
         movement = cameraSpeed * Time.deltaTime;
     }
 
-    private void OnEnable()
-    {
-        PlaytimeInputManager.inputActions.Player.Interact.performed += InvokeInteract;
-    }
-
-    private void OnDisable()
-    {
-        PlaytimeInputManager.inputActions.Player.Interact.performed += InvokeInteract;
-    }
-
-    private void InvokeInteract(InputAction.CallbackContext callbackContext)
-    {
-        OnInteract();
-    }
-
     void Update()
     {
         canMoveHelper();
@@ -48,7 +32,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnLook()
+    private void OnEnable()
+    {
+        PlaytimeInputManager.inputActions.Player.Interact.performed += Interact;
+        PlaytimeInputManager.inputActions.Player.Look.performed += Look;
+        PlaytimeInputManager.inputActions.Player.EscMenu.performed += EscMenu;
+        PlaytimeInputManager.inputActions.Player.MoveBack.performed += MoveBack;
+    }
+
+    private void OnDisable()
+    {
+        PlaytimeInputManager.inputActions.Player.Interact.performed -= Interact;
+        PlaytimeInputManager.inputActions.Player.Look.performed -= Look;
+        PlaytimeInputManager.inputActions.Player.EscMenu.performed -= EscMenu;
+        PlaytimeInputManager.inputActions.Player.MoveBack.performed -= MoveBack;
+    }
+
+    private void Look(InputAction.CallbackContext callbackContext)
     {
         canMoveHelper();
         mousePosition = Mouse.current.position.ReadValue();
@@ -71,13 +71,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void canMoveHelper()
+    private void canMoveHelper()
     {
         canMoveLeft = (-movement + camera.transform.localEulerAngles.y) > (startYRotation - limitAmount);
         canMoveRight = (movement + camera.transform.localEulerAngles.y) < (startYRotation + limitAmount);
     }
 
-    void OnInteract()
+    private void Interact(InputAction.CallbackContext callbackContext)
     {
         Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         
@@ -90,12 +90,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnEscMenu()
+    private void EscMenu(InputAction.CallbackContext callbackContext)
     {
         CameraUtils.Current.ZoomEscMenuCoroutine();
     }
 
-    void OnMoveBack()
+    private void MoveBack(InputAction.CallbackContext callbackContext)
     {
         CameraUtils.Current.ZoomPlayerViewCoroutine();
     }

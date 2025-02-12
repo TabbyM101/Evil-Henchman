@@ -7,6 +7,7 @@ public class CameraUtils : MonoBehaviour
     public static CameraUtils Current;
     private Transform cameraTransform;
     private bool isMoving = false;
+    [SerializeField] private float cameraSpeed;
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
@@ -58,9 +59,8 @@ public class CameraUtils : MonoBehaviour
         isMoving = true;
         while (Vector3.Distance(cameraTransform.position, targetTransform.position) > 0.01f || Quaternion.Angle(cameraTransform.rotation, targetTransform.rotation) > 0.1f)
         {
-            // Hardcoded zoom speed of 2f
-            cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetTransform.position, Time.deltaTime * 2f);
-            cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetTransform.rotation, Time.deltaTime * 2f);
+            cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetTransform.position, Time.deltaTime * cameraSpeed);
+            cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetTransform.rotation, Time.deltaTime * cameraSpeed);
             yield return null;
         }
 

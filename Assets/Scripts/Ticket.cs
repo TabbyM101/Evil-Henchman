@@ -41,6 +41,9 @@ public class Ticket : MonoBehaviour
             // let's not open a bunch of scenes
             return;
         }
+        
+        // disable to ability to move before zoom
+        PlaytimeInputManager.DisableAllActionMaps();
 
         minigameIsOpen = CameraUtils.Current.ZoomComputerCoroutine(() =>
         {

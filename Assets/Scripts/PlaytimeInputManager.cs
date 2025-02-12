@@ -81,6 +81,14 @@ public class PlaytimeInputManager : MonoBehaviour
         }
     }
 
+    public static void EnableAllActionMaps()
+    {
+        foreach (var actionMap in inputActions)
+        {
+            actionMap.Enable();
+        }
+    }
+
     public static InputSystem_Actions GetInputAsset()
     {
         return inputActions;

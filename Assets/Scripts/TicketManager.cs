@@ -52,15 +52,5 @@ public class TicketManager : MonoBehaviour
 
         ticket.transform.position = new Vector3(Random.Range(spawnBounds.min.x, spawnBounds.max.x), 
         Random.Range(spawnBounds.min.y, spawnBounds.max.y), 0);
-
-        Collider[] hitColliders = Physics.OverlapSphere(ticket.transform.position, 5f);
-
-        foreach (Collider hitCollider in hitColliders)
-        {
-            if (hitCollider.gameObject != ticket)
-            {
-                Debug.Log("Overlap");
-            }
-        }
     }
 }

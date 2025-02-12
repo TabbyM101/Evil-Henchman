@@ -24,5 +24,6 @@ public class MinigameManager : MonoBehaviour
         MinigameEnded.Invoke(state);
         SceneManager.UnloadSceneAsync(curTicket.minigameScene);
         curTicket = null;
+        PlaytimeInputManager.EnableAllActionMaps();
     }
 }
