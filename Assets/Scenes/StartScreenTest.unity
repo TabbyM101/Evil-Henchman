@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8345155ace248a94289c993748e65bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraSpeed: 4.5
   zoomComputerPos: {fileID: 0}
   zoomPlayerViewPos: {fileID: 0}
   zoomBillboardPos: {fileID: 0}

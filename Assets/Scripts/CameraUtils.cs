@@ -7,7 +7,7 @@ public class CameraUtils : MonoBehaviour
     public static CameraUtils Current;
     private Transform cameraTransform;
     private bool isMoving = false;
-    [SerializeField] private float cameraSpeed;
+    [SerializeField] private float cameraSpeed = 2.0f;
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
