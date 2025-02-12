@@ -10,7 +10,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Message receivedMessagePrefab;
     [SerializeField] private Message sentMessagePrefab;
     [SerializeField] private RectTransform messageSpawn;
-    [SerializeField] private CameraUtils cameraZoom;
     private Message lastReceived;
     private bool coroutineActive = false;
     private bool needReturn = false;
@@ -28,7 +27,7 @@ public class DialogueManager : MonoBehaviour
         dialogueBackground.SetActive(true);
         dialogueRunning = true;
         actions.Clear();
-        cameraZoom.ZoomComputerCoroutine();
+        CameraUtils.Current.ZoomComputerCoroutine();
         dialogue = dialogueToStart;
 
         foreach (var sentence in dialogueToStart.DialogueLines){
@@ -41,7 +40,7 @@ public class DialogueManager : MonoBehaviour
     public void SendNextMessage() {
         if (needReturn) {
             coroutineActive = true;
-            StartCoroutine(cameraZoom.ZoomCoroutine(returnPosition, () => {coroutineActive = false;}));
+            StartCoroutine(CameraUtils.Current.ZoomCoroutine(returnPosition, () => {coroutineActive = false;}));
             needReturn = false;
         }
 
@@ -66,7 +65,7 @@ public class DialogueManager : MonoBehaviour
             case DialogueActionType.DialogueEvent:
                 Event dialogueEvent = action.DialogueEvent;
                 coroutineActive = true;
-                StartCoroutine(cameraZoom.ZoomCoroutine(dialogueEvent.targetLocation, () => {coroutineActive = false;}));
+                StartCoroutine(CameraUtils.Current.ZoomCoroutine(dialogueEvent.targetLocation, () => {coroutineActive = false;}));
                 needReturn = true;
                 returnPosition = dialogueEvent.returnLocation;
                 break;
@@ -75,6 +74,6 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue() {
         dialogueRunning = false;
-        cameraZoom.ZoomPlayerViewCoroutine();
+        CameraUtils.Current.ZoomPlayerViewCoroutine();
     }
 }
