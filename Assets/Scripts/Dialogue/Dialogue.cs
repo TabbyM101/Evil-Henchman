@@ -23,11 +23,18 @@ public class Reaction
     public Sprite reactionImage;
 }
 
+public enum EventType {
+    CameraMovement, 
+    SceneChange
+}
+
 [Serializable]
 public class Event
 {
+    public EventType type;
     public Transform targetLocation;
     public Transform returnLocation;
+    public string targetSceneName;
 }
 
 [Serializable]

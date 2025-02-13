@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -79,17 +81,22 @@ public class DialogueManager : MonoBehaviour
                 break;
             case DialogueActionType.DialogueEvent:
                 Event dialogueEvent = action.DialogueEvent;
-                coroutineActive = true;
-                StartCoroutine(CameraUtils.Current.ZoomCoroutine(dialogueEvent.targetLocation, () => {coroutineActive = false;}));
-                needReturn = true;
-                returnPosition = dialogueEvent.returnLocation;
+                if (dialogueEvent.type == EventType.CameraMovement) {
+                    coroutineActive = true;
+                    StartCoroutine(CameraUtils.Current.ZoomCoroutine(dialogueEvent.targetLocation, () => {coroutineActive = false;}));
+                    needReturn = true;
+                    returnPosition = dialogueEvent.returnLocation;
+                }
+                else { //scene change
+                    EndDialogue(() => SceneManager.LoadScene(dialogueEvent.targetSceneName)); // Asssuming that most scene changes will occur at the end of dialogue
+                }
                 break;
         }
     }
 
-    public void EndDialogue() {
+    public void EndDialogue(Action onComplete = null) {
         dialogueRunning = false;
-        CameraUtils.Current.ZoomPlayerViewCoroutine();
+        CameraUtils.Current.ZoomPlayerViewCoroutine(onComplete);
     }
     
 }
