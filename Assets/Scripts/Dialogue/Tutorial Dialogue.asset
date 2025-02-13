@@ -23,8 +23,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Manager
@@ -37,8 +39,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Manager
@@ -50,8 +54,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 8563263149660181371, guid: b787fbfe8ac579c4b832ae1393b99e83, type: 3}
       returnLocation: {fileID: 4824813645785119340, guid: ae7e54bad7f1e1343bc612c9323c4c25, type: 3}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Manager
@@ -61,8 +67,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Quentin
@@ -72,8 +80,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Manager
@@ -83,8 +93,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Quentin
@@ -94,8 +106,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Manager
@@ -108,8 +122,10 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
   - Type: 0
     DialogueLine:
       CharacterName: Manager
@@ -122,5 +138,23 @@ MonoBehaviour:
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
+      type: 0
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
+      targetSceneName: 
+  - Type: 2
+    DialogueLine:
+      CharacterName: Manager
+      receivedMessage: 1
+      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
+      DialogueLine: "From this nifty little printer, you\u2019ll get messages explaining
+        the tasks you need to do. Most will involve doing something on the computer,
+        others may involve more office related tasks. But don\u2019t worry, it\u2019ll
+        be explained."
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      type: 1
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+      targetSceneName: SceneTransitionTest
