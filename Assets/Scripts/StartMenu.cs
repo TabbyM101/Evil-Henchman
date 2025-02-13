@@ -31,7 +31,6 @@ public class StartMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !zoomedIn)
         {
-            Debug.Log("Zooming!");
             zoomedIn = true;
             interactionText.SetActive(false);
             StartCoroutine(cameraMovement.ZoomCoroutine(zoomInPos, () => {foreach (EventTrigger button in menuButtons) {button.enabled = true;}}));
@@ -39,28 +38,24 @@ public class StartMenu : MonoBehaviour
     }
 
     public void StartGame() {
-        Debug.Log("Starting game");
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos, () => {SceneManager.LoadScene("TaksinTesting");}));
     }
 
     public void OpenOptions() {
-        Debug.Log("opening options");
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
         StartCoroutine(cameraMovement.ZoomCoroutine(zoomComputerPos));
     }
 
     public void OpenCredits() {
-        Debug.Log("opening credits");
         creditsPanel.SetActive(true);
         optionsPanel.SetActive(false);
         StartCoroutine(cameraMovement.ZoomCoroutine(zoomComputerPos));
     }
 
     public void QuitGame() {
-        Debug.Log("Quitting game");
         Application.Quit();
     }
 

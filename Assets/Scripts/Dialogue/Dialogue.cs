@@ -15,6 +15,7 @@ public class Line
     public bool receivedMessage; //if this is a sent or received message type
     public Sprite CharacterPhoto;
     public string DialogueLine;
+    public bool PlayNextLine;
 }
 
 [Serializable]

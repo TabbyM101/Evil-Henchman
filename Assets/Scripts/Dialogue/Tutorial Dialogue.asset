@@ -142,19 +142,3 @@ MonoBehaviour:
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
       targetSceneName: 
-  - Type: 2
-    DialogueLine:
-      CharacterName: Manager
-      receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
-      DialogueLine: "From this nifty little printer, you\u2019ll get messages explaining
-        the tasks you need to do. Most will involve doing something on the computer,
-        others may involve more office related tasks. But don\u2019t worry, it\u2019ll
-        be explained."
-    DialogueReation:
-      reactionImage: {fileID: 0}
-    DialogueEvent:
-      type: 1
-      targetLocation: {fileID: 0}
-      returnLocation: {fileID: 0}
-      targetSceneName: SceneTransitionTest

@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreenTest.unity
     guid: 7af09a384b9b2104f842a6854b4428f4
   - enabled: 1
-    path: Assets/Scenes/TutorialDialogue.unity
-    guid: f474a29d201f4374980ff7ca69aad8db
+    path: Assets/Scenes/TaksinTesting.unity
+    guid: 12fe696846e23e242847ed3cbed52ea7
   - enabled: 1
     path: Assets/Scenes/SceneTransitionTest.unity
     guid: 66195825ec6fd4d0cbbc90bf615c3d1f

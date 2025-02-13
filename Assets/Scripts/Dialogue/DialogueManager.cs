@@ -6,7 +6,6 @@ using System;
 public class DialogueManager : MonoBehaviour
 {
     public bool dialogueRunning { get; private set; } = false;
-    private Dialogue dialogue;
     public Queue<DialogueAction> actions = new Queue<DialogueAction>();
     [SerializeField] private GameObject dialogueBackground;
     [SerializeField] private Message receivedMessagePrefab;
@@ -41,12 +40,10 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void StartDialogue(Dialogue dialogueToStart) {
-        Debug.Log("starting");
         dialogueBackground.SetActive(true);
         dialogueRunning = true;
         actions.Clear();
         CameraUtils.Current.ZoomComputerCoroutine();
-        dialogue = dialogueToStart;
 
         foreach (var sentence in dialogueToStart.DialogueLines){
             actions.Enqueue(sentence);
@@ -75,6 +72,10 @@ public class DialogueManager : MonoBehaviour
                 Message message = Instantiate(messagePrefab, messageSpawn);
                 message.PopulateMessage(sentence.DialogueLine, sentence.CharacterPhoto);
                 if (sentence.receivedMessage) lastReceived = message;
+
+                if (sentence.PlayNextLine) {
+                    Invoke("SendNextMessage", 2f);
+                }
                 break;
             case DialogueActionType.DialogueReaction:
                 Reaction reaction = action.DialogueReation;
