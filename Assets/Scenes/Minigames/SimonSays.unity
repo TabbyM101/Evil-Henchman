@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659c2675bfbe04d9dbbc2233ee4cc3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfRounds: 20
+  numOfRounds: 5
   flashDuration: 0.25
   red: {fileID: 1247402241}
   blue: {fileID: 756374332}

@@ -24,7 +24,7 @@ public class DayManager : MonoBehaviour
         {
             MinigameManager.Current.MinigameEnded += UpdateEndState;
         }
-        StartDay();
+        Invoke("StartDay", 1f);
     }
 
     private void OnDestroy()

@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830ab478fa1dfdd41a06c95da8a9a30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 13e9814c35290b9439dceb7b1a05e23b, type: 2}
+  dialogue: {fileID: 11400000, guid: 7c7aba9777eda432f8e839f53033c0d5, type: 2}
   manager: {fileID: 431044268}
 --- !u!43 &1131005846
 Mesh:

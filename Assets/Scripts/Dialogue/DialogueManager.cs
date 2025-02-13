@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void StartDialogue(Dialogue dialogueToStart) {
+        Debug.Log("starting");
         dialogueBackground.SetActive(true);
         dialogueRunning = true;
         actions.Clear();

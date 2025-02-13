@@ -42,7 +42,7 @@ public class StartMenu : MonoBehaviour
         Debug.Log("Starting game");
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos, () => {SceneManager.LoadScene("TutorialDialogue");}));
+        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos, () => {SceneManager.LoadScene("TaksinTesting");}));
     }
 
     public void OpenOptions() {
