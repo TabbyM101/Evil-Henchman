@@ -12,17 +12,17 @@ public class SimonSays : MonoBehaviour, IMinigame
 
     private int curRound = 1;
     
-    [SerializeField] private Button red;
-    [SerializeField] private Button blue;
-    [SerializeField] private Button yellow;
-    [SerializeField] private Button green;
+    [SerializeField] private Button topRight;
+    [SerializeField] private Button botRight;
+    [SerializeField] private Button botLeft;
+    [SerializeField] private Button topLeft;
     
     public enum SimonSaysColor
     {
-        RED = 0,
-        BLUE,
-        YELLOW,
-        GREEN
+        TOPRIGHT = 0,
+        BOTRIGHT,
+        BOTLEFT,
+        TOPLEFT
     }
 
     private List<SimonSaysColor> colorSequence = new();
@@ -39,55 +39,56 @@ public class SimonSays : MonoBehaviour, IMinigame
     {
         ResetSimonSays();
         // TODO differentiate with sprites and don't set their color here
-        red.image.color = Color.red;
-        blue.image.color = Color.blue;
-        yellow.image.color = Color.yellow;
-        green.image.color = Color.green;
+        topLeft.image.color = Color.white;
+        topRight.image.color = Color.white;
+        botLeft.image.color = Color.white;
+        botRight.image.color = Color.white;
         StartCoroutine(PlaySequence());
     }
 
     private IEnumerator PlaySequence()
     {
-        red.interactable = false;
-        blue.interactable = false;
-        yellow.interactable = false;
-        green.interactable = false;
+        topLeft.interactable = false;
+        topRight.interactable = false;
+        botLeft.interactable = false;
+        botRight.interactable = false;
         
         foreach (var color in colorSequence.GetRange(0,curRound))
         {
             // Wait a moment at this color
             yield return new WaitForSeconds(flashDuration);
             
+            Debug.Log($"Picked {color}");
+            
             switch (color)
             {
-                case SimonSaysColor.RED:
-                    red.image.color = Color.white;
+                case SimonSaysColor.TOPRIGHT:
+                    topRight.image.color = Color.black;
                     break;
-                case SimonSaysColor.BLUE:
-                    blue.image.color = Color.white;
+                case SimonSaysColor.BOTRIGHT:
+                    botRight.image.color = Color.black;
                     break;
-                case SimonSaysColor.YELLOW:
-                    yellow.image.color = Color.white;
+                case SimonSaysColor.BOTLEFT:
+                    botLeft.image.color = Color.black;
                     break;
-                case SimonSaysColor.GREEN:
-                    green.image.color = Color.white;
+                case SimonSaysColor.TOPLEFT:
+                    topLeft.image.color = Color.black;
                     break;
             }
 
             // Flash for a moment before changing back to original color
             yield return new WaitForSeconds(flashDuration);
 
-            // TODO differentiate with sprites and don't set their color here
-            red.image.color = Color.red;
-            blue.image.color = Color.blue;
-            yellow.image.color = Color.yellow;
-            green.image.color = Color.green;
+            topLeft.image.color = Color.white;
+            topRight.image.color = Color.white;
+            botLeft.image.color = Color.white;
+            botRight.image.color = Color.white;
         }
         
-        red.interactable = true;
-        blue.interactable = true;
-        yellow.interactable = true;
-        green.interactable = true;
+        topLeft.interactable = true;
+        topRight.interactable = true;
+        botLeft.interactable = true;
+        botRight.interactable = true;
         yield return null;
     }
 
@@ -146,8 +147,8 @@ public class SimonSays : MonoBehaviour, IMinigame
 
     private void MinigameLost()
     {
-        MinigameManager.Current.EndMinigame(CompletionState.Failed);
         Debug.Log("Picked incorrect color! Closing the game...");
+        MinigameManager.Current.EndMinigame(CompletionState.Failed);
         // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
     }
     
