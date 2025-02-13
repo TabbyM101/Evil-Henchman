@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
-    private bool dialogueRunning = false;
+    public bool dialogueRunning { get; private set; } = false;
     private Dialogue dialogue;
     public Queue<DialogueAction> actions = new Queue<DialogueAction>();
     [SerializeField] private GameObject dialogueBackground;
@@ -14,6 +14,21 @@ public class DialogueManager : MonoBehaviour
     private bool coroutineActive = false;
     private bool needReturn = false;
     private Transform returnPosition;
+    
+    public static DialogueManager Current { get; private set; }
+
+    private void Awake()
+    {
+        if (Current != null && Current != this)
+        {
+            Debug.LogWarning("Multiple instances of DialogueManager detected. Deleting one instance.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            Current = this;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -76,4 +91,5 @@ public class DialogueManager : MonoBehaviour
         dialogueRunning = false;
         CameraUtils.Current.ZoomPlayerViewCoroutine();
     }
+    
 }

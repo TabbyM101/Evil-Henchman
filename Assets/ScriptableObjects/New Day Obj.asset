@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8d04b3369015a4481d36f614c23b49, type: 3}
+  m_Name: New Day Obj
+  m_EditorClassIdentifier: 
+  DayName: 
+  IsTimed: 0
+  Duration: 0
+  Dialogues: []
+  Minigames:
+  - SubsetOfMinigames:
+    - Minigame: {fileID: 11400000, guid: 840952092657341a8ab7fbbc32769858, type: 2}
+    AppearanceType: 0
+    Delay: 0
+    MaxDelay: 0
+  temp: {fileID: 0}

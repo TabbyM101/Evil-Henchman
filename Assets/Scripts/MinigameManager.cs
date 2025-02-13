@@ -8,8 +8,10 @@ public class MinigameManager : MonoBehaviour
     // Singleton pattern
     public static MinigameManager Current;
     [NonSerialized] public Ticket curTicket;
-    public UnityAction<CompletionState> MinigameEnded;
+    public Action<CompletionState> MinigameEnded;
 
+
+    
     /// <summary>
     /// Initialize singleton var and start the minigame.
     /// </summary>
@@ -26,4 +28,6 @@ public class MinigameManager : MonoBehaviour
         curTicket = null;
         PlaytimeInputManager.EnableAllActionMaps();
     }
+
+    
 }

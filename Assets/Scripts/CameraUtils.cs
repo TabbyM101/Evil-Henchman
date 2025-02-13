@@ -13,10 +13,14 @@ public class CameraUtils : MonoBehaviour
     [SerializeField] private Transform zoomBillboardPos;
     [SerializeField] private Transform zoomEscMenuPos;
 
+    private void Awake()
+    {
+        Current = this;
+    }
 
     void Start()
     {
-        Current = this;
+        
         cameraTransform = Camera.main.transform;
     }
 

@@ -13,7 +13,7 @@ public class TicketManager : MonoBehaviour
     [SerializeField] private GameObject ticketSpawnObject;
     [SerializeField] public List<TicketObj> ticketsForTheDay; 
 
-    private Queue<TicketObj> pendingTickets;
+    private Queue<TicketObj> pendingTickets = new Queue<TicketObj>();
 
     /// <summary>
     /// Initialize singleton var and start the minigame.
@@ -26,6 +26,19 @@ public class TicketManager : MonoBehaviour
     void Start()
     {
         pendingTickets = new Queue<TicketObj>(ticketsForTheDay);
+    }
+
+    public void AddTickets(List<TicketObj> tickets)
+    {
+        foreach (TicketObj ticket in tickets)
+        {
+            pendingTickets.Enqueue(ticket);
+        }
+    }
+
+    public void AddTickets(TicketObj ticket)
+    {
+        pendingTickets.Enqueue(ticket);
     }
 
     public void SpawnTicket()

@@ -39,7 +39,7 @@ public class DialogueAction
     public Event DialogueEvent;
 }
 
-
+[System.Serializable]
 [CreateAssetMenu(menuName = "ScriptableObjects/DialogueObject")]
 public class Dialogue: ScriptableObject
 {

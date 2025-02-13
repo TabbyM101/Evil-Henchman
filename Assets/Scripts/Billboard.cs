@@ -6,4 +6,9 @@ public class Billboard : MonoBehaviour, IClickableObject
     {
         CameraUtils.Current.ZoomBillboardCoroutine();
     }
+
+    public void OnClick()
+    {
+        
+    }
 }

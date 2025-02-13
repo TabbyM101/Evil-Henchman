@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8929c56f6332574c9d9e06897460ddd, type: 3}
+  m_Name: placeholderEndDay
+  m_EditorClassIdentifier: 
+  DialogueLines:
+  - Type: 0
+    DialogueLine:
+      CharacterName: 
+      receivedMessage: 0
+      CharacterPhoto: {fileID: 0}
+      DialogueLine: Day Completed!
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}

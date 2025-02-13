@@ -19,10 +19,19 @@ public class Ticket : MonoBehaviour
 
     void Start()
     {
-        MinigameManager.Current.MinigameEnded += OnMinigameEnded;
         nameText.text = ticketName;
         descText.text = ticketDesc;
         bg.color = ticketColor;
+    }
+
+    private void OnEnable()
+    {
+        MinigameManager.Current.MinigameEnded += OnMinigameEnded;
+    }
+
+    private void OnDisable()
+    {
+        MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
     }
 
     private void OnMinigameEnded(CompletionState state)
