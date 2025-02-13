@@ -88,8 +88,12 @@ public class DialogueManager : MonoBehaviour
                     needReturn = true;
                     returnPosition = dialogueEvent.returnLocation;
                 }
-                else { //scene change
+                else if (dialogueEvent.type == EventType.SceneChange ) { //scene change
                     EndDialogue(() => SceneManager.LoadScene(dialogueEvent.targetSceneName)); // Asssuming that most scene changes will occur at the end of dialogue
+                }
+                else
+                {
+                    //do nothing
                 }
                 break;
         }

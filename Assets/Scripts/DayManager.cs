@@ -65,25 +65,27 @@ public class DayManager : MonoBehaviour
 
     IEnumerator ProcessTickets()
     {
+        foreach (MinigameGroupData minigameGroup in day.Minigames)
+        {
+            foreach (MinigameData minigameData in minigameGroup.SubsetOfMinigames)
+            {
+                Debug.Log("daymanager: add ticket");
+
+                TicketManager.Current.AddTickets(minigameData.Minigame);
+                MinigamesLeft++;
+            }
+        }
+        foreach (MinigameGroupData minigameGroup in day.Minigames)
+        {
+            foreach (MinigameData minigameData in minigameGroup.SubsetOfMinigames)
+            {
+                Debug.Log("daymanager: spawn ticket");
+                TicketManager.Current.SpawnTicket();
+                yield return new WaitForSeconds(Random.Range(minigameGroup.Delay, minigameGroup.MaxDelay));
+            }
+        }
         while (!DayOver)
         {
-            foreach (MinigameGroupData minigameGroup in day.Minigames)
-            {
-                foreach (MinigameData minigameData in minigameGroup.SubsetOfMinigames)
-                {
-                    
-                    TicketManager.Current.AddTickets(minigameData.Minigame);
-                    MinigamesLeft++;
-                }
-            }
-            foreach (MinigameGroupData minigameGroup in day.Minigames)
-            {
-                foreach (MinigameData minigameData in minigameGroup.SubsetOfMinigames)
-                {
-                    TicketManager.Current.SpawnTicket();
-                    yield return new WaitForSeconds(Random.Range(minigameGroup.Delay, minigameGroup.MaxDelay));
-                }
-            }
             yield return null;
         }
     }

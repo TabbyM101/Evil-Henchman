@@ -25,7 +25,8 @@ public class Reaction
 
 public enum EventType {
     CameraMovement, 
-    SceneChange
+    SceneChange,
+    None
 }
 
 [Serializable]
