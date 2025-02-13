@@ -27,17 +27,3 @@ MonoBehaviour:
       targetLocation: {fileID: 0}
       returnLocation: {fileID: 0}
       targetSceneName: 
-  - Type: 2
-    DialogueLine:
-      CharacterName: 
-      receivedMessage: 0
-      CharacterPhoto: {fileID: 0}
-      DialogueLine: Day Completed!
-      PlayNextLine: 0
-    DialogueReation:
-      reactionImage: {fileID: 0}
-    DialogueEvent:
-      type: 0
-      targetLocation: {fileID: 4824813645785119340, guid: ae7e54bad7f1e1343bc612c9323c4c25, type: 3}
-      returnLocation: {fileID: 8563263149660181371, guid: b787fbfe8ac579c4b832ae1393b99e83, type: 3}
-      targetSceneName: 
