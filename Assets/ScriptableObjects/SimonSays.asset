@@ -15,5 +15,7 @@ MonoBehaviour:
   minigameScene: SimonSays
   ticketColor: {r: 1, g: 0.4669811, b: 0.4669811, a: 1}
   ticketName: Simon Says
-  ticketDescription: Hey guys it's me Simon and I have a really important task where
-    I will say stuff and you listen! So exciting!
+  ticketDescription: "We have some software reactivity we want you to test out. Giving
+    you the software would be too hard, so we have simplified it into a game of simon
+    says. You will have a colored pad. Repeat the sequence given to you that will
+    build one by one. But don\u2019t stare at it too long, [REDACTED]"
