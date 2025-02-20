@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
                 Line sentence = action.DialogueLine;
                 Message messagePrefab = sentence.receivedMessage ? receivedMessagePrefab : sentMessagePrefab;
                 Message message = Instantiate(messagePrefab, messageSpawn);
-                message.PopulateMessage(sentence.DialogueLine, sentence.CharacterPhoto);
+                message.PopulateMessage(sentence.DialogueLine);
                 if (sentence.receivedMessage) lastReceived = message;
 
                 if (sentence.PlayNextLine) {
