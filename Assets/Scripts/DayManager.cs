@@ -10,7 +10,7 @@ public class DayManager : MonoBehaviour
     [SerializeField] private List<DayObj> dayObjs;
     private Coroutine processTicketsCoroutine;
 
-    private int dayNumber;
+    public int dayNumber { get; private set; }
     private DayObj currentDayObj => dayObjs.ElementAt(dayNumber);
     public int IncompleteMinigameCount { get; private set; }
     public int CompletedMinigameCount { get; private set; }
@@ -44,7 +44,7 @@ public class DayManager : MonoBehaviour
         CompletedMinigameCount = 0;
         WonMinigameCount = 0;
         SceneManager.LoadScene("MainScene");
-        Invoke(nameof(StartDay), 1f); // Wait for other singletons in MainScene to get started
+        Invoke(nameof(StartDay), 0.1f); // Wait for other singletons in MainScene to get started
     }
 
     private void StartDay()

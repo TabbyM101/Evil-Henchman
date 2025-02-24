@@ -17,9 +17,10 @@ public class EndDayText : MonoBehaviour
         // TODO we should have a better way of counting a "win" rather than just the text here.
         // This might need to be a more meta manager, or maybe the DayManager can handle it.
         var endText = wonGamesPercent > 0.5 ? "You can stay." : "You're fired.";
-        scoreText.text = $"Completed Minigames: {playedGames}\n" +
+        scoreText.text = $"Day {DayManager.Current.dayNumber + 1} Complete!\n" +
+                         $"Completed Minigames: {playedGames}\n" +
                          $"Won Minigames: {wonGames}\n" +
-                         $"Success Percent: {(int)(wonGamesPercent*100)}%\n" +
+                         $"Success Percent: {(int)(wonGamesPercent * 100)}%\n" +
                          endText;
     }
 
