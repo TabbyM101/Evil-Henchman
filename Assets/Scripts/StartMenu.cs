@@ -40,7 +40,10 @@ public class StartMenu : MonoBehaviour
     public void StartGame() {
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos, () => {SceneManager.LoadScene("MainScene");}));
+        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos, () =>
+        {
+            DayManager.Current.StartNewDay();
+        }));
     }
 
     public void OpenOptions() {

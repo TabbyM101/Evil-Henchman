@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TicketManager : MonoBehaviour
@@ -11,9 +8,8 @@ public class TicketManager : MonoBehaviour
     public static TicketManager Current;
     [SerializeField] private GameObject ticketPrefab;
     [SerializeField] private GameObject ticketSpawnObject;
-    [SerializeField] public List<TicketObj> ticketsForTheDay; 
 
-    private Queue<TicketObj> pendingTickets = new Queue<TicketObj>();
+    public Queue<TicketObj> pendingTickets = new Queue<TicketObj>();
 
     /// <summary>
     /// Initialize singleton var and start the minigame.
@@ -21,24 +17,6 @@ public class TicketManager : MonoBehaviour
     private void Awake()
     {
         Current = this;
-    }
-
-    void Start()
-    {
-        pendingTickets = new Queue<TicketObj>(ticketsForTheDay);
-    }
-
-    public void AddTickets(List<TicketObj> tickets)
-    {
-        foreach (TicketObj ticket in tickets)
-        {
-            pendingTickets.Enqueue(ticket);
-        }
-    }
-
-    public void AddTickets(TicketObj ticket)
-    {
-        pendingTickets.Enqueue(ticket);
     }
 
     public void SpawnTicket()
@@ -63,7 +41,7 @@ public class TicketManager : MonoBehaviour
     {
         var spawnBounds = ticketSpawnObject.GetComponent<Collider>().bounds;
 
-        ticket.transform.position = new Vector3(Random.Range(spawnBounds.min.x, spawnBounds.max.x), 
-        Random.Range(spawnBounds.min.y, spawnBounds.max.y), 0);
+        ticket.transform.position = new Vector3(Random.Range(spawnBounds.min.x, spawnBounds.max.x),
+            Random.Range(spawnBounds.min.y, spawnBounds.max.y), 0);
     }
 }

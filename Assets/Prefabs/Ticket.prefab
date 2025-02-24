@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515c647dcea094f96ab1a40c50078380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pressGameButton: {fileID: 3842503900540578274}
   nameText: {fileID: 5648899816920884498}
   descText: {fileID: 7530432733782453669}
   bg: {fileID: 5251596986470717010}

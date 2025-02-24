@@ -5,18 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Greybox Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/StartScreenTest.unity
     guid: 7af09a384b9b2104f842a6854b4428f4
-  - enabled: 0
-    path: Assets/Scenes/TaksinTesting.unity
-    guid: 12fe696846e23e242847ed3cbed52ea7
-  - enabled: 0
-    path: Assets/Scenes/SceneTransitionTest.unity
-    guid: 66195825ec6fd4d0cbbc90bf615c3d1f
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 9329a838e76044910a0a215d8bb2d63e
@@ -24,11 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigames/SimonSays.unity
     guid: 8157dfc397eb4407caf262d346febe32
   - enabled: 1
-    path: Assets/Scenes/Minigames/CloggingPipes.unity
-    guid: 04ae6dc0a43a2443cab4e54e23a8f9d1
-  - enabled: 0
-    path: Assets/Scenes/AdditiveTest.unity
-    guid: e06e90fc134ddcf43986dd3ee3d3a5d3
+    path: Assets/Scenes/EndDayScreen.unity
+    guid: f05a086d669424d9383731ccd91ca938
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -7,15 +7,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int limitAmount;
     [SerializeField] private float edgePercentage;
     [SerializeField] private float cameraSpeed;
-    private Camera camera;
+    private Camera playerCamera;
     private Vector2 mousePosition;
     private float startYRotation;
     private float movement;
     private bool lookRight, lookLeft, canMoveLeft, canMoveRight = false;
     void Start()
     {
-        camera = Camera.main;
-        startYRotation = camera.transform.localEulerAngles.y;
+        playerCamera = Camera.main;
+        startYRotation = playerCamera.transform.localEulerAngles.y;
         movement = cameraSpeed * Time.deltaTime;
     }
 
@@ -24,11 +24,11 @@ public class PlayerController : MonoBehaviour
         canMoveHelper();
         if (lookRight && canMoveRight)
         {
-            camera.transform.Rotate(0, movement, 0);
+            playerCamera.transform.Rotate(0, movement, 0);
         }
         else if (lookLeft && canMoveLeft)
         {
-            camera.transform.Rotate(0, -movement, 0);
+            playerCamera.transform.Rotate(0, -movement, 0);
         }
     }
 
@@ -73,13 +73,13 @@ public class PlayerController : MonoBehaviour
 
     private void canMoveHelper()
     {
-        canMoveLeft = (-movement + camera.transform.localEulerAngles.y) > (startYRotation - limitAmount);
-        canMoveRight = (movement + camera.transform.localEulerAngles.y) < (startYRotation + limitAmount);
+        canMoveLeft = (-movement + playerCamera.transform.localEulerAngles.y) > (startYRotation - limitAmount);
+        canMoveRight = (movement + playerCamera.transform.localEulerAngles.y) < (startYRotation + limitAmount);
     }
 
     private void Interact(InputAction.CallbackContext callbackContext)
     {
-        Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = playerCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         
         if (Physics.Raycast(ray, out var hit, 1000))
         {

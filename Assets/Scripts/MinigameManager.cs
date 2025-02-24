@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MinigameManager : MonoBehaviour
@@ -9,8 +8,6 @@ public class MinigameManager : MonoBehaviour
     public static MinigameManager Current;
     [NonSerialized] public Ticket curTicket;
     public Action<CompletionState> MinigameEnded;
-
-
     
     /// <summary>
     /// Initialize singleton var and start the minigame.

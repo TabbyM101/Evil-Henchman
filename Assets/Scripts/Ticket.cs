@@ -10,6 +10,8 @@ public class Ticket : MonoBehaviour
     [NonSerialized] public string ticketName;
     [NonSerialized] public string ticketDesc;
     [NonSerialized] public Color ticketColor;
+
+    [SerializeField] private Button pressGameButton;
     
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descText;
@@ -24,21 +26,12 @@ public class Ticket : MonoBehaviour
         bg.color = ticketColor;
     }
 
-    private void OnEnable()
-    {
-        MinigameManager.Current.MinigameEnded += OnMinigameEnded;
-    }
-
-    private void OnDisable()
-    {
-        MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
-    }
-
     private void OnMinigameEnded(CompletionState state)
     {
         // Zoom out player and allow another minigame to open
         CameraUtils.Current.ZoomPlayerViewCoroutine(() =>
         {
+            MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
             minigameIsOpen = false;
         });
     }
@@ -50,6 +43,12 @@ public class Ticket : MonoBehaviour
             // let's not open a bunch of scenes
             return;
         }
+        
+        // Bind to MinigameEnded event to get callback when minigame ends
+        MinigameManager.Current.MinigameEnded += OnMinigameEnded;
+        
+        // Assuming the minigame "locks" your PC to that game, we can safely disable the button here.
+        pressGameButton.gameObject.SetActive(false);
         
         // disable to ability to move before zoom
         PlaytimeInputManager.DisableAllActionMaps();
