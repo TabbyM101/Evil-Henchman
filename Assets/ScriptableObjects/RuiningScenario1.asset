@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2112ae2f254a743a3919976dbc43a01d, type: 3}
+  m_Name: RuiningScenario1
+  m_EditorClassIdentifier: 
+  From1: Hello Senator Finch. I am reaching out today because I have some disturbing
+    information about my latest research on Mal Enterprise.
+  To1Good: "Hello yes! I would be very interested in hearing all about this new research.
+    I\u2019ve had my eye on Mal for some time now."
+  To1Bad: I think you have the wrong person.
+  From2Good: "I\u2019m so happy to hear that you are receptive. What my research
+    has concluded is that Mal Enterprise is actually harming its users. I\u2019ve
+    been able to see that after long use of their technology, users' eyesight actually
+    worsens."
+  From2Bad: "No I am pretty sure this is Senator Finch. Anyways, what my research
+    has concluded is that Mal Enterprise is actually harming its users. I\u2019ve
+    been able to see that after long use of their technology, users' eyesight actually
+    worsens."
+  To2Good: "Oh wow! That\u2019s pretty bad. But are they doing it intentionally?
+    If they aren\u2019t, it may be hard to get them to change."
+  To2Bad: So? Does using technology not do that to everyone? Sounds like you are
+    on to nothing.
+  From3Good: I believe they are. While looking at the machinery, it looks to be purposefully
+    sending the most harmful light, even to the detriment of the product!
+  From3Bad: Technology does it to a degree, but not as bad as them. While looking
+    at the machinery, it looks to be purposefully sending the most harmful light,
+    even to the detriment of the product!
+  To3Good: Wow great work uncovering this. Send me your research, but maybe you should
+    reach out to more senators, really try to get this news out.
+  To3Bad: "Well this does sound interesting. Send me your work, but don\u2019t talk
+    to anyone else about this for now. I\u2019ll see what I can do, but if you start
+    blabbing, it could be very bad."
+  FromOverallSuccess: "Yeah maybe there are some flaws in my research. I think I
+    can\u2019t send it out to anyone in its current state."
+  FromOverallFailure: Ok perfect. Speaking to you has really motivated me! Everyone
+    needs to know what Mal is up to!
