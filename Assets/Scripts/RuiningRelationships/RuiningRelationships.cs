@@ -18,11 +18,16 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     [SerializeField] private Button choice1;
     [SerializeField] private Button choice2;
 
+    [SerializeField] private TextMeshProUGUI fromWho;
+    [SerializeField] private Image profile;
+
     private string currentParagraph;
     private int currentIndex;
     private int currentRound = 0;
     private int badCounter = 0;
     private bool lastPicked;
+
+    private KeyCode lastKey = KeyCode.None;
 
     public void Start()
     {
@@ -35,6 +40,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         currentRound = 1;
         badCounter = 0;
         receiveEmail.text = source.From1;
+        fromWho.text = source.FromWho;
+        profile.sprite = source.FromProfile;
         choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To1Good;
         choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To1Bad;
         // choice1.onClick.AddListener(() => SelectParagraph(choice1.GetComponentInChildren<TextMeshProUGUI>().text, true));
@@ -47,13 +54,19 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     void Update() {
         if (gameRunning) {
-            if (isTyping && Input.anyKey) {
-                if (currentIndex < currentParagraph.Length) {
-                    email.text += currentParagraph[currentIndex];
-                    currentIndex++;
-                } else {
-                    isTyping = false;
-                    sendButton.interactable = true;
+            if (isTyping && Input.anyKey && !Input.GetKey(lastKey)) {
+                foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode))) {
+                    if (Input.GetKey(kcode))
+                        lastKey = kcode;
+                }
+                for (int i = 0; i < 4; i++) {
+                    if (currentIndex < currentParagraph.Length) {
+                        email.text += currentParagraph[currentIndex];
+                        currentIndex++;
+                    } else {
+                        isTyping = false;
+                        sendButton.interactable = true;
+                    }
                 }
             }
         }
@@ -88,6 +101,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         email.gameObject.SetActive(true);
         email.text = "";
         receiveEmail.gameObject.SetActive(false);
+        fromWho.gameObject.SetActive(false);
+        profile.gameObject.SetActive(false);
         lastPicked = isGood;
         if (!isGood) {
             badCounter++;
@@ -124,6 +139,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
             }
             email.gameObject.SetActive(false);
             receiveEmail.gameObject.SetActive(true);
+            fromWho.gameObject.SetActive(true);
+            profile.gameObject.SetActive(true);
             choice1.gameObject.SetActive(true);
             choice2.gameObject.SetActive(true);
             sendButton.gameObject.SetActive(false);
@@ -134,6 +151,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     {
         email.gameObject.SetActive(false);
         receiveEmail.gameObject.SetActive(true);
+        fromWho.gameObject.SetActive(true);
+        profile.gameObject.SetActive(true);
         choice1.gameObject.SetActive(false);
         choice2.gameObject.SetActive(false);
         sendButton.gameObject.SetActive(false);
@@ -146,6 +165,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     {
         email.gameObject.SetActive(false);
         receiveEmail.gameObject.SetActive(true);
+        fromWho.gameObject.SetActive(true);
+        profile.gameObject.SetActive(true);
         choice1.gameObject.SetActive(false);
         choice2.gameObject.SetActive(false);
         sendButton.gameObject.SetActive(false);

@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RuiningRelationshipText", menuName = "ScriptableObjects/RuiningRelationshipText")]
 public class RuiningRelationshipText : ScriptableObject
 {
+    public string FromWho;
+
+    public Sprite FromProfile;
+
     public string From1;
     public string To1Good;
     public string To1Bad;

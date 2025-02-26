@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2112ae2f254a743a3919976dbc43a01d, type: 3}
   m_Name: RuiningScenario1
   m_EditorClassIdentifier: 
+  FromWho: Serena Smith
+  FromProfile: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
   From1: Hello Senator Finch. I am reaching out today because I have some disturbing
     information about my latest research on Mal Enterprise.
   To1Good: "Hello yes! I would be very interested in hearing all about this new research.
