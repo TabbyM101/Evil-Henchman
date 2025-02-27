@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 7868934786403891686}
   - component: {fileID: 6570735316466953402}
   m_Layer: 0
-  m_Name: EscMenuTicket
+  m_Name: OLD EscMenuTicket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

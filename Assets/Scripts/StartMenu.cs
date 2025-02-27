@@ -6,10 +6,7 @@ using UnityEngine.EventSystems;
 
 public class StartMenu : MonoBehaviour
 {
-    [SerializeField] private Transform zoomInPos;
-    [SerializeField] private Transform zoomOutPos;
-    [SerializeField] private Transform zoomComputerPos;
-    [SerializeField] private CameraUtils cameraMovement;
+    [SerializeField] private Transform stickyNoteZoomPos;
     [SerializeField] private GameObject interactionText;
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject creditsPanel;
@@ -33,29 +30,27 @@ public class StartMenu : MonoBehaviour
         {
             zoomedIn = true;
             interactionText.SetActive(false);
-            StartCoroutine(cameraMovement.ZoomCoroutine(zoomInPos, () => {foreach (EventTrigger button in menuButtons) {button.enabled = true;}}));
+            StartCoroutine(CameraUtils.Current.ZoomCoroutine(stickyNoteZoomPos, () => {foreach (EventTrigger button in menuButtons) {button.enabled = true;}}));
+            //CameraUtils.Current.ZoomComputerCoroutine(() => {foreach (EventTrigger button in menuButtons) {button.enabled = true;}});
         }
     }
 
     public void StartGame() {
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos, () =>
-        {
-            DayManager.Current.StartNewDay();
-        }));
+        CameraUtils.Current.ZoomPlayerViewCoroutine(() => DayManager.Current.StartNewDay());
     }
 
     public void OpenOptions() {
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
-        StartCoroutine(cameraMovement.ZoomCoroutine(zoomComputerPos));
+        CameraUtils.Current.ZoomComputerCoroutine();
     }
 
     public void OpenCredits() {
         creditsPanel.SetActive(true);
         optionsPanel.SetActive(false);
-        StartCoroutine(cameraMovement.ZoomCoroutine(zoomComputerPos));
+        CameraUtils.Current.ZoomComputerCoroutine();
     }
 
     public void QuitGame() {
@@ -63,6 +58,6 @@ public class StartMenu : MonoBehaviour
     }
 
     public void ExitMenu() {
-        StartCoroutine(cameraMovement.ZoomCoroutine(zoomOutPos));
+        CameraUtils.Current.ZoomPlayerViewCoroutine();
     }
 }
