@@ -30,8 +30,10 @@ public class StartMenu : MonoBehaviour
         {
             zoomedIn = true;
             interactionText.SetActive(false);
-            StartCoroutine(CameraUtils.Current.ZoomCoroutine(stickyNoteZoomPos, () => {foreach (EventTrigger button in menuButtons) {button.enabled = true;}}));
-            //CameraUtils.Current.ZoomComputerCoroutine(() => {foreach (EventTrigger button in menuButtons) {button.enabled = true;}});
+            StartCoroutine(CameraUtils.Current.ZoomCoroutine(stickyNoteZoomPos));
+            foreach (EventTrigger button in menuButtons) {
+                button.enabled = true;
+            };
         }
     }
 

@@ -11,32 +11,38 @@ public class PauseMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        foreach (EventTrigger button in menuButtons) {
-            button.enabled = false;
-        }
+        EnableButtons(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            foreach (EventTrigger button in menuButtons) {
-                button.enabled = true;
-            }
+            EnableButtons(true);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            optionsPanel.SetActive(false);
+            CloseOptions();
         }
     }
 
     public void Resume() {
-        CameraUtils.Current.ZoomPlayerViewCoroutine();
+        CameraUtils.Current.ZoomPlayerViewCoroutine(() => EnableButtons(false));
+        CloseOptions();
     }
 
     public void OpenOptions() {
-        Debug.Log("opening options");
         optionsPanel.SetActive(true);
-        CameraUtils.Current.ZoomComputerCoroutine();
+        CameraUtils.Current.ZoomComputerCoroutine(() => EnableButtons(false));
+    }
+
+    public void CloseOptions() {
+        optionsPanel.SetActive(false);
+    }
+
+    private void EnableButtons(bool state) {
+        foreach (EventTrigger button in menuButtons) {
+            button.enabled = state;
+        }
     }
 
     public void QuitTitle() {

@@ -2104,6 +2104,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1963316115492570643, guid: 445888bda51e0c54393d4794a9e7c12e, type: 3}
   m_PrefabInstance: {fileID: 845255829}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &845255831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3311455173075013807, guid: 445888bda51e0c54393d4794a9e7c12e, type: 3}
+  m_PrefabInstance: {fileID: 845255829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635cf1fe5a924b040a952994ff1f6a4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &973159816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,7 +2340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3285,8 +3296,45 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 652298127493875501, guid: 33b9347be0ee9be4dbdea634c83d9071, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 3154919977730055678}
   m_SourcePrefab: {fileID: 100100000, guid: 33b9347be0ee9be4dbdea634c83d9071, type: 3}
+--- !u!1 &3154919977730055677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 652298127493875501, guid: 33b9347be0ee9be4dbdea634c83d9071, type: 3}
+  m_PrefabInstance: {fileID: 3154919977730055676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3154919977730055678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154919977730055677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 845255831}
+          m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+          m_MethodName: CloseOptions
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &3475372944571541109 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6422380441007459294, guid: 33b9347be0ee9be4dbdea634c83d9071, type: 3}
