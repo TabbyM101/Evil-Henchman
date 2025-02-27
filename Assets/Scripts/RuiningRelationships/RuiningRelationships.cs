@@ -44,8 +44,6 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         profile.sprite = source.FromProfile;
         choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To1Good;
         choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To1Bad;
-        // choice1.onClick.AddListener(() => SelectParagraph(choice1.GetComponentInChildren<TextMeshProUGUI>().text, true));
-        // choice2.onClick.AddListener(() => SelectParagraph(choice2.GetComponentInChildren<TextMeshProUGUI>().text, false));
         sendButton.onClick.AddListener(SendParagraph);
         sendButton.interactable = false;
         sendButton.gameObject.SetActive(false);
