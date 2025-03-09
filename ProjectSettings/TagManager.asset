@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Minigame
+  - FishCheck
   layers:
   - Default
   - TransparentFX
