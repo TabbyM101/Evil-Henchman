@@ -6,7 +6,7 @@ public class MinigameManager : MonoBehaviour
 {
     // Singleton pattern
     public static MinigameManager Current;
-    [NonSerialized] public Ticket curTicket;
+    [NonSerialized] public TicketObj curTicket;
     public Action<CompletionState> MinigameEnded;
     
     /// <summary>

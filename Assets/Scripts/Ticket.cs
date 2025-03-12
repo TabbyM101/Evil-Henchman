@@ -10,6 +10,7 @@ public class Ticket : MonoBehaviour
     [NonSerialized] public string ticketName;
     [NonSerialized] public string ticketDesc;
     [NonSerialized] public Color ticketColor;
+    [NonSerialized] public int ticketObjIndex;
 
     [SerializeField] private Button pressGameButton;
     
@@ -24,6 +25,11 @@ public class Ticket : MonoBehaviour
         nameText.text = ticketName;
         descText.text = ticketDesc;
         bg.color = ticketColor;
+    }
+
+    public void SelectTicket() {
+        Debug.Log("SELECTING");
+        SelectTaskManager.Current.TaskSelected(ticketObjIndex);
     }
 
     private void OnMinigameEnded(CompletionState state)
@@ -55,8 +61,8 @@ public class Ticket : MonoBehaviour
 
         minigameIsOpen = CameraUtils.Current.ZoomComputerCoroutine(() =>
         {
-            MinigameManager.Current.curTicket = this;
-            SceneManager.LoadScene(minigameScene, LoadSceneMode.Additive);
+            //MinigameManager.Current.curTicket = this;
+            //SceneManager.LoadScene(minigameScene, LoadSceneMode.Additive);
         });
     }
 }

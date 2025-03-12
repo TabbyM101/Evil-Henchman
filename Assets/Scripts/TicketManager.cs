@@ -8,6 +8,7 @@ public class TicketManager : MonoBehaviour
     public static TicketManager Current;
     [SerializeField] private GameObject ticketPrefab;
     [SerializeField] private GameObject ticketSpawnObject;
+    private static int ticketIndex = 0;
 
     public Queue<TicketObj> pendingTickets = new Queue<TicketObj>();
 
@@ -23,6 +24,7 @@ public class TicketManager : MonoBehaviour
     {
         if (pendingTickets.Count == 0)
         {
+            ticketIndex = 0;
             Debug.Log("All tickets printed!");
             return;
         }
@@ -35,6 +37,8 @@ public class TicketManager : MonoBehaviour
         ticketComponent.ticketName = ticketData.ticketName;
         ticketComponent.ticketDesc = ticketData.ticketDescription;
         ticketComponent.ticketColor = ticketData.ticketColor;
+        ticketComponent.ticketObjIndex = ticketIndex;
+        ticketIndex++;
     }
 
     private void TicketPosition(GameObject ticket)
