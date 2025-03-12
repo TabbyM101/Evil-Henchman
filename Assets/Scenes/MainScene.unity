@@ -2270,6 +2270,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6120087104517839353, guid: 445888bda51e0c54393d4794a9e7c12e, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7107317139250105904, guid: 445888bda51e0c54393d4794a9e7c12e, type: 3}
       propertyPath: m_Name
       value: EscapeMenuTicket
@@ -3093,6 +3097,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.5953629
       objectReference: {fileID: 0}
+    - target: {fileID: 7554978679479637986, guid: dddd32a830d58449a92f7f66e5e59c28, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8620316388568625615, guid: dddd32a830d58449a92f7f66e5e59c28, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.9264864
@@ -3189,7 +3197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3805,7 +3813,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
