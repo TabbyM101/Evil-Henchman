@@ -8,12 +8,15 @@ using UnityEngine.SceneManagement;
 public class SelectTaskDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject leftTicket;
     [SerializeField] private TextMeshProUGUI leftTicketTitle;
     [SerializeField] private TextMeshProUGUI leftTicketDescription;
     [SerializeField] private Image leftTicketBackground;
+    [SerializeField] private GameObject rightTicket;
     [SerializeField] private TextMeshProUGUI rightTicketTitle;
     [SerializeField] private TextMeshProUGUI rightTicketDescription;
     [SerializeField] private Image rightTicketBackground;
+    [SerializeField] private GameObject frontTicket;
     [SerializeField] private TextMeshProUGUI frontTicketTitle;
     [SerializeField] private TextMeshProUGUI frontTicketDescription;
     [SerializeField] private Image frontTicketBackground;
@@ -22,43 +25,30 @@ public class SelectTaskDisplay : MonoBehaviour
     private int selectedTicketIdx;
     [NonSerialized] public static bool minigameIsOpen;
 
-    public void OpenDisplay(List<TicketObj> list, int selectedIdx) {
+    public void UpdateTickets(List<TicketObj> list) {
         tickets = list;
-        selectedTicketIdx = selectedIdx;
-        int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-        int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
-        UpdateTickets(rightIdx, leftIdx);
     }
 
-    // public void RotateLeft() {
-    //     Debug.Log("LEFT");
-    //     // update indexes to properly wrap around
-    //     selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-    //     int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-    //     int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
-
-    //     // update tickets
-    //     UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground);
-    //     UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground);
-    //     UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground);
-    // }
-
-    // public void RotateRight() {
-    //     Debug.Log("Right");
-    //     // update indexes to properly wrap around
-    //     selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
-    //     int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-    //     int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
-
-    //     // update tickets
-    //     UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground);
-    //     UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground);
-    //     UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground);
-    // }
+    public void OpenDisplay(TicketObj selected) {
+        frontTicket.SetActive(true);
+        leftTicket.SetActive(true);
+        rightTicket.SetActive(true);
+        selectedTicketIdx = tickets.IndexOf(selected);
+        if (tickets.Count < 3) {
+            rightTicket.SetActive(false);
+        }
+        if (tickets.Count < 2) {
+            leftTicket.SetActive(false);
+        }
+        int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+        int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+        UpdateTickets(rightIdx, leftIdx);
+    }
 
     private void OnMinigameEnded(CompletionState state)
     {
         // Zoom out player and allow another minigame to open
+        tickets[selectedTicketIdx].completion = state;
         CameraUtils.Current.ZoomPlayerViewCoroutine(() =>
         {
             MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
@@ -67,19 +57,18 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void Rotate(bool rotateLeft) {
-        Debug.Log("ROTATING " + rotateLeft);
         if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
         else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
 
-        int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-        int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
+        int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+        int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
 
         // update tickets
         UpdateTickets(rightIdx, leftIdx);
     }
 
     public void UpdateTickets(int rightIdx, int leftIdx) {
-        UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground);
+        UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground, true);
         UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground);
         UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground);
     }
@@ -96,7 +85,6 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void SelectTicket() {
-        Debug.Log("SELECT");
         panel.SetActive(false);
 
         if (minigameIsOpen)
