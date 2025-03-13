@@ -18,12 +18,12 @@ public class SelectTaskManager : MonoBehaviour
     void Start()
     {
         selectTaskWindow.SetActive(false);
-        display.UpdateTickets(DayManager.Current.CurrentDayObj.Minigames);
+        display.UpdateTickets(TicketManager.Current.ticketsPrinted);
     }
 
-    public void TaskSelected(TicketObj ticketObjIndex) {
+    public void TaskSelected(Ticket ticketIndex) {
         selectTaskWindow.SetActive(true);
-        display.OpenDisplay(ticketObjIndex);
+        display.OpenDisplay(ticketIndex);
     }
 
     // Update is called once per frame

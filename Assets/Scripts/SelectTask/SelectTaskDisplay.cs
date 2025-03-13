@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class SelectTaskDisplay : MonoBehaviour
 {
@@ -12,24 +13,30 @@ public class SelectTaskDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI leftTicketTitle;
     [SerializeField] private TextMeshProUGUI leftTicketDescription;
     [SerializeField] private Image leftTicketBackground;
+    [SerializeField] private GameObject leftCompleted;
+    [SerializeField] private GameObject leftFailed;
     [SerializeField] private GameObject rightTicket;
     [SerializeField] private TextMeshProUGUI rightTicketTitle;
     [SerializeField] private TextMeshProUGUI rightTicketDescription;
     [SerializeField] private Image rightTicketBackground;
+    [SerializeField] private GameObject rightCompleted;
+    [SerializeField] private GameObject rightFailed;
     [SerializeField] private GameObject frontTicket;
     [SerializeField] private TextMeshProUGUI frontTicketTitle;
     [SerializeField] private TextMeshProUGUI frontTicketDescription;
     [SerializeField] private Image frontTicketBackground;
+    [SerializeField] private GameObject frontCompleted;
+    [SerializeField] private GameObject frontFailed;
     [SerializeField] private Button selectFrontTicketButton;
-    private List<TicketObj> tickets;
+    private List<Ticket> tickets;
     private int selectedTicketIdx;
     [NonSerialized] public static bool minigameIsOpen;
 
-    public void UpdateTickets(List<TicketObj> list) {
+    public void UpdateTickets(List<Ticket> list) {
         tickets = list;
     }
 
-    public void OpenDisplay(TicketObj selected) {
+    public void OpenDisplay(Ticket selected) {
         frontTicket.SetActive(true);
         leftTicket.SetActive(true);
         rightTicket.SetActive(true);
@@ -48,11 +55,11 @@ public class SelectTaskDisplay : MonoBehaviour
     private void OnMinigameEnded(CompletionState state)
     {
         // Zoom out player and allow another minigame to open
-        tickets[selectedTicketIdx].completion = state;
+        tickets[selectedTicketIdx].state = state;
+        minigameIsOpen = false;
         CameraUtils.Current.ZoomPlayerViewCoroutine(() =>
         {
             MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
-            minigameIsOpen = false;
         });
     }
 
@@ -68,23 +75,38 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void UpdateTickets(int rightIdx, int leftIdx) {
-        UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground, true);
-        UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground);
-        UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground);
+        UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground, frontCompleted, frontFailed, true);
+        UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground, leftCompleted, leftFailed);
+        UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground, rightCompleted, rightFailed);
     }
 
-    private void UpdateTicketInfo(TicketObj ticket, TextMeshProUGUI ticketName, TextMeshProUGUI ticketDescription, Image ticketBackground, bool front = false) {
+    private void UpdateTicketInfo(Ticket ticket, TextMeshProUGUI ticketName, TextMeshProUGUI ticketDescription, Image ticketBackground, GameObject completed, GameObject failed, bool front = false) {
         ticketName.text = ticket.ticketName;
-        ticketDescription.text = ticket.ticketDescription;
+        ticketDescription.text = ticket.ticketDesc;
         ticketBackground.color = ticket.ticketColor;
+        switch(ticket.state) {
+            case CompletionState.Pending:
+                completed.SetActive(false);
+                failed.SetActive(false);
+                break;
+            case CompletionState.Completed:
+                completed.SetActive(true);
+                failed.SetActive(false);
+                break;
+            case CompletionState.Failed: 
+                completed.SetActive(false);
+                failed.SetActive(true);
+                break;
+        }
 
         if (front) {
-            bool canSelect = ticket.completion == CompletionState.Pending;
+            bool canSelect = ticket.state == CompletionState.Pending;
             selectFrontTicketButton.gameObject.SetActive(canSelect);
         }
     }
 
     public void SelectTicket() {
+        Debug.Log("SELECTED");
         panel.SetActive(false);
 
         if (minigameIsOpen)

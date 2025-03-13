@@ -17,6 +17,7 @@ public class Ticket : MonoBehaviour
     public Image bg;
     
     public static bool minigameIsOpen;
+    public CompletionState state;
 
     void Start()
     {
@@ -26,6 +27,6 @@ public class Ticket : MonoBehaviour
     }
 
     public void SelectTicket() {
-        SelectTaskManager.Current.TaskSelected(ticketObj);
+        SelectTaskManager.Current.TaskSelected(this);
     }
 }

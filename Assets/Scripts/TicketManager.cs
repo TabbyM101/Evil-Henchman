@@ -10,6 +10,7 @@ public class TicketManager : MonoBehaviour
     [SerializeField] private GameObject ticketSpawnObject;
 
     public Queue<TicketObj> pendingTickets = new Queue<TicketObj>();
+    public List<Ticket> ticketsPrinted = new List<Ticket>();
 
     /// <summary>
     /// Initialize singleton var and start the minigame.
@@ -17,6 +18,10 @@ public class TicketManager : MonoBehaviour
     private void Awake()
     {
         Current = this;
+    }
+
+    void Start() {
+        ticketsPrinted = new List<Ticket>();
     }
 
     public void SpawnTicket()
@@ -31,6 +36,7 @@ public class TicketManager : MonoBehaviour
         var ticket = Instantiate(ticketPrefab);
         TicketPosition(ticket);
         var ticketComponent = ticket.GetComponent<Ticket>();
+        ticketsPrinted.Add(ticketComponent);
         ticketComponent.minigameScene = ticketData.minigameScene;
         ticketComponent.ticketName = ticketData.ticketName;
         ticketComponent.ticketDesc = ticketData.ticketDescription;
