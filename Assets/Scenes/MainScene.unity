@@ -445,6 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketPrefab: {fileID: 7295892364533035998, guid: 76fc57d591a1440468c954ee4d2834db, type: 3}
   ticketSpawnObject: {fileID: 1477474268}
+  ticketsPrinted: []
 --- !u!1 &314563640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2310,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635cf1fe5a924b040a952994ff1f6a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &858030149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5779490152664527730, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+  m_PrefabInstance: {fileID: 2322557855139257365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &858030150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 817198608194399031, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+  m_PrefabInstance: {fileID: 2322557855139257365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &973159816
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,14 +3259,20 @@ MonoBehaviour:
   leftTicketTitle: {fileID: 822293473}
   leftTicketDescription: {fileID: 822293472}
   leftTicketBackground: {fileID: 822293471}
+  leftCompleted: {fileID: 1778089773}
+  leftFailed: {fileID: 1778089772}
   rightTicket: {fileID: 1648148410}
   rightTicketTitle: {fileID: 1648148409}
   rightTicketDescription: {fileID: 1648148408}
   rightTicketBackground: {fileID: 1648148407}
+  rightCompleted: {fileID: 2100860558}
+  rightFailed: {fileID: 2100860557}
   frontTicket: {fileID: 84493497}
   frontTicketTitle: {fileID: 2322557855139257370}
   frontTicketDescription: {fileID: 2322557855139257369}
   frontTicketBackground: {fileID: 2322557855139257368}
+  frontCompleted: {fileID: 858030150}
+  frontFailed: {fileID: 858030149}
   selectFrontTicketButton: {fileID: 2322557855139257367}
 --- !u!1 &1536933731 stripped
 GameObject:
@@ -3857,6 +3874,16 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1778089772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5779490152664527730, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+  m_PrefabInstance: {fileID: 822293469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1778089773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 817198608194399031, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+  m_PrefabInstance: {fileID: 822293469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2015865728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3932,16 @@ MonoBehaviour:
   receivedMessagePrefab: {fileID: 1854895434446237621, guid: 08fe8b01eca2cb149a717830e58613ac, type: 3}
   sentMessagePrefab: {fileID: 744677214878590144, guid: d618f72bf3a3c9e42af64af335850029, type: 3}
   messageSpawn: {fileID: 566336919}
+--- !u!1 &2100860557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5779490152664527730, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+  m_PrefabInstance: {fileID: 1648148405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2100860558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 817198608194399031, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+  m_PrefabInstance: {fileID: 1648148405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2141602253
 PrefabInstance:
   m_ObjectHideFlags: 0
