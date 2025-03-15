@@ -11,7 +11,7 @@ public class DayManager : MonoBehaviour
     private Coroutine processTicketsCoroutine;
 
     public int dayNumber { get; private set; }
-    private DayObj currentDayObj => dayObjs.ElementAt(dayNumber);
+    public DayObj CurrentDayObj => dayObjs.ElementAt(dayNumber);
     public int IncompleteMinigameCount { get; private set; }
     public int CompletedMinigameCount { get; private set; }
     public int WonMinigameCount { get; private set; }
@@ -50,7 +50,7 @@ public class DayManager : MonoBehaviour
     private void StartDay()
     {
         Ticket.minigameIsOpen = false;
-        foreach (var minigame in currentDayObj.Minigames)
+        foreach (var minigame in CurrentDayObj.Minigames)
         {
             TicketManager.Current.pendingTickets.Enqueue(minigame);
             IncompleteMinigameCount++;
@@ -59,7 +59,7 @@ public class DayManager : MonoBehaviour
         Debug.Log($"Day index {dayNumber} started");
         
         MinigameManager.Current.MinigameEnded += UpdateEndState;
-        DialogueManager.Current.StartDialogue(currentDayObj.startDay);
+        DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
         
         for (int i = 0; i < IncompleteMinigameCount; i++)
         {
