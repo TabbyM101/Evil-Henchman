@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2112ae2f254a743a3919976dbc43a01d, type: 3}
+  m_Name: RuiningScenario2
+  m_EditorClassIdentifier: 
+  FromWho: Mike Ray
+  FromProfile: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
+  From1: "Hi Regina, I hope you\u2019re doing good! I was just wondering when we
+    were deploying our new eyewear. I think the project has real potential and could
+    even take over whatever Mal Enterprise is putting out these days."
+  To1ShortGood: When do you think?
+  To1ShortBad: We should delay
+  To1Good: Hi! We are currently refining the date for release for these new glasses.
+    When do you think the roll out should happen?
+  To1Bad: Oh hello. I believe we should wait and push back the release at least 6
+    months.
+  From2Good: I think the product is ready for market very soon. The user feedback
+    has been very positive so far.
+  From2Bad: "Oh really! That\u2019s a shame, the product is so good. May I ask why
+    we are pushing it back?"
+  To2ShortGood: Feedback has been great
+  To2ShortBad: "We can\u2019t compete with Mal"
+  To2Good: User feedback has been great. Great innovation like this will surely put
+    us ahead of Mal Enterprises.
+  To2Bad: "While user feedback has been great, I don\u2019t know if our product is
+    exactly market ready. At least it can\u2019t compete with Mal."
+  From3Good: "Mal has been trying to take us down for months! I\u2019m excited that
+    we will finally be able to surpass them."
+  From3Bad: Once again Mal is taking us down. They truly are evil, I think they even
+    have spies in our own company. My manager has ot shown up to work in 3 days after
+    a meeting with them.
+  To3ShortGood: Mal is bad
+  To3ShortBad: "Mal\u2019s not that bad"
+  To3Good: "You\u2019re right Mal has had it out for us. We really need to show them
+    who\u2019s boss."
+  To3Bad: "Look, while Mal are our competitors, they still are a company with real
+    people working them. Let\u2019s really try not to demonize them."
+  FromOverallSuccess: "After talking with you, I\u2019m not so sure that rolling
+    out this product in the near future is such a good idea."
+  FromOverallFailure: "Yay. I\u2019m ready to get us rolling on this product after
+    talking with you. This is just what we need to release our product soon."

@@ -42,8 +42,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         receiveEmail.text = source.From1;
         fromWho.text = source.FromWho;
         profile.sprite = source.FromProfile;
-        choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To1Good;
-        choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To1Bad;
+        choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To1ShortGood;
+        choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To1ShortBad;
         sendButton.onClick.AddListener(SendParagraph);
         sendButton.interactable = false;
         sendButton.gameObject.SetActive(false);
@@ -119,16 +119,16 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         } else {
             isTyping = false;
             if (currentRound == 2) {
-                choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To2Good;
-                choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To2Bad;
+                choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To2ShortGood;
+                choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To2ShortBad;
                 if (lastPicked) {
                     receiveEmail.text = source.From2Good;
                 } else {
                     receiveEmail.text = source.From2Bad;
                 }
             } else if (currentRound == 3) {
-                choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To3Good;
-                choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To3Bad;
+                choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To3ShortGood;
+                choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To3ShortBad;
                 if (lastPicked) {
                     receiveEmail.text = source.From3Good;
                 } else {

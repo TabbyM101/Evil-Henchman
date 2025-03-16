@@ -16,6 +16,8 @@ MonoBehaviour:
   FromProfile: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
   From1: Hello Senator Finch. I am reaching out today because I have some disturbing
     information about my latest research on Mal Enterprise.
+  To1ShortGood: Tell me more
+  To1ShortBad: Shut them down
   To1Good: "Hello yes! I would be very interested in hearing all about this new research.
     I\u2019ve had my eye on Mal for some time now."
   To1Bad: I think you have the wrong person.
@@ -27,6 +29,8 @@ MonoBehaviour:
     has concluded is that Mal Enterprise is actually harming its users. I\u2019ve
     been able to see that after long use of their technology, users' eyesight actually
     worsens."
+  To2ShortGood: "Wow, that\u2019s bad"
+  To2ShortBad: So what?
   To2Good: "Oh wow! That\u2019s pretty bad. But are they doing it intentionally?
     If they aren\u2019t, it may be hard to get them to change."
   To2Bad: So? Does using technology not do that to everyone? Sounds like you are
@@ -36,6 +40,8 @@ MonoBehaviour:
   From3Bad: Technology does it to a degree, but not as bad as them. While looking
     at the machinery, it looks to be purposefully sending the most harmful light,
     even to the detriment of the product!
+  To3ShortGood: Great job
+  To3ShortBad: Don't talk to anyone else
   To3Good: Wow great work uncovering this. Send me your research, but maybe you should
     reach out to more senators, really try to get this news out.
   To3Bad: "Well this does sound interesting. Send me your work, but don\u2019t talk

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2112ae2f254a743a3919976dbc43a01d, type: 3}
+  m_Name: RuiningScenario3
+  m_EditorClassIdentifier: 
+  FromWho: Patrick Murphy
+  FromProfile: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
+  From1: Hello. My name is Patrick Murphy. I was told to contact you as my HR rep
+    as I would like to file a complaint against my manager.
+  To1ShortGood: "I\u2019m here for you"
+  To1ShortBad: "Don\u2019t expect too much"
+  To1Good: Hi Patrick. Yes you have come to the right person. Please tell me what
+    this complaint is about.
+  To1Bad: Patrick, hi. Yes I am your HR rep. Share your complaint but please manage
+    expectations when it comes to any solutions as they can be complicated to implement.
+  From2Good: Thank you for being understanding. My manager has just been very overbearing,
+    asking me to work extra shifts without extra pay. And even doing illegal things,
+    like hacking into other companies' private emails.
+  From2Bad: "I know not much will happen, but I have to try at least, right. My manager
+    is overbearing, forcing me to work extra shifts without pay, and even asked me
+    to hack into other companies\u2019 private emails."
+  To2ShortGood: Next steps
+  To2ShortBad: What can we really do
+  To2Good: That is indeed awful Patrick. Your complaint is definitely noted. What
+    would you like some of the next steps to be?
+  To2Bad: "These are very serious allegations Patrick. But currently it is just your
+    word against your manager. I\u2019m not sure there is much we can do."
+  From3Good: Well isn't that supposed to be your job. But anyways if nothing happens
+    at work, I might just go to the press with this information, try to expose this
+    kind of company behavior.
+  From3Bad: "Wow, really helpful. You know what, I might just go to the press with
+    everything I know. I\u2019m sure they would love to report on this toxic culture
+    within Mal."
+  To3ShortGood: Do what you think is best
+  To3ShortBad: "Let\u2019s calm down"
+  To3Good: "Patrick, if you think that is what you must do, I can\u2019t stop you."
+  To3Bad: "Patrick, let\u2019s not do anything drastic. I will see on my end what
+    I can do to rectify this. Let\u2019s just all remain calm."
+  FromOverallSuccess: "Ok, I\u2019m calm now. I won\u2019t tell everyone, I\u2019ll
+    see what we can do internally to fix the situation."
+  FromOverallFailure: "After talking to you, I\u2019m ready. I\u2019m going to tell
+    the whole world about Mal\u2019s dirty little secret."
