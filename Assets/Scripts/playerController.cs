@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float startYRotation;
     private float movement;
     private bool lookRight, lookLeft, canMoveLeft, canMoveRight = false;
+
     void Start()
     {
         playerCamera = Camera.main;
@@ -57,15 +58,16 @@ public class PlayerController : MonoBehaviour
         {
             lookLeft = true;
         }
-        else 
+        else
         {
             lookLeft = false;
         }
+
         if (mousePosition.x > Screen.width * (1 - edgePercentage) && canMoveRight)
         {
             lookRight = true;
         }
-        else 
+        else
         {
             lookRight = false;
         }
@@ -80,7 +82,7 @@ public class PlayerController : MonoBehaviour
     private void Interact(InputAction.CallbackContext callbackContext)
     {
         Ray ray = playerCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        
+
         if (Physics.Raycast(ray, out var hit, 1000))
         {
             var clickableObject = hit.collider.gameObject.GetComponent<IClickableObject>();
@@ -97,11 +99,6 @@ public class PlayerController : MonoBehaviour
 
     private void MoveBack(InputAction.CallbackContext callbackContext)
     {
-        if (!SelectTaskDisplay.minigameIsOpen)
-        {
-            // Don't move back if we are in the middle of a minigame. In other words, lock the player in.
-            CameraUtils.Current.ZoomPlayerViewCoroutine();
-        }
+        CameraUtils.Current.ZoomPlayerViewCoroutine();
     }
 }
-

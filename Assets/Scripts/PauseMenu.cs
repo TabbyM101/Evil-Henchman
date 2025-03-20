@@ -45,8 +45,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void QuitTitle() {
-        SceneManager.LoadScene("StartScreenTest");
+    public void QuitTitle()
+    {
+        DayManager.Current.ReturnToMenu();
     }
 
     public void QuitGame() {

@@ -43,7 +43,7 @@ public class DayManager : MonoBehaviour
     public void ReturnToMenu()
     {
         // Reset values that are transient between multiple days
-        dayNumber = 0;
+        dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
         CompletedScore = 0;
         WonScore = 0;
         SceneManager.LoadScene("StartScreenTest");

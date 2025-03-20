@@ -7,6 +7,8 @@ public class CameraUtils : MonoBehaviour
     public static CameraUtils Current;
     private Transform cameraTransform;
     private bool isMoving = false;
+    private bool canMove => !isMoving && !SelectTaskDisplay.minigameIsOpen;
+    private bool lockedInDialogue => DialogueManager.Current?.dialogueRunning ?? false;
     [SerializeField] private float cameraSpeed = 2.0f;
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
@@ -20,14 +22,13 @@ public class CameraUtils : MonoBehaviour
 
     void Start()
     {
-        
         cameraTransform = Camera.main.transform;
     }
 
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
     public bool ZoomBillboardCoroutine(Action onComplete = null)
     {
-        if (isMoving) return false;
+        if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomBillboardPos, onComplete));
         return true;
     }
@@ -35,7 +36,7 @@ public class CameraUtils : MonoBehaviour
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
     public bool ZoomComputerCoroutine(Action onComplete = null)
     {
-        if (isMoving) return false;
+        if (!canMove) return false;
         StartCoroutine(ZoomCoroutine(zoomComputerPos, onComplete));
         return true;
     }
@@ -43,7 +44,7 @@ public class CameraUtils : MonoBehaviour
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
     public bool ZoomPlayerViewCoroutine(Action onComplete = null)
     {
-        if (isMoving) return false;
+        if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
         return true;
     }
@@ -51,15 +52,13 @@ public class CameraUtils : MonoBehaviour
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
     public bool ZoomEscMenuCoroutine(Action onComplete = null)
     {
-        if (isMoving) return false;
+        if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomEscMenuPos, onComplete));
         return true;
     }
 
     public IEnumerator ZoomCoroutine(Transform targetTransform, Action onComplete = null)
     {
-        if (isMoving) yield break;
-
         isMoving = true;
         while (Vector3.Distance(cameraTransform.position, targetTransform.position) > 0.01f || Quaternion.Angle(cameraTransform.rotation, targetTransform.rotation) > 0.1f)
         {

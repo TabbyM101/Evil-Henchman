@@ -29,7 +29,7 @@ public class SelectTaskDisplay : MonoBehaviour
     [SerializeField] private Button selectFrontTicketButton;
     private List<Ticket> tickets;
     private int selectedTicketIdx;
-    [NonSerialized] public static bool minigameIsOpen;
+    [NonSerialized] public static bool minigameIsOpen = false;
 
     public void UpdateTickets(List<Ticket> list) {
         tickets = list;
