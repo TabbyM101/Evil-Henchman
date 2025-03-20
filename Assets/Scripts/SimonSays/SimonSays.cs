@@ -38,11 +38,6 @@ public class SimonSays : MonoBehaviour, IMinigame
     public void StartMinigame()
     {
         ResetSimonSays();
-        // TODO differentiate with sprites and don't set their color here
-        topLeft.image.color = Color.white;
-        topRight.image.color = Color.white;
-        botLeft.image.color = Color.white;
-        botRight.image.color = Color.white;
         StartCoroutine(PlaySequence());
     }
 
@@ -60,6 +55,7 @@ public class SimonSays : MonoBehaviour, IMinigame
             
             Debug.Log($"Picked {color}");
             
+            // TODO use sprite swap instead of color swap for this
             switch (color)
             {
                 case SimonSaysColor.TOPRIGHT:

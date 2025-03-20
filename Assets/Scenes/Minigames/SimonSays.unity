@@ -197,7 +197,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659c2675bfbe04d9dbbc2233ee4cc3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfRounds: 5
-  flashDuration: 0.5
+  numOfRounds: 6
+  flashDuration: 0.33
   topRight: {fileID: 258547471}
   botRight: {fileID: 1376202397}
   botLeft: {fileID: 1109540313}
@@ -2973,7 +2973,7 @@ GameObject:
   - component: {fileID: 1883959643}
   - component: {fileID: 1883959642}
   m_Layer: 5
-  m_Name: SimonSays_Panel
+  m_Name: OLD_SimonSaysPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

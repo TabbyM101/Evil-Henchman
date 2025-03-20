@@ -15,4 +15,5 @@ MonoBehaviour:
   minigameScene: RuiningRelationships
   ticketColor: {r: 0.60721064, g: 0, b: 1, a: 1}
   ticketName: Senator Catfish
-  ticketDescription: Serena Smith, destory
+  ticketDescription: We've hacked into a competitor's email chain and need you to
+    sabotage them. Choose bad options to ruin their relationships and team synergy.

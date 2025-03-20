@@ -15,4 +15,5 @@ MonoBehaviour:
   minigameScene: PhishingEmail
   ticketColor: {r: 0, g: 0.990566, b: 0.9069101, a: 1}
   ticketName: Phishing
-  ticketDescription: We are fishing for phishing emails lol
+  ticketDescription: Ugh, more phishing emails. You know the drill. Catch the green
+    emails, don't catch the red ones.

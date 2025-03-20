@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Init.unity
+    guid: c28d2e0bb7451463e9cdf3f07896dd42
+  - enabled: 1
     path: Assets/Scenes/StartScreenTest.unity
     guid: 7af09a384b9b2104f842a6854b4428f4
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 9329a838e76044910a0a215d8bb2d63e
   - enabled: 1
-    path: Assets/Scenes/Minigames/SimonSays.unity
-    guid: 8157dfc397eb4407caf262d346febe32
-  - enabled: 1
     path: Assets/Scenes/EndDayScreen.unity
     guid: f05a086d669424d9383731ccd91ca938
   - enabled: 1
-    path: Assets/Scenes/Init.unity
-    guid: c28d2e0bb7451463e9cdf3f07896dd42
+    path: Assets/Scenes/EndGameScreen.unity
+    guid: 093f8abedd733499ab4c0b0b8ab91a9f
+  - enabled: 1
+    path: Assets/Scenes/Minigames/SimonSays.unity
+    guid: 8157dfc397eb4407caf262d346febe32
   - enabled: 1
     path: Assets/Scenes/Minigames/RuiningRelationships.unity
     guid: 2cf342f1052c44e58b30cbf256ca4205

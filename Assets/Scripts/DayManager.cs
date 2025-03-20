@@ -12,9 +12,17 @@ public class DayManager : MonoBehaviour
 
     public int dayNumber { get; private set; }
     public DayObj CurrentDayObj => dayObjs.ElementAt(dayNumber);
+
+    public bool isLastDay => dayNumber + 1 >= dayObjs.Count;
+    
+    // Day-by-Day Stats
     public int IncompleteMinigameCount { get; private set; }
     public int CompletedMinigameCount { get; private set; }
     public int WonMinigameCount { get; private set; }
+    
+    // Total Stats (Across Multiple Days)
+    public int CompletedScore { get; private set; }
+    public int WonScore { get; private set; }
 
     void Awake()
     {
@@ -32,14 +40,26 @@ public class DayManager : MonoBehaviour
         }
     }
 
+    public void ReturnToMenu()
+    {
+        // Reset values that are transient between multiple days
+        dayNumber = 0;
+        CompletedScore = 0;
+        WonScore = 0;
+        SceneManager.LoadScene("StartScreenTest");
+    }
+
     public void StartNewDay()
     {
-        if (++dayNumber >= dayObjs.Count)
+        if (isLastDay)
         {
             Debug.Log("No more days.");
             return;
         }
 
+        dayNumber++;
+        
+        // Reset day-to-day stats
         IncompleteMinigameCount = 0;
         CompletedMinigameCount = 0;
         WonMinigameCount = 0;
@@ -84,6 +104,9 @@ public class DayManager : MonoBehaviour
 
     private void EndDay()
     {
+        // Save stats
+        CompletedScore += CompletedMinigameCount;
+        WonScore += WonMinigameCount;
         SceneManager.LoadScene("EndDayScreen");
     }
 }

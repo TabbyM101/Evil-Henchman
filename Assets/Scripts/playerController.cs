@@ -97,7 +97,11 @@ public class PlayerController : MonoBehaviour
 
     private void MoveBack(InputAction.CallbackContext callbackContext)
     {
-        CameraUtils.Current.ZoomPlayerViewCoroutine();
+        if (!SelectTaskDisplay.minigameIsOpen)
+        {
+            // Don't move back if we are in the middle of a minigame. In other words, lock the player in.
+            CameraUtils.Current.ZoomPlayerViewCoroutine();
+        }
     }
 }
 

@@ -8,24 +8,29 @@ using UnityEngine.SceneManagement;
 public class EndDayText : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI nextButtonText;
 
     void Start()
     {
         var playedGames = DayManager.Current.CompletedMinigameCount;
         var wonGames = DayManager.Current.WonMinigameCount;
         var wonGamesPercent = wonGames / (float)playedGames;
-        // TODO we should have a better way of counting a "win" rather than just the text here.
-        // This might need to be a more meta manager, or maybe the DayManager can handle it.
-        var endText = wonGamesPercent > 0.5 ? "You can stay." : "You're fired.";
         scoreText.text = $"Day {DayManager.Current.dayNumber + 1} Complete!\n" +
-                         $"Completed Minigames: {playedGames}\n" +
-                         $"Won Minigames: {wonGames}\n" +
-                         $"Success Percent: {(int)(wonGamesPercent * 100)}%\n" +
-                         endText;
+                         $"Approved Tickets: {wonGames}\n" +
+                         $"Failed Tickets: {playedGames - wonGames}\n" +
+                         $"Success Percent: {(int)(wonGamesPercent * 100)}%";
+        nextButtonText.text = DayManager.Current.isLastDay ? "See Performance Report" : "On to Tomorrow!";
     }
 
     public void StartNextDay()
     {
-        DayManager.Current.StartNewDay();
+        if (DayManager.Current.isLastDay)
+        {
+            SceneManager.LoadScene("EndGameScreen");
+        }
+        else
+        {
+            DayManager.Current.StartNewDay();
+        }
     }
 }
