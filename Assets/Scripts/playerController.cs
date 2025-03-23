@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out var hit, 1000))
         {
             var clickableObject = hit.collider.gameObject.GetComponent<IClickableObject>();
-            clickableObject?.ClickableObject_Clicked();
+            clickableObject?.ClickableObject_Clicked(hit);
 
             Debug.Log(hit.collider.gameObject.name);
         }

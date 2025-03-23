@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Ticket : MonoBehaviour
+public class Ticket : MonoBehaviour, IClickableObject
 {
     [NonSerialized] public string minigameScene;
     [NonSerialized] public string ticketName;
@@ -18,15 +18,18 @@ public class Ticket : MonoBehaviour
     
     public static bool minigameIsOpen;
     public CompletionState state;
+    public bool placed;
 
     void Start()
     {
         nameText.text = ticketName;
         descText.text = ticketDesc;
         bg.color = ticketColor;
+        placed = false;
     }
 
-    public void SelectTicket() {
-        SelectTaskManager.Current.TaskSelected(this);
+    public void ClickableObject_Clicked(RaycastHit ray)
+    {
+        PickupObject.Current.Pickup(gameObject);
     }
 }

@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IClickableObject
 {
-    void ClickableObject_Clicked();
+    void ClickableObject_Clicked(RaycastHit ray);
 }
