@@ -18,14 +18,12 @@ public class Ticket : MonoBehaviour, IClickableObject
     
     public static bool minigameIsOpen;
     public CompletionState state;
-    public bool placed;
 
     void Start()
     {
         nameText.text = ticketName;
         descText.text = ticketDesc;
         bg.color = ticketColor;
-        placed = false;
     }
 
     public void ClickableObject_Clicked(RaycastHit ray)

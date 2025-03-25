@@ -613,6 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7977996429385278001}
   - component: {fileID: 6649391085370777251}
+  - component: {fileID: 1164834622038935606}
   m_Layer: 0
   m_Name: Ticket
   m_TagString: Untagged
@@ -649,10 +650,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515c647dcea094f96ab1a40c50078380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressGameButton: {fileID: 2856164441817660684}
   nameText: {fileID: 5502200345567693201}
   descText: {fileID: 6374690138199724248}
   bg: {fileID: 6871459583990742919}
+  state: 0
+  placed: 0
+--- !u!65 &1164834622038935606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295892364533035998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7397266411748687133
 GameObject:
   m_ObjectHideFlags: 0
