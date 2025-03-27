@@ -40,19 +40,19 @@ public class StartMenu : MonoBehaviour
     public void StartGame() {
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        CameraUtils.Current.ZoomPlayerViewCoroutine(() => DayManager.Current.StartNewDay());
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, () => DayManager.Current.StartNewDay());
     }
 
     public void OpenOptions() {
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
-        CameraUtils.Current.ZoomComputerCoroutine();
+        CameraUtils.Current.Zoom(CameraPos.Computer);
     }
 
     public void OpenCredits() {
         creditsPanel.SetActive(true);
         optionsPanel.SetActive(false);
-        CameraUtils.Current.ZoomComputerCoroutine();
+        CameraUtils.Current.Zoom(CameraPos.Computer);
     }
 
     public void QuitGame() {
@@ -60,6 +60,6 @@ public class StartMenu : MonoBehaviour
     }
 
     public void ExitMenu() {
-        CameraUtils.Current.ZoomPlayerViewCoroutine();
+        CameraUtils.Current.Zoom(CameraPos.PlayerView);
     }
 }

@@ -62,7 +62,7 @@ public class SelectTaskDisplay : MonoBehaviour
         // Zoom out player and allow another minigame to open
         tickets[selectedTicketIdx].state = state;
         minigameIsOpen = false;
-        CameraUtils.Current.ZoomPlayerViewCoroutine(() =>
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, () =>
         {
             MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
         });
@@ -129,7 +129,7 @@ public class SelectTaskDisplay : MonoBehaviour
         // disable to ability to move before zoom
         PlaytimeInputManager.DisableAllActionMaps();
 
-        minigameIsOpen = CameraUtils.Current.ZoomComputerCoroutine(() =>
+        minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
         {
             MinigameManager.Current.curTicket = tickets[selectedTicketIdx];
             SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);

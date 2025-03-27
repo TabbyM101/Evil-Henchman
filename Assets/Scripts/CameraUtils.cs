@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraUtils : MonoBehaviour
 {
     public static CameraUtils Current;
+    public CameraPos currentPos;
     private Transform cameraTransform;
     private bool isMoving = false;
     private bool canMove => !isMoving && !SelectTaskDisplay.minigameIsOpen;
@@ -23,10 +24,36 @@ public class CameraUtils : MonoBehaviour
     void Start()
     {
         cameraTransform = Camera.main.transform;
+        currentPos = CameraPos.PlayerView;
+    }
+
+    public bool Zoom(CameraPos pos, Action onComplete = null)
+    {
+        bool status;
+        switch(pos)
+        {
+            case CameraPos.Billboard:
+                status = ZoomBillboardCoroutine(onComplete);
+                break;
+            case CameraPos.Computer:
+                status =  ZoomComputerCoroutine(onComplete);
+                break;
+            case CameraPos.PlayerView:
+                status =  ZoomPlayerViewCoroutine(onComplete);
+                break;
+            case CameraPos.EscMenu:
+                status =  ZoomEscMenuCoroutine(onComplete);
+                break;
+            default:
+                Debug.Log("Given Wrong Enum");
+                return false;
+        }
+        if (status) currentPos = pos;
+        return status;
     }
 
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
-    public bool ZoomBillboardCoroutine(Action onComplete = null)
+    private bool ZoomBillboardCoroutine(Action onComplete = null)
     {
         if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomBillboardPos, onComplete));
@@ -34,23 +61,25 @@ public class CameraUtils : MonoBehaviour
     }
 
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
-    public bool ZoomComputerCoroutine(Action onComplete = null)
+    private bool ZoomComputerCoroutine(Action onComplete = null)
     {
         if (!canMove) return false;
+        PlayerController.Current?.DisableLook();
         StartCoroutine(ZoomCoroutine(zoomComputerPos, onComplete));
         return true;
     }
     
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
-    public bool ZoomPlayerViewCoroutine(Action onComplete = null)
+    private bool ZoomPlayerViewCoroutine(Action onComplete = null)
     {
         if (!canMove || lockedInDialogue) return false;
+        PlayerController.Current?.EnableLook();
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
         return true;
     }
 
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
-    public bool ZoomEscMenuCoroutine(Action onComplete = null)
+    private bool ZoomEscMenuCoroutine(Action onComplete = null)
     {
         if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomEscMenuPos, onComplete));
@@ -73,4 +102,11 @@ public class CameraUtils : MonoBehaviour
         onComplete?.Invoke();
         isMoving = false;
     }
+}
+
+public enum CameraPos{
+    Billboard,
+    Computer,
+    PlayerView,
+    EscMenu
 }

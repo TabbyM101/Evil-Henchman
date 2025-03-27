@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
         dialogueBackground.SetActive(true);
         dialogueRunning = true;
         actions.Clear();
-        CameraUtils.Current.ZoomComputerCoroutine();
+        CameraUtils.Current.Zoom(CameraPos.Computer);
 
         foreach (var sentence in dialogueToStart.DialogueLines)
         {
@@ -59,6 +59,7 @@ public class DialogueManager : MonoBehaviour
 
     public void SendNextMessage()
     {
+        if (!dialogueRunning) return;
         if (indicator != null) indicator.SetActive(!firstMessage);
         if (needReturn)
         {
@@ -124,6 +125,6 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue(Action onComplete = null)
     {
         dialogueRunning = false;
-        CameraUtils.Current.ZoomPlayerViewCoroutine(onComplete);
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, onComplete);
     }
 }
