@@ -86,8 +86,12 @@ public class DayManager : MonoBehaviour
         Debug.Log($"Day index {dayNumber} started");
 
         MinigameManager.Current.MinigameEnded += UpdateEndState;
-        DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
 
+        if (CurrentDayObj.startDay != null)
+        {
+            DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
+        }
+        
         for (int i = 0; i < IncompleteMinigameCount; i++)
         {
             TicketManager.Current.SpawnTicket();

@@ -10,6 +10,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 {
     private bool gameRunning = false;
     private bool isTyping = false;
+    private bool isHacking = true;
 
     [SerializeField] private TextMeshProUGUI email;
     [SerializeField] private TextMeshProUGUI receiveEmail;
@@ -18,8 +19,13 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     [SerializeField] private Button choice1;
     [SerializeField] private Button choice2;
 
+    [SerializeField] private TextMeshProUGUI hackingText;
+    [SerializeField] private TextMeshProUGUI hackingStatus;
+
     [SerializeField] private TextMeshProUGUI fromWho;
     [SerializeField] private Image profile;
+
+    [SerializeField] private Image background;
 
     private string currentParagraph;
     private int currentIndex;
@@ -28,6 +34,9 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     private bool lastPicked;
 
     private KeyCode lastKey = KeyCode.None;
+    int keyPressCount = 0;
+    private string[] fakeCodeSnippets = {"int", "void", "return", "class", "public", "private", "if", "else", "while", "for", "Console.WriteLine", "new", "string", "bool", "float"};
+
 
     public void Start()
     {
@@ -36,6 +45,32 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     public void StartMinigame()
     {
+        hackingText.gameObject.SetActive(true);
+        hackingStatus.gameObject.SetActive(true);
+        hackingText.text = "";
+        hackingStatus.text = "Accessing system... Start button mashing!";
+
+        StartCoroutine(BlinkCursor());
+
+        background.color = Color.black;
+
+        email.gameObject.SetActive(false);
+        receiveEmail.gameObject.SetActive(false);
+        sendButton.gameObject.SetActive(false);
+        choice1.gameObject.SetActive(false);
+        choice2.gameObject.SetActive(false);
+        fromWho.gameObject.SetActive(false);
+        profile.gameObject.SetActive(false);
+    }
+
+    private void ActuallyStartMinigame() {
+        receiveEmail.gameObject.SetActive(true);
+        choice1.gameObject.SetActive(true);
+        choice2.gameObject.SetActive(true);
+        fromWho.gameObject.SetActive(true);
+        profile.gameObject.SetActive(true);
+
+        background.color = Color.white;
         gameRunning = true;
         currentRound = 1;
         badCounter = 0;
@@ -50,7 +85,46 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         email.gameObject.SetActive(false);
     }
 
+    private IEnumerator TransitionToMinigame()
+    {
+        yield return new WaitForSeconds(5);
+        hackingText.gameObject.SetActive(false);
+        hackingStatus.gameObject.SetActive(false);
+        ActuallyStartMinigame();
+    }
+
     void Update() {
+        if (isHacking) {
+            if (Input.anyKeyDown) {
+                keyPressCount++;
+                hackingText.text = hackingText.text.Replace("|", "");
+                for (int i = 0; i < 4; i++) {
+                    if (Random.Range(0, 2) == 0) {
+                        string fakeCode = Random.Range(0, 16).ToString("X"); // Generates a random hex character
+                        hackingText.text += fakeCode;
+                    } else {
+                        string fakeSnippet = fakeCodeSnippets[Random.Range(0, fakeCodeSnippets.Length)];
+                        hackingText.text += fakeSnippet + " ";
+                    }
+                }
+
+                if (keyPressCount >= Random.Range(2, 6)) {
+                    hackingText.text += "\n";
+                    keyPressCount = 0;
+                }
+
+                hackingText.text += "|";
+                if (hackingText.text.Length > 1000) {
+                    hackingText.text = hackingText.text.Substring(hackingText.text.Length - 1000); // Keep the UI manageable
+                }
+            }
+            if (hackingText.text.Split('\n').Length > 15) {
+                isHacking = false;
+                hackingStatus.text = "Hacked into the mainframe!";
+                StartCoroutine(TransitionToMinigame());
+            }
+        }
+
         if (gameRunning) {
             if (isTyping && Input.anyKey && !Input.GetKey(lastKey)) {
                 foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode))) {
@@ -67,6 +141,19 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
                     }
                 }
             }
+        }
+    }
+
+    private IEnumerator BlinkCursor()
+    {
+        while (isHacking)
+        {
+            if (hackingText.text.EndsWith("|")) {
+                hackingText.text = hackingText.text.Substring(0, hackingText.text.Length - 1);
+            } else {
+                hackingText.text += "|";
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

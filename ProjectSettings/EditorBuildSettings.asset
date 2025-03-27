@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/PhishingEmail.unity
     guid: 986d7297cfb414546b6ee1c83770a108
+  - enabled: 1
+    path: Assets/Scenes/Minigames/CloggingPipes.unity
+    guid: 04ae6dc0a43a2443cab4e54e23a8f9d1
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Stonks.unity
+    guid: b5a617ec90713364e805256abf5e4b7f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
