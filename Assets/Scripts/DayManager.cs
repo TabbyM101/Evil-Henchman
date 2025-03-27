@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DayManager : MonoBehaviour
 {
     public static DayManager Current;
+
     // Index is day number (starting at Day 0 being the intro day)
     [SerializeField] private List<DayObj> dayObjs;
     private Coroutine processTicketsCoroutine;
@@ -14,12 +15,12 @@ public class DayManager : MonoBehaviour
     public DayObj CurrentDayObj => dayObjs.ElementAt(dayNumber);
 
     public bool isLastDay => dayNumber + 1 >= dayObjs.Count;
-    
+
     // Day-by-Day Stats
     public int IncompleteMinigameCount { get; private set; }
     public int CompletedMinigameCount { get; private set; }
     public int WonMinigameCount { get; private set; }
-    
+
     // Total Stats (Across Multiple Days)
     public int CompletedScore { get; private set; }
     public int WonScore { get; private set; }
@@ -49,6 +50,12 @@ public class DayManager : MonoBehaviour
         SceneManager.LoadScene("StartScreenTest");
     }
 
+    public void RestartDay()
+    {
+        dayNumber--;
+        StartNewDay();
+    }
+
     public void StartNewDay()
     {
         if (isLastDay)
@@ -58,7 +65,7 @@ public class DayManager : MonoBehaviour
         }
 
         dayNumber++;
-        
+
         // Reset day-to-day stats
         IncompleteMinigameCount = 0;
         CompletedMinigameCount = 0;
@@ -75,12 +82,12 @@ public class DayManager : MonoBehaviour
             TicketManager.Current.pendingTickets.Enqueue(minigame);
             IncompleteMinigameCount++;
         }
-        
+
         Debug.Log($"Day index {dayNumber} started");
-        
+
         MinigameManager.Current.MinigameEnded += UpdateEndState;
         DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
-        
+
         for (int i = 0; i < IncompleteMinigameCount; i++)
         {
             TicketManager.Current.SpawnTicket();
@@ -94,7 +101,7 @@ public class DayManager : MonoBehaviour
         {
             WonMinigameCount++;
         }
-        
+
         if (IncompleteMinigameCount == ++CompletedMinigameCount)
         {
             EndDay();
@@ -102,6 +109,13 @@ public class DayManager : MonoBehaviour
         }
     }
 
+    // End the day without saving any stats
+    public void FailDay()
+    {
+        SceneManager.LoadScene("EndDayScreen");
+    }
+
+    // Save stats then end the day
     private void EndDay()
     {
         // Save stats
