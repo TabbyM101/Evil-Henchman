@@ -26,11 +26,8 @@ public class SelectTaskManager : MonoBehaviour
         display.OpenDisplay(ticketIndex);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseWindow()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            selectTaskWindow.SetActive(false);
-        }
+        selectTaskWindow.SetActive(false);
     }
 }

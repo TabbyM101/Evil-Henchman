@@ -26,13 +26,13 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume() {
-        CameraUtils.Current.ZoomPlayerViewCoroutine(() => EnableButtons(false));
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, () => EnableButtons(false));
         CloseOptions();
     }
 
     public void OpenOptions() {
         optionsPanel.SetActive(true);
-        CameraUtils.Current.ZoomComputerCoroutine(() => EnableButtons(false));
+        CameraUtils.Current.Zoom(CameraPos.Computer, () => EnableButtons(false));
     }
 
     public void CloseOptions() {

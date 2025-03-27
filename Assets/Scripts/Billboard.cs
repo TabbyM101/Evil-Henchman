@@ -8,7 +8,7 @@ public class Billboard : MonoBehaviour, IClickableObject
         // Might need to check later if it is a ticket if we add the ability to pick up other things
         if (PickupObject.Current.heldItem == null)
         {
-            CameraUtils.Current.ZoomBillboardCoroutine();
+            CameraUtils.Current.Zoom(CameraPos.Billboard);
             if (parent.transform.childCount > 0)
             {
                 var child = parent.transform.GetChild(0).gameObject;
