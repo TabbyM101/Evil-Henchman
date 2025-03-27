@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class SelectTaskDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject leftArrow;
+    [SerializeField] private GameObject rightArrow;
     [SerializeField] private GameObject leftTicket;
     [SerializeField] private TextMeshProUGUI leftTicketTitle;
     [SerializeField] private TextMeshProUGUI leftTicketDescription;
@@ -39,12 +41,16 @@ public class SelectTaskDisplay : MonoBehaviour
         frontTicket.SetActive(true);
         leftTicket.SetActive(true);
         rightTicket.SetActive(true);
+        leftArrow.SetActive(true);
+        rightArrow.SetActive(true);
         selectedTicketIdx = tickets.IndexOf(selected);
         if (tickets.Count < 3) {
             rightTicket.SetActive(false);
         }
         if (tickets.Count < 2) {
             leftTicket.SetActive(false);
+            leftArrow.SetActive(false);
+            rightArrow.SetActive(false);
         }
         int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
         int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;

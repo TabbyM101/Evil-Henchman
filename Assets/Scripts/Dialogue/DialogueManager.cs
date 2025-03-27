@@ -5,12 +5,14 @@ using System;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static bool firstMessage = false;
     public bool dialogueRunning { get; private set; } = false;
     public Queue<DialogueAction> actions = new Queue<DialogueAction>();
     [SerializeField] private GameObject dialogueBackground;
     [SerializeField] private Message receivedMessagePrefab;
     [SerializeField] private Message sentMessagePrefab;
     [SerializeField] private RectTransform messageSpawn;
+    [SerializeField] private GameObject indicator;
     private Message lastReceived;
     private bool coroutineActive = false;
     private bool needReturn = false;
@@ -57,6 +59,7 @@ public class DialogueManager : MonoBehaviour
 
     public void SendNextMessage()
     {
+        if (indicator != null) indicator.SetActive(!firstMessage);
         if (needReturn)
         {
             coroutineActive = true;
@@ -79,6 +82,7 @@ public class DialogueManager : MonoBehaviour
                 Message messagePrefab = sentence.receivedMessage ? receivedMessagePrefab : sentMessagePrefab;
                 Message message = Instantiate(messagePrefab, messageSpawn);
                 message.PopulateMessage(sentence.DialogueLine);
+                firstMessage = true;
                 if (sentence.receivedMessage) lastReceived = message;
 
                 if (sentence.PlayNextLine)
