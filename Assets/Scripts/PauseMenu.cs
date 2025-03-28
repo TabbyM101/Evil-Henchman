@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour, IClickableObject
 {
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private EventTrigger[] menuButtons;
@@ -14,16 +14,26 @@ public class PauseMenu : MonoBehaviour
         EnableButtons(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            EnableButtons(true);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            CloseOptions();
-        }
+      if (CameraUtils.Current.currentPos != CameraPos.EscMenu && menuButtons[0].enabled) 
+      {
+        EnableButtons(false);
+      } 
+      if (CameraUtils.Current.currentPos != CameraPos.Computer && optionsPanel.activeInHierarchy)
+      {
+        CloseOptions();
+      }
+      if (CameraUtils.Current.currentPos == CameraPos.EscMenu && !menuButtons[0].enabled) 
+      {
+        EnableButtons(true);
+      } 
     }
+
+    public void ClickableObject_Clicked(RaycastHit ray)
+     {
+        CameraUtils.Current.Zoom(CameraPos.EscMenu, () => EnableButtons(true));
+     }
 
     public void Resume() {
         CameraUtils.Current.Zoom(CameraPos.PlayerView, () => EnableButtons(false));
