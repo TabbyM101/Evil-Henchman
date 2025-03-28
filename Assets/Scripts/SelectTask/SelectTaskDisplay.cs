@@ -4,10 +4,12 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class SelectTaskDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    [SerializeField] private Animator animator;
     [SerializeField] private GameObject leftArrow;
     [SerializeField] private GameObject rightArrow;
     [SerializeField] private GameObject leftTicket;
@@ -31,7 +33,31 @@ public class SelectTaskDisplay : MonoBehaviour
     [SerializeField] private Button selectFrontTicketButton;
     private List<Ticket> tickets;
     private int selectedTicketIdx;
+    private Vector3 frontTicketStartingPos;
+    private Vector3 rightTicketStartingPos;
+    private Vector3 leftTicketStartingPos;
+    private Quaternion frontTicketStartingRot;
+    private Quaternion rightTicketStartingRot;
+    private Quaternion leftTicketStartingRot;
     [NonSerialized] public static bool minigameIsOpen = false;
+
+    void Awake() {
+        frontTicketStartingPos = frontTicket.GetComponent<RectTransform>().localPosition;
+        rightTicketStartingPos = rightTicket.GetComponent<RectTransform>().localPosition;
+        leftTicketStartingPos = leftTicket.GetComponent<RectTransform>().localPosition;
+
+        frontTicketStartingRot = frontTicket.GetComponent<RectTransform>().localRotation;
+        rightTicketStartingRot = rightTicket.GetComponent<RectTransform>().localRotation;
+        leftTicketStartingRot = leftTicket.GetComponent<RectTransform>().localRotation;
+
+        Debug.Log(frontTicketStartingPos);
+        Debug.Log(rightTicketStartingPos);
+        Debug.Log(leftTicketStartingPos);
+    }
+
+    void Start() {
+        SnapBackToStartPos();
+    }
 
     public void UpdateTickets(List<Ticket> list) {
         tickets = list;
@@ -75,6 +101,8 @@ public class SelectTaskDisplay : MonoBehaviour
         int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
         int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
 
+        StartCoroutine(RotateTickets(rotateLeft));
+
         // update tickets
         UpdateTickets(rightIdx, leftIdx);
     }
@@ -111,29 +139,63 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void SelectTicket() {
-        Debug.Log("SELECTED");
+        StartCoroutine(PlaySelectAnimation());
+    }
+
+    private System.Collections.IEnumerator PlaySelectAnimation() {
+        yield return new WaitForEndOfFrame();
+        animator.SetTrigger("SelectTask");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+
         panel.SetActive(false);
 
-        if (minigameIsOpen)
+        if (!minigameIsOpen)
         {
-            // let's not open a bunch of scenes
-            return;
-        }
-        
-        // Bind to MinigameEnded event to get callback when minigame ends
-        MinigameManager.Current.MinigameEnded += OnMinigameEnded;
-        
-        // Assuming the minigame "locks" your PC to that game, we can safely disable the button here.
-        selectFrontTicketButton.gameObject.SetActive(false);
-        
-        // disable to ability to move before zoom
-        PlaytimeInputManager.DisableAllActionMaps();
+            // Bind to MinigameEnded event to get callback when minigame ends
+            MinigameManager.Current.MinigameEnded += OnMinigameEnded;
+            
+            // Assuming the minigame "locks" your PC to that game, we can safely disable the button here.
+            selectFrontTicketButton.gameObject.SetActive(false);
+            
+            // disable to ability to move before zoom
+            PlaytimeInputManager.DisableAllActionMaps();
 
-        minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
-        {
-            MinigameManager.Current.curTicket = tickets[selectedTicketIdx];
-            SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);
-        });
+            minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
+            {
+                MinigameManager.Current.curTicket = tickets[selectedTicketIdx];
+                SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);
+            });
+        }
+    }
+
+    private System.Collections.IEnumerator RotateTickets(bool rotateLeft) {
+        yield return new WaitForEndOfFrame();
+        selectFrontTicketButton.gameObject.SetActive(false);
+        if (rotateLeft) animator.SetTrigger("RotateLeft");
+        else animator.SetTrigger("RotateRight");
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        SnapBackToStartPos();
+    }
+
+    private void SnapBackToStartPos() {
+        Debug.Log("Snapping back!");
+        Debug.Log("front " + frontTicket.GetComponent<RectTransform>().localPosition);
+        Debug.Log("right " + rightTicket.GetComponent<RectTransform>().localPosition);
+        Debug.Log("left " + leftTicket.GetComponent<RectTransform>().localPosition);
+        frontTicket.transform.localPosition = frontTicketStartingPos;
+        rightTicket.transform.localPosition = rightTicketStartingPos;
+        leftTicket.transform.localPosition = leftTicketStartingPos;
+
+        Debug.Log("front " + frontTicket.transform.localPosition);
+        Debug.Log("right " + rightTicket.GetComponent<RectTransform>().localPosition);
+        Debug.Log("left " + leftTicket.GetComponent<RectTransform>().localPosition);
+
+        frontTicket.GetComponent<RectTransform>().localRotation = frontTicketStartingRot;
+        rightTicket.GetComponent<RectTransform>().localRotation = rightTicketStartingRot;
+        leftTicket.GetComponent<RectTransform>().localRotation = leftTicketStartingRot;
+
+        selectFrontTicketButton.gameObject.SetActive(true);
     }
 
 
