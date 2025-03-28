@@ -33,27 +33,7 @@ public class SelectTaskDisplay : MonoBehaviour
     [SerializeField] private Button selectFrontTicketButton;
     private List<Ticket> tickets;
     private int selectedTicketIdx;
-    private Vector3 frontTicketStartingPos;
-    private Vector3 rightTicketStartingPos;
-    private Vector3 leftTicketStartingPos;
-    private Quaternion frontTicketStartingRot;
-    private Quaternion rightTicketStartingRot;
-    private Quaternion leftTicketStartingRot;
     [NonSerialized] public static bool minigameIsOpen = false;
-
-    void Awake() {
-        frontTicketStartingPos = frontTicket.GetComponent<RectTransform>().localPosition;
-        rightTicketStartingPos = rightTicket.GetComponent<RectTransform>().localPosition;
-        leftTicketStartingPos = leftTicket.GetComponent<RectTransform>().localPosition;
-
-        frontTicketStartingRot = frontTicket.GetComponent<RectTransform>().localRotation;
-        rightTicketStartingRot = rightTicket.GetComponent<RectTransform>().localRotation;
-        leftTicketStartingRot = leftTicket.GetComponent<RectTransform>().localRotation;
-
-        Debug.Log(frontTicketStartingPos);
-        Debug.Log(rightTicketStartingPos);
-        Debug.Log(leftTicketStartingPos);
-    }
 
     void Start() {
         SnapBackToStartPos();
@@ -179,22 +159,7 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     private void SnapBackToStartPos() {
-        Debug.Log("Snapping back!");
-        Debug.Log("front " + frontTicket.GetComponent<RectTransform>().localPosition);
-        Debug.Log("right " + rightTicket.GetComponent<RectTransform>().localPosition);
-        Debug.Log("left " + leftTicket.GetComponent<RectTransform>().localPosition);
-        frontTicket.transform.localPosition = frontTicketStartingPos;
-        rightTicket.transform.localPosition = rightTicketStartingPos;
-        leftTicket.transform.localPosition = leftTicketStartingPos;
-
-        Debug.Log("front " + frontTicket.transform.localPosition);
-        Debug.Log("right " + rightTicket.GetComponent<RectTransform>().localPosition);
-        Debug.Log("left " + leftTicket.GetComponent<RectTransform>().localPosition);
-
-        frontTicket.GetComponent<RectTransform>().localRotation = frontTicketStartingRot;
-        rightTicket.GetComponent<RectTransform>().localRotation = rightTicketStartingRot;
-        leftTicket.GetComponent<RectTransform>().localRotation = leftTicketStartingRot;
-
+        animator.SetTrigger("Idle");
         selectFrontTicketButton.gameObject.SetActive(true);
     }
 
