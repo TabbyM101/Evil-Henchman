@@ -75,16 +75,7 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void Rotate(bool rotateLeft) {
-        if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-        else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
-
-        int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
-        int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
-
         StartCoroutine(RotateTickets(rotateLeft));
-
-        // update tickets
-        //UpdateTickets(rightIdx, leftIdx);
     }
 
     public void UpdateTickets(int rightIdx, int leftIdx) {
