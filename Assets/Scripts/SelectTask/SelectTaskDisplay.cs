@@ -36,7 +36,7 @@ public class SelectTaskDisplay : MonoBehaviour
     [NonSerialized] public static bool minigameIsOpen = false;
 
     void Start() {
-        SnapBackToStartPos();
+        SnapBackToStartPos(false);
     }
 
     public void UpdateTickets(List<Ticket> list) {
@@ -84,7 +84,7 @@ public class SelectTaskDisplay : MonoBehaviour
         StartCoroutine(RotateTickets(rotateLeft));
 
         // update tickets
-        UpdateTickets(rightIdx, leftIdx);
+        //UpdateTickets(rightIdx, leftIdx);
     }
 
     public void UpdateTickets(int rightIdx, int leftIdx) {
@@ -155,12 +155,19 @@ public class SelectTaskDisplay : MonoBehaviour
         if (rotateLeft) animator.SetTrigger("RotateLeft");
         else animator.SetTrigger("RotateRight");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        SnapBackToStartPos();
+        SnapBackToStartPos(true, rotateLeft);
     }
 
-    private void SnapBackToStartPos() {
+    private void SnapBackToStartPos(bool shift, bool rotateLeft = false) {
+        if (shift) {
+            if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
+            else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
+
+            int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+            int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+            UpdateTickets(rightIdx, leftIdx);
+        }
         animator.SetTrigger("Idle");
-        selectFrontTicketButton.gameObject.SetActive(true);
     }
 
 

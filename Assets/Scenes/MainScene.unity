@@ -526,7 +526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &369651281
 RectTransform:
   m_ObjectHideFlags: 0
@@ -820,8 +820,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 9AM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: caa15e789763d344a95b71172c3d080b, type: 2}
+  m_sharedMaterial: {fileID: -8220453204374990717, guid: caa15e789763d344a95b71172c3d080b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3756,6 +3756,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 369651281}
     m_Modifications:
+    - target: {fileID: 347022630722276585, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 347022630722276585, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347022630722276585, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347022630722276585, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347022630722276585, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1620117722689336531, guid: 75512087bdc94844c84d71b5db36c505, type: 3}
       propertyPath: m_IsActive
       value: 0
