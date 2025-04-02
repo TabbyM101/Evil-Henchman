@@ -135,7 +135,18 @@ public class SelectTaskDisplay : MonoBehaviour
             minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
             {
                 MinigameManager.Current.curTicket = tickets[selectedTicketIdx];
-                SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);
+                switch (tickets[selectedTicketIdx].sceneType)
+                {
+                    case Ticket.TicketMinigameType.AdditiveScene:
+                        SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);
+                        break;
+                    case Ticket.TicketMinigameType.NoScene:
+                        // MinigameScene is used for method name when it comes to no-scene tickets
+                        var methodName = tickets[selectedTicketIdx].minigameScene;
+                        MinigameManager.Current.Invoke(methodName, 0f);
+                        break;
+                }
+                
             });
         }
     }

@@ -4,6 +4,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/DayObject")]
 public class DayObj : ScriptableObject
 {
+    public enum SceneType
+    {
+        Office,
+        Room
+    }
+    // Each day has a scene
+    public SceneType sceneType;
+    
     // Each day has a list of minigames
     public List<TicketObj> Minigames;
 

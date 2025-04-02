@@ -3,6 +3,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour, IClickableObject
 {
     [SerializeField] private GameObject parent;
+
     public void ClickableObject_Clicked(RaycastHit ray)
     {
         // Might need to check later if it is a ticket if we add the ability to pick up other things
@@ -19,13 +20,13 @@ public class Billboard : MonoBehaviour, IClickableObject
     private void OpenTicketScreen()
     {
         if (parent.transform.childCount > 0)
+        {
+            var child = parent.transform.GetChild(0).gameObject;
+            var ticket = child.GetComponent<Ticket>();
+            if (ticket)
             {
-                var child = parent.transform.GetChild(0).gameObject;
-                var ticket = child.GetComponent<Ticket>();
-                if (ticket)
-                {
-                    SelectTaskManager.Current.TaskSelected(ticket);
-                }
+                SelectTaskManager.Current.TaskSelected(ticket);
             }
+        }
     }
 }

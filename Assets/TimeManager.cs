@@ -25,7 +25,7 @@ public class TimeManager : MonoBehaviour
         {
             endString = "PM";
             ingameHour = hour + 9 == 12 ? 12 : (hour + 9) % 12;
-            if (ingameHour == 5)
+            if (ingameHour == 4)
             {
                 timeText.color = Color.red;
             }

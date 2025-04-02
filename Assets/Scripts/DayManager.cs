@@ -30,7 +30,7 @@ public class DayManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Current = this;
         dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
-        SceneManager.LoadScene("StartScreenTest");
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void OnDestroy()
@@ -47,7 +47,7 @@ public class DayManager : MonoBehaviour
         dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
         CompletedScore = 0;
         WonScore = 0;
-        SceneManager.LoadScene("StartScreenTest");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartDay()
@@ -70,13 +70,30 @@ public class DayManager : MonoBehaviour
         IncompleteMinigameCount = 0;
         CompletedMinigameCount = 0;
         WonMinigameCount = 0;
-        SceneManager.LoadScene("MainScene");
-        Invoke(nameof(StartDay), 0.1f); // Wait for other singletons in MainScene to get started
+        switch (CurrentDayObj.sceneType)
+        {
+            case DayObj.SceneType.Office:
+                SceneManager.LoadScene("OfficeScene");
+                break;
+            case DayObj.SceneType.Room:
+                SceneManager.LoadScene("RoomScene");
+                break;
+        }
+       
+        Invoke(nameof(StartDay), 0.1f); // Wait for other singletons in the scene to get started
     }
 
     private void StartDay()
     {
-        Ticket.minigameIsOpen = false;
+        if (TicketManager.Current is null || MinigameManager.Current is null ||
+            (CurrentDayObj.startDay != null && DialogueManager.Current is null))
+        {
+            Debug.LogError("FAILED TO START DAY:" +
+                           "Tried to start a day in a scene without an initialized singleton! " +
+                           "Please ensure the scene has a TicketManager, MinigameManager, and a Dialogue Manager (if startDay dialogue is assigned)");
+            return;
+        }
+
         foreach (var minigame in CurrentDayObj.Minigames)
         {
             TicketManager.Current.pendingTickets.Enqueue(minigame);
@@ -91,7 +108,7 @@ public class DayManager : MonoBehaviour
         {
             DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
         }
-        
+
         for (int i = 0; i < IncompleteMinigameCount; i++)
         {
             TicketManager.Current.SpawnTicket();
