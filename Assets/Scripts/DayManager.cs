@@ -58,6 +58,7 @@ public class DayManager : MonoBehaviour
 
     public void StartNewDay()
     {
+        SelectTaskDisplay.minigameIsOpen = false; // If you fail a day mid-minigame, this needs to be reset
         if (isLastDay)
         {
             Debug.Log("No more days.");
