@@ -1,19 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PhishingEmail : MonoBehaviour, IMinigame
 {
     [SerializeField] private int emailGoal = 5;
     [SerializeField] private GameObject emailSpawnObject;
+    [SerializeField] private GameObject emailParent;
     [SerializeField] private GameObject emailPrefab;
-    public int emailsCaught = 0;
-    public int emailScore = 0;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int emailsCaught = 0;
+    private int goodEmails = 0;
+    private int badEmails = 0;
 
     private void Start()
     {
+        UpdateText();
         StartMinigame();
     }
 
@@ -24,9 +27,10 @@ public class PhishingEmail : MonoBehaviour, IMinigame
 
     private void Update()
     {
+
         if (emailsCaught == emailGoal) 
         {
-            if (emailScore > 0)
+            if (goodEmails > badEmails)
             {
                 MinigameWon();
             } 
@@ -65,8 +69,27 @@ public class PhishingEmail : MonoBehaviour, IMinigame
     private void EmailPosition(GameObject email)
     {
         var canvasBounds = emailSpawnObject.GetComponent<Collider>().bounds;
-        email.transform.SetParent(emailSpawnObject.transform);
+        email.transform.SetParent(emailParent.transform);
         email.transform.position = new Vector3(canvasBounds.max.x, Random.Range(canvasBounds.min.y, canvasBounds.max.y), canvasBounds.min.z);
+    }
+
+    private void UpdateText()
+    {
+        scoreText.text = $"Catch {emailGoal - emailsCaught} more fish!\nGood Emails Caught: {goodEmails}\nBad Emails Caught: {badEmails}";
+    }
+
+    public void CaughtFish(int score)
+    {
+        emailsCaught++;
+        if (score > 0) 
+        {
+            goodEmails++;
+        }
+        else 
+        {
+            badEmails++;
+        }
+        UpdateText();
     }
 
     private void MinigameWon()

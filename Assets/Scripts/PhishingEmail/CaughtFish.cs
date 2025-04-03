@@ -8,8 +8,7 @@ public class CaughtFish : MonoBehaviour
         FishingLine hook = other.gameObject.GetComponentInParent<FishingLine>();
         if (hook.caughtFish != null) 
         {
-            manager.emailsCaught++;
-            manager.emailScore += hook.caughtFish.GetComponent<Email>().getScore();
+            manager.CaughtFish(hook.caughtFish.GetComponent<Email>().getScore());
             Destroy(hook.caughtFish);
             hook.caughtFish = null;
         }
