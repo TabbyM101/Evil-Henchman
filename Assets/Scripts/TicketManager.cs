@@ -42,6 +42,7 @@ public class TicketManager : MonoBehaviour
         ticketComponent.ticketDesc = ticketData.ticketDescription;
         ticketComponent.ticketColor = ticketData.ticketColor;
         ticketComponent.sceneType = ticketData.ticketSceneType;
+        SelectTaskManager.Current.UpdateTickets();
     }
 
     private void TicketPosition(GameObject ticket)
