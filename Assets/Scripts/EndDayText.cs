@@ -28,7 +28,8 @@ public class EndDayText : MonoBehaviour
             $"Incomplete Tickets: {IncompleteMinigames}\n" +
             $"Approved Tickets: {wonGames}\n" +
             $"Failed Tickets: {playedGames - wonGames}\n" +
-            $"Success Percent: {(int)(wonGamesPercent * 100)}%";
+            $"Success Percent: {(int)(wonGamesPercent * 100)}%\n" +
+            $"Standing at company: {DayManager.Current.Standing}%";
         
         nextButtonText.text =
             IncompleteMinigames > 0 ? "Restart Day" :

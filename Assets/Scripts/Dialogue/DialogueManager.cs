@@ -21,6 +21,12 @@ public class DialogueManager : MonoBehaviour
 
     public static DialogueManager Current { get; private set; }
 
+    public Action BotEnded;
+    public Action FailedEnded;
+
+    private bool isBot;
+    private bool failedDay;
+
     private void Awake()
     {
         if (Current != null && Current != this)
@@ -43,8 +49,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogueToStart)
+    public void StartDialogue(Dialogue dialogueToStart, bool isBotTalking = false, bool failedDayTalking = false)
     {
+        isBot = isBotTalking;
+        failedDay = failedDayTalking;
         dialogueBackground.SetActive(true);
         dialogueRunning = true;
         actions.Clear();
@@ -128,6 +136,17 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue(Action onComplete = null)
     {
         dialogueRunning = false;
+
+        if (isBot && onComplete == null) {
+            onComplete = () => BotEnded.Invoke();
+            isBot = false;
+        }
+
+        if (failedDay && onComplete == null) {
+            onComplete = () => FailedEnded.Invoke();
+            failedDay = false;
+        }
+
         CameraUtils.Current.Zoom(CameraPos.PlayerView, onComplete);
         if (TimeManager.Current is not null)
         {

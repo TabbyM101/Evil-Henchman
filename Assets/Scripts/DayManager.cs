@@ -25,11 +25,14 @@ public class DayManager : MonoBehaviour
     public int CompletedScore { get; private set; }
     public int WonScore { get; private set; }
 
+    public int Standing { get; private set; }
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
         Current = this;
         dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
+        Standing = 100;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -38,6 +41,10 @@ public class DayManager : MonoBehaviour
         if (MinigameManager.Current != null)
         {
             MinigameManager.Current.MinigameEnded -= UpdateEndState;
+        }
+
+        if (DialogueManager.Current != null) {
+            DialogueManager.Current.BotEnded -= CheckEndDay;
         }
     }
 
@@ -105,6 +112,10 @@ public class DayManager : MonoBehaviour
 
         MinigameManager.Current.MinigameEnded += UpdateEndState;
 
+        DialogueManager.Current.BotEnded += CheckEndDay;
+
+        SuspicionManager.Current.Standing = Standing;
+
         if (CurrentDayObj.startDay != null)
         {
             DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
@@ -124,6 +135,10 @@ public class DayManager : MonoBehaviour
             WonMinigameCount++;
         }
 
+        SuspicionManager.Current.ChangeSuspicion(state);
+    }
+
+    private void CheckEndDay() {
         if (IncompleteMinigameCount == ++CompletedMinigameCount)
         {
             EndDay();
@@ -143,6 +158,7 @@ public class DayManager : MonoBehaviour
         // Save stats
         CompletedScore += CompletedMinigameCount;
         WonScore += WonMinigameCount;
+        Standing = SuspicionManager.Current.Standing;
         SceneManager.LoadScene("EndDayScreen");
     }
 }
