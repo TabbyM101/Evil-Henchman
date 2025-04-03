@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager Current; // Singleton pattern
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private int numOfHours;
     [SerializeField] private float realtimeSecondsPerIngameHour;
@@ -12,10 +13,13 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
+        Current = this;
         hour = -1; // gets immediately incremented by KeepTime
         timeText.color = Color.white;
-        StartCoroutine(nameof(KeepTime));
     }
+
+    // Access point to start game clock (usually called after dialogue is done)
+    public void StartGameClock() => StartCoroutine(nameof(KeepTime));
 
     private string GetTimeString()
     {

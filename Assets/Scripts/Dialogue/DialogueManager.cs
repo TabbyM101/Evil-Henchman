@@ -126,5 +126,9 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueRunning = false;
         CameraUtils.Current.Zoom(CameraPos.PlayerView, onComplete);
+        if (TimeManager.Current is not null)
+        {
+            TimeManager.Current.StartGameClock();
+        }
     }
 }
