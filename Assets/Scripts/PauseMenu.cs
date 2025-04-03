@@ -32,7 +32,11 @@ public class PauseMenu : MonoBehaviour, IClickableObject
 
     public void ClickableObject_Clicked(RaycastHit ray)
      {
-        CameraUtils.Current.Zoom(CameraPos.EscMenu, () => EnableButtons(true));
+         // If we are in Billboard UI, the user must click ESC to leave that UI before being able to open the menu.
+         if (CameraUtils.Current.currentPos != CameraPos.Billboard)
+         {
+             CameraUtils.Current.Zoom(CameraPos.EscMenu, () => EnableButtons(true));
+         }
      }
 
     public void Resume() {

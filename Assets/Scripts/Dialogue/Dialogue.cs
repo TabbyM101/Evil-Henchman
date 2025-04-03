@@ -12,6 +12,7 @@ public enum DialogueActionType
 public class Line
 {
     public string CharacterName;
+    public Sprite CharacterPfp;
     public bool receivedMessage; //if this is a sent or received message type
     public string DialogueLine;
     public bool PlayNextLine;

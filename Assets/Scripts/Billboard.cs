@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Billboard : MonoBehaviour, IClickableObject
@@ -19,14 +20,20 @@ public class Billboard : MonoBehaviour, IClickableObject
 
     private void OpenTicketScreen()
     {
+        Ticket ticket = null;
         if (parent.transform.childCount > 0)
         {
             var child = parent.transform.GetChild(0).gameObject;
-            var ticket = child.GetComponent<Ticket>();
-            if (ticket)
-            {
-                SelectTaskManager.Current.TaskSelected(ticket);
-            }
+            ticket = child.GetComponent<Ticket>();
+        }
+        if (ticket is not null)
+        {
+            SelectTaskManager.Current.TaskSelected(ticket);
+        }
+        else
+        {
+            // We default to first for now, might want to change this behavior later.
+            SelectTaskManager.Current.TaskSelected(TicketManager.Current.ticketsPrinted.First());
         }
     }
 }

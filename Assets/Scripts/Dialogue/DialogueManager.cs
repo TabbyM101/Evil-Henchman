@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private RectTransform messageSpawn;
     [SerializeField] private GameObject indicator;
     private Message lastReceived;
+    private bool lastMessageTypeSent = false;
     private bool coroutineActive = false;
     private bool needReturn = false;
     private Transform returnPosition;
@@ -82,7 +83,7 @@ public class DialogueManager : MonoBehaviour
                 Line sentence = action.DialogueLine;
                 Message messagePrefab = sentence.receivedMessage ? receivedMessagePrefab : sentMessagePrefab;
                 Message message = Instantiate(messagePrefab, messageSpawn);
-                message.PopulateMessage(sentence.DialogueLine);
+                message.PopulateMessage(sentence.DialogueLine, lastMessageTypeSent != action.DialogueLine.receivedMessage, action.DialogueLine.CharacterPfp);
                 firstMessage = true;
                 if (sentence.receivedMessage) lastReceived = message;
 
@@ -90,6 +91,8 @@ public class DialogueManager : MonoBehaviour
                 {
                     Invoke("SendNextMessage", 2f);
                 }
+
+                lastMessageTypeSent = action.DialogueLine.receivedMessage;
 
                 break;
             case DialogueActionType.DialogueReaction:
@@ -126,5 +129,9 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueRunning = false;
         CameraUtils.Current.Zoom(CameraPos.PlayerView, onComplete);
+        if (TimeManager.Current is not null)
+        {
+            TimeManager.Current.StartGameClock();
+        }
     }
 }
