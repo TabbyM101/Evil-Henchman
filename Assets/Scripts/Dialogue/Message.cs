@@ -7,15 +7,18 @@ public class Message : MonoBehaviour
 {
     public int CharactersPerLine = 23;
     [SerializeField] private TextMeshProUGUI textLine;
+    [SerializeField] private Image pfpImgage;
     [SerializeField] private Image reactionImage;
     [SerializeField] private RectTransform textSpawn;
     [SerializeField] private RectTransform reactionSpawn;
     [SerializeField] private RectTransform messageBackground;
     [SerializeField] private RectTransform outerObject;
 
-    public void PopulateMessage(string messageText) {
+    public void PopulateMessage(string messageText, bool lastMessageReceived, Sprite pfp = null) {
         textLine.text = messageText;
         textLine.gameObject.SetActive(true);
+        pfpImgage.gameObject.SetActive(lastMessageReceived);
+        if (pfp != null) pfpImgage.sprite = pfp;
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(textSpawn);
 
@@ -26,7 +29,9 @@ public class Message : MonoBehaviour
         messageBackground.sizeDelta = updatedSizeDelta;
 
         updatedSizeDelta = outerObject.sizeDelta;
-        updatedSizeDelta.y = messageBackground.rect.height;
+        float additionalHeight = lastMessageReceived && (messageBackground.rect.height < 0.0565f) ? (0.0565f - messageBackground.rect.height)  : 0;
+        Debug.Log(additionalHeight + " " + messageBackground.rect.height);
+        updatedSizeDelta.y = messageBackground.rect.height + additionalHeight;
         outerObject.sizeDelta = updatedSizeDelta;
         reactionSpawn.SetAsLastSibling();
     }
