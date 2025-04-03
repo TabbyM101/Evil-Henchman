@@ -18,12 +18,16 @@ public class SelectTaskManager : MonoBehaviour
     void Start()
     {
         selectTaskWindow.SetActive(false);
-        display.UpdateTickets(TicketManager.Current.ticketsPrinted);
+        UpdateTickets();
     }
 
     public void TaskSelected(Ticket ticketIndex) {
         selectTaskWindow.SetActive(true);
         display.OpenDisplay(ticketIndex);
+    }
+
+    public void UpdateTickets() {
+        display.UpdateTickets(TicketManager.Current.ticketsPrinted);
     }
 
     public void CloseWindow()

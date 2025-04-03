@@ -40,7 +40,12 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void UpdateTickets(List<Ticket> list) {
+        Debug.Log("updating tickets");
         tickets = list;
+        for (int i = 0; i < tickets.Count; i++) {
+            Debug.Log(i + " " + tickets[i].ticketName);
+        }
+        
     }
 
     public void OpenDisplay(Ticket selected) {
@@ -50,16 +55,18 @@ public class SelectTaskDisplay : MonoBehaviour
         leftArrow.SetActive(true);
         rightArrow.SetActive(true);
         selectedTicketIdx = tickets.IndexOf(selected);
+        Debug.Log(selectedTicketIdx + " " + tickets[selectedTicketIdx].ticketName);
         if (tickets.Count < 3) {
             rightTicket.SetActive(false);
         }
         if (tickets.Count < 2) {
+            Debug.Log("less than 2");
             leftTicket.SetActive(false);
             leftArrow.SetActive(false);
             rightArrow.SetActive(false);
         }
-        int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
-        int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+        int rightIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+        int leftIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
         UpdateTickets(rightIdx, leftIdx);
     }
 
@@ -165,8 +172,10 @@ public class SelectTaskDisplay : MonoBehaviour
             if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
             else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
 
-            int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
-            int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+            int rightIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+            int leftIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+
+            Debug.Log("rotated values: " + selectedTicketIdx + " left idx: " + leftIdx + " right idx: " + rightIdx);
             UpdateTickets(rightIdx, leftIdx);
         }
         animator.SetTrigger("Idle");
