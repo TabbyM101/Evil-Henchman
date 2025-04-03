@@ -15,27 +15,29 @@ public class SuspicionManager : MonoBehaviour
 
 
     public Dictionary<int, string> positiveResponses = new Dictionary<int, string>{
-        {20, "20 good"},
-        {30, "30 good"},
-        {40, "40 good"},
-        {50, "50 good"},
-        {60, "60 good"},
-        {70, "70 good"},
-        {80, "80 good"},
-        {90, "90 good"},
-        {100, "100 good"},
+        {20, "You have completed this task. Still there is much work to be done. Your standing at Mal is 20%."},
+        {30, "You have completed this task. If you continue like this, maybe your standing can reach what it was before." 
+            + " Your standing at Mal is 30%."},
+        {40, "You have completed this task. We see the upwards trajectory. Your standing at Mal is 40%."},
+        {50, "You have completed this task. Your work has become acceptable. Your standing at Mal is 50%."},
+        {60, "You have completed this task. You have gotten back on the right path. Your standing at Mal is 60%."},
+        {70, "You have completed this task. Mal is glad to see progress. Your standing at Mal is 70%."},
+        {80, "You have completed this task. Continue like this. Your standing at Mal is 80%."},
+        {90, "You have completed this task. Your standing at Mal is 90%. Good job."},
+        {100, "You have completed this task. Your standing at Mal is 100%. Keep this up and a raise is possible."},
     };
 
     public Dictionary<int, string> negativeResponses = new Dictionary<int, string>{
-        {0, "0 bad"},
-        {10, "10 bad"},
-        {20, "20 bad"},
-        {30, "30 bad"},
-        {40, "40 bad"},
-        {50, "50 bad"},
-        {60, "60 bad"},
-        {70, "70 bad"},
-        {80, "80 bad"},
+        {0, "You have failed your last task. Your standing at this company has reached 0%, and you will be" 
+            + " fired, effective immediately."},
+        {10, "You have failed another task. This will be your last warning. Your standing at Mal has reached 10%."},
+        {20, "You have failed another task. This will be your last warning. Your standing at Mal has reached 20%."},
+        {30, "You have failed this task. You don't have much leeway left. Your standing at Mal has reached 30%."},
+        {40, "You have failed this task. We have noticed your lackluster performance. Your standing at Mal has reached 40%."},
+        {50, "You have failed this task. Your incompetence is growing. Your standing at Mal has reached 50%."},
+        {60, "You have failed this task. We are starting to see your performance slipping. Your standing at Mal has reached 60%."},
+        {70, "You have failed this task. Please don't allow this to continue. Your standing at Mal has reached 70%."},
+        {80, "You have failed this task. Don't let this be the start of your downfall. Your standing at Mal has reached 80%."},
     };
     
     #region Singleton / Shared Logic
