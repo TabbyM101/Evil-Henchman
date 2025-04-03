@@ -30,7 +30,6 @@ public class Message : MonoBehaviour
 
         updatedSizeDelta = outerObject.sizeDelta;
         float additionalHeight = lastMessageReceived && (messageBackground.rect.height < 0.0565f) ? (0.0565f - messageBackground.rect.height)  : 0;
-        Debug.Log(additionalHeight + " " + messageBackground.rect.height);
         updatedSizeDelta.y = messageBackground.rect.height + additionalHeight;
         outerObject.sizeDelta = updatedSizeDelta;
         reactionSpawn.SetAsLastSibling();
