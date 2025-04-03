@@ -49,7 +49,7 @@ public class TimeManager : MonoBehaviour
         {
             hour++;
             timeText.text = GetTimeString();
-            yield return new WaitForSeconds(realtimeSecondsPerIngameHour);
+            yield return new WaitForSecondsRealtime(realtimeSecondsPerIngameHour);
         }
 
         // If we reach this before the TimeManager has been unloaded, then the level should fail
