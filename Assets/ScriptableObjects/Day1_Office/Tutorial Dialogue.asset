@@ -16,10 +16,11 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: Hello Quentin and welcome to Mal Enterprise! I hope you feel
         at home here
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -30,12 +31,13 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: "As you know I\u2019ll be your manager. Sorry I would\u2019ve
         come to greet you in person but I overbooked myself today as usual and so
         I\u2019m using our great in company messaging system. Let\u2019s get ready
         to do some great work!"
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
     DialogueEvent:
@@ -46,11 +48,12 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: "Also btw, we will be having an afterwork event for your arrival!
         You\u2019ll see you\u2019ll love the people here, we\u2019re like a little
         family."
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -61,9 +64,10 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: Oh wait, you signed your NDA right?
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -74,9 +78,10 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Quentin
+      CharacterPfp: {fileID: 21300000, guid: ada6ab5914127074abc4b10e7740220b, type: 3}
       receivedMessage: 0
-      CharacterPhoto: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
       DialogueLine: Yes, I think so.
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -87,9 +92,10 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: "That\u2019s great! Already on top of your work."
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -100,9 +106,10 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Quentin
+      CharacterPfp: {fileID: 21300000, guid: ada6ab5914127074abc4b10e7740220b, type: 3}
       receivedMessage: 0
-      CharacterPhoto: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
       DialogueLine: So what will I be doing exactly?
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -113,12 +120,13 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: "What an excellent question. Seeing as you are just joining Mal,
         I\u2019ll have you working on a little of everything. As you know, we here
         at Mal Enterprise are a new tech company, focusing on revolutionizing technology
         for everyone in the world."
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
@@ -129,12 +137,13 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      CharacterPhoto: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
       DialogueLine: "From this nifty little printer, you\u2019ll get messages explaining
         the tasks you need to do. Most will involve doing something on the computer,
         others may involve more office related tasks. But don\u2019t worry, it\u2019ll
         be explained."
+      PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
     DialogueEvent:
