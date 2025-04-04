@@ -24,10 +24,8 @@ public class Email : MonoBehaviour
         {
             Vector2 newPosition = rectTransform.anchoredPosition;
             newPosition.x -= swimmingSpeed;
-            //Debug.Log(newPosition.x);
             if (newPosition.x < canvasTransform.rect.min.x)
             {
-                Debug.Log("here");
                 Destroy(gameObject);
             }
             newPosition.y = (Mathf.Cos(swimmingSpeed * Time.time) * swimmingHeight) + startingHeight;

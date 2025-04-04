@@ -14,11 +14,18 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private RectTransform messageSpawn;
     [SerializeField] private GameObject indicator;
     private Message lastReceived;
+    private bool lastMessageTypeSent = false;
     private bool coroutineActive = false;
     private bool needReturn = false;
     private Transform returnPosition;
 
     public static DialogueManager Current { get; private set; }
+
+    public Action BotEnded;
+    public Action FailedEnded;
+
+    private bool isBot;
+    private bool failedDay;
 
     private void Awake()
     {
@@ -42,12 +49,14 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogueToStart)
+    public void StartDialogue(Dialogue dialogueToStart, bool isBotTalking = false, bool failedDayTalking = false)
     {
+        isBot = isBotTalking;
+        failedDay = failedDayTalking;
         dialogueBackground.SetActive(true);
         dialogueRunning = true;
         actions.Clear();
-        CameraUtils.Current.ZoomComputerCoroutine();
+        CameraUtils.Current.Zoom(CameraPos.Computer);
 
         foreach (var sentence in dialogueToStart.DialogueLines)
         {
@@ -59,6 +68,7 @@ public class DialogueManager : MonoBehaviour
 
     public void SendNextMessage()
     {
+        if (!dialogueRunning) return;
         if (indicator != null) indicator.SetActive(!firstMessage);
         if (needReturn)
         {
@@ -81,7 +91,7 @@ public class DialogueManager : MonoBehaviour
                 Line sentence = action.DialogueLine;
                 Message messagePrefab = sentence.receivedMessage ? receivedMessagePrefab : sentMessagePrefab;
                 Message message = Instantiate(messagePrefab, messageSpawn);
-                message.PopulateMessage(sentence.DialogueLine);
+                message.PopulateMessage(sentence.DialogueLine, lastMessageTypeSent != action.DialogueLine.receivedMessage, action.DialogueLine.CharacterPfp);
                 firstMessage = true;
                 if (sentence.receivedMessage) lastReceived = message;
 
@@ -89,6 +99,8 @@ public class DialogueManager : MonoBehaviour
                 {
                     Invoke("SendNextMessage", 2f);
                 }
+
+                lastMessageTypeSent = action.DialogueLine.receivedMessage;
 
                 break;
             case DialogueActionType.DialogueReaction:
@@ -124,6 +136,21 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue(Action onComplete = null)
     {
         dialogueRunning = false;
-        CameraUtils.Current.ZoomPlayerViewCoroutine(onComplete);
+
+        if (isBot && onComplete == null) {
+            onComplete = () => BotEnded.Invoke();
+            isBot = false;
+        }
+
+        if (failedDay && onComplete == null) {
+            onComplete = () => FailedEnded.Invoke();
+            failedDay = false;
+        }
+
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, onComplete);
+        if (TimeManager.Current is not null)
+        {
+            TimeManager.Current.StartGameClock();
+        }
     }
 }

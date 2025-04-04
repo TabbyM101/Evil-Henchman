@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Current;
     [SerializeField] private int limitAmount;
     [SerializeField] private float edgePercentage;
     [SerializeField] private float cameraSpeed;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Current = this;
         playerCamera = Camera.main;
         startYRotation = playerCamera.transform.localEulerAngles.y;
         movement = cameraSpeed * Time.deltaTime;
@@ -33,12 +35,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DisableLook()
+    {
+        PlaytimeInputManager.inputActions.Player.Look.performed -= Look;
+    }
+
+    public void EnableLook()
+    {
+        PlaytimeInputManager.inputActions.Player.Look.performed += Look;
+    }
+
     private void OnEnable()
     {
         PlaytimeInputManager.inputActions.Player.Interact.performed += Interact;
         PlaytimeInputManager.inputActions.Player.Look.performed += Look;
         PlaytimeInputManager.inputActions.Player.EscMenu.performed += EscMenu;
-        PlaytimeInputManager.inputActions.Player.MoveBack.performed += MoveBack;
     }
 
     private void OnDisable()
@@ -46,7 +57,6 @@ public class PlayerController : MonoBehaviour
         PlaytimeInputManager.inputActions.Player.Interact.performed -= Interact;
         PlaytimeInputManager.inputActions.Player.Look.performed -= Look;
         PlaytimeInputManager.inputActions.Player.EscMenu.performed -= EscMenu;
-        PlaytimeInputManager.inputActions.Player.MoveBack.performed -= MoveBack;
     }
 
     private void Look(InputAction.CallbackContext callbackContext)
@@ -94,11 +104,16 @@ public class PlayerController : MonoBehaviour
 
     private void EscMenu(InputAction.CallbackContext callbackContext)
     {
-        CameraUtils.Current.ZoomEscMenuCoroutine();
-    }
-
-    private void MoveBack(InputAction.CallbackContext callbackContext)
-    {
-        CameraUtils.Current.ZoomPlayerViewCoroutine();
+        if (CameraUtils.Current.currentPos == CameraPos.PlayerView)
+        {
+            CameraUtils.Current.Zoom(CameraPos.EscMenu);
+        }
+        else
+        {
+            if (CameraUtils.Current.Zoom(CameraPos.PlayerView))
+            {
+                SelectTaskManager.Current?.CloseWindow();
+            }
+        }
     }
 }

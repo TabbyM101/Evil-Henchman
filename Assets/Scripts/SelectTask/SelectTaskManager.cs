@@ -18,7 +18,7 @@ public class SelectTaskManager : MonoBehaviour
     void Start()
     {
         selectTaskWindow.SetActive(false);
-        display.UpdateTickets(TicketManager.Current.ticketsPrinted);
+        UpdateTickets();
     }
 
     public void TaskSelected(Ticket ticketIndex) {
@@ -26,11 +26,12 @@ public class SelectTaskManager : MonoBehaviour
         display.OpenDisplay(ticketIndex);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateTickets() {
+        display.UpdateTickets(TicketManager.Current.ticketsPrinted);
+    }
+
+    public void CloseWindow()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            selectTaskWindow.SetActive(false);
-        }
+        selectTaskWindow.SetActive(false);
     }
 }

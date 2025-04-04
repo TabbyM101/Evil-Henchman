@@ -75,17 +75,23 @@ public class PlaytimeInputManager : MonoBehaviour
     /// </summary>
     public static void DisableAllActionMaps()
     {
-        foreach (var actionMap in inputActions)
+        if (inputActions != null)
         {
-            actionMap.Disable();
+            foreach (var actionMap in inputActions)
+            {
+                actionMap.Disable();
+            }
         }
     }
 
     public static void EnableAllActionMaps()
     {
-        foreach (var actionMap in inputActions)
+         if (inputActions != null)
         {
-            actionMap.Enable();
+            foreach (var actionMap in inputActions)
+            {
+                actionMap.Enable();
+            }
         }
     }
 
