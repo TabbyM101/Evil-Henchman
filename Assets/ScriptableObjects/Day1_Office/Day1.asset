@@ -14,9 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneType: 0
   Minigames:
-  - {fileID: 11400000, guid: 3377c5df0f9e64077a91b1013b608425, type: 2}
-  - {fileID: 11400000, guid: 7892aab6f18b74f4f8cf565be5e93d8b, type: 2}
-  - {fileID: 11400000, guid: 9e88b77e8095a8f4e8e9c1dd3e070ef4, type: 2}
-  - {fileID: 11400000, guid: 139ba502ea0bf4f388c90b0df7b9cbc9, type: 2}
-  - {fileID: 11400000, guid: 64da155d25abd48b8af95e6add278aa5, type: 2}
+  - {fileID: 11400000, guid: 840952092657341a8ab7fbbc32769858, type: 2}
   startDay: {fileID: 11400000, guid: 7c7aba9777eda432f8e839f53033c0d5, type: 2}
