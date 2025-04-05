@@ -113,6 +113,7 @@ public class SelectTaskDisplay : MonoBehaviour
         if (front) {
             bool canSelect = ticket.state == CompletionState.Pending;
             selectFrontTicketButton.gameObject.SetActive(canSelect);
+            Debug.Log("ticket can be selected? " + canSelect);
         }
     }
 

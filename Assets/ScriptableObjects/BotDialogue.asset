@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8929c56f6332574c9d9e06897460ddd, type: 3}
   m_Name: BotDialogue
   m_EditorClassIdentifier: 
-  SenderPFP: {fileID: 21300000, guid: b8af7c042cd2b294fb925fb3cb6c2eb6, type: 3}
+  SenderPFP: {fileID: 21300000, guid: c55d13d15a5e3034b91904a7fdca20df, type: 3}
   SenderName: MalBot
   DialogueLines:
   - Type: 0
     DialogueLine:
       CharacterName: Bot
-      CharacterPfp: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+      CharacterPfp: {fileID: 21300000, guid: c55d13d15a5e3034b91904a7fdca20df, type: 3}
       receivedMessage: 1
-      DialogueLine: 
+      DialogueLine: You have failed this task. Don't let this be the start of your
+        downfall. Your standing at Mal has reached 80%.
       PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
