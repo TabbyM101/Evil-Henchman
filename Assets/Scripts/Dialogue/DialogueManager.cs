@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
+using TMPro;
+using Unity.VisualScripting;
+using System.Linq;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Message sentMessagePrefab;
     [SerializeField] private RectTransform messageSpawn;
     [SerializeField] private GameObject indicator;
+    [SerializeField] private Image selectedChatPfp;
+    [SerializeField] private TextMeshProUGUI selectedChatName;
     private Message lastReceived;
     private bool lastMessageTypeSent = false;
     private bool coroutineActive = false;
@@ -51,6 +57,10 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogueToStart, bool isBotTalking = false, bool failedDayTalking = false)
     {
+        ClearDialogue();
+        lastMessageTypeSent = false;
+        selectedChatPfp.sprite = dialogueToStart.SenderPFP;
+        selectedChatName.text = dialogueToStart.SenderName;
         isBot = isBotTalking;
         failedDay = failedDayTalking;
         dialogueBackground.SetActive(true);
@@ -151,6 +161,19 @@ public class DialogueManager : MonoBehaviour
         if (TimeManager.Current is not null)
         {
             TimeManager.Current.StartGameClock();
+        }
+    }
+
+    public void ClearDialogue() {
+        if (messageSpawn.childCount == 0 ) return;
+
+        GameObject[] oldMessages = new GameObject[messageSpawn.childCount];
+        for(int i = 0; i < messageSpawn.childCount; i++) {
+            oldMessages[i] = messageSpawn.GetChild(i).gameObject;
+        }
+
+        for (int i = 0; i < oldMessages.Count(); i ++) {
+            Destroy(messageSpawn.GetChild(i).gameObject);
         }
     }
 }

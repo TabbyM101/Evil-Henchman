@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8929c56f6332574c9d9e06897460ddd, type: 3}
   m_Name: BotDialogue
   m_EditorClassIdentifier: 
+  SenderPFP: {fileID: 21300000, guid: b8af7c042cd2b294fb925fb3cb6c2eb6, type: 3}
+  SenderName: MalBot
   DialogueLines:
   - Type: 0
     DialogueLine:
