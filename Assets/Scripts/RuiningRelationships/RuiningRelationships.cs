@@ -13,7 +13,14 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     private bool isHacking = true;
 
     [SerializeField] private TextMeshProUGUI email;
+    [SerializeField] private RuiningEmail receivedEmail;
+    [SerializeField] private GameObject emailSection;
     [SerializeField] private TextMeshProUGUI receiveEmail;
+    [SerializeField] private GameObject helpText;
+    [SerializeField] private RuiningEmail sentEmail;
+    [SerializeField] private RectTransform emailSpawn;
+    [SerializeField] private RectTransform choiceSection;
+    [SerializeField] private RectTransform typingSection;
     [SerializeField] private Button sendButton;
     [SerializeField] private RuiningRelationshipText source;
     [SerializeField] private Button choice1;
@@ -45,6 +52,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     public void StartMinigame()
     {
+        emailSection.SetActive(false);
         hackingText.gameObject.SetActive(true);
         hackingStatus.gameObject.SetActive(true);
         hackingText.text = "";
@@ -53,20 +61,13 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         StartCoroutine(BlinkCursor());
 
         background.color = Color.black;
-
-        email.gameObject.SetActive(false);
-        receiveEmail.gameObject.SetActive(false);
-        sendButton.gameObject.SetActive(false);
-        choice1.gameObject.SetActive(false);
-        choice2.gameObject.SetActive(false);
-        fromWho.gameObject.SetActive(false);
-        profile.gameObject.SetActive(false);
     }
 
     private void ActuallyStartMinigame() {
+        emailSection.SetActive(true);
+        choiceSection.SetAsLastSibling();
         receiveEmail.gameObject.SetActive(true);
-        choice1.gameObject.SetActive(true);
-        choice2.gameObject.SetActive(true);
+        choiceSection.gameObject.SetActive(true);
         fromWho.gameObject.SetActive(true);
         profile.gameObject.SetActive(true);
 
@@ -80,14 +81,11 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To1ShortGood;
         choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To1ShortBad;
         sendButton.onClick.AddListener(SendParagraph);
-        sendButton.interactable = false;
-        sendButton.gameObject.SetActive(false);
-        email.gameObject.SetActive(false);
     }
 
     private IEnumerator TransitionToMinigame()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         hackingText.gameObject.SetActive(false);
         hackingStatus.gameObject.SetActive(false);
         ActuallyStartMinigame();
@@ -127,6 +125,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
         if (gameRunning) {
             if (isTyping && Input.anyKey && !Input.GetKey(lastKey)) {
+                helpText.SetActive(false);
                 foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode))) {
                     if (Input.GetKey(kcode))
                         lastKey = kcode;
@@ -179,15 +178,11 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
             }
         }
         isTyping = true;
-        choice1.gameObject.SetActive(false);
-        choice2.gameObject.SetActive(false);
-        sendButton.gameObject.SetActive(true);
+        choiceSection.gameObject.SetActive(false);
+        typingSection.gameObject.SetActive(true);
+        typingSection.SetAsLastSibling();
         sendButton.interactable = false;
-        email.gameObject.SetActive(true);
         email.text = "";
-        receiveEmail.gameObject.SetActive(false);
-        fromWho.gameObject.SetActive(false);
-        profile.gameObject.SetActive(false);
         lastPicked = isGood;
         if (!isGood) {
             badCounter++;
@@ -195,6 +190,9 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     }
 
     private void SendParagraph() {
+        RuiningEmail newEmail = Instantiate(sentEmail, emailSpawn);
+        newEmail.SetEmailContents(email.text);
+        newEmail.gameObject.SetActive(true);
         currentRound++;
         currentIndex = 0;
         if (currentRound == 4) {
@@ -205,42 +203,41 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
             }
         } else {
             isTyping = false;
+            RuiningEmail newRecvEmail = Instantiate(receivedEmail, emailSpawn);
             if (currentRound == 2) {
                 choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To2ShortGood;
                 choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To2ShortBad;
                 if (lastPicked) {
-                    receiveEmail.text = source.From2Good;
+                    newRecvEmail.SetEmailContents(source.From2Good);
                 } else {
-                    receiveEmail.text = source.From2Bad;
+                    newRecvEmail.SetEmailContents(source.From2Bad);
                 }
             } else if (currentRound == 3) {
                 choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To3ShortGood;
                 choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To3ShortBad;
                 if (lastPicked) {
-                    receiveEmail.text = source.From3Good;
+                    newRecvEmail.SetEmailContents(source.From3Good);
                 } else {
-                    receiveEmail.text = source.From3Bad;
+                    newRecvEmail.SetEmailContents(source.From3Bad);
                 }
             }
-            email.gameObject.SetActive(false);
+            typingSection.gameObject.SetActive(false);
             receiveEmail.gameObject.SetActive(true);
             fromWho.gameObject.SetActive(true);
             profile.gameObject.SetActive(true);
-            choice1.gameObject.SetActive(true);
-            choice2.gameObject.SetActive(true);
-            sendButton.gameObject.SetActive(false);
+            choiceSection.gameObject.SetActive(true);
+            choiceSection.SetAsLastSibling();
+            Debug.Log("here!");
         }
     }
 
     private void MinigameWon()
     {
-        email.gameObject.SetActive(false);
         receiveEmail.gameObject.SetActive(true);
         fromWho.gameObject.SetActive(true);
         profile.gameObject.SetActive(true);
-        choice1.gameObject.SetActive(false);
-        choice2.gameObject.SetActive(false);
-        sendButton.gameObject.SetActive(false);
+        choiceSection.gameObject.SetActive(false);
+        typingSection.gameObject.SetActive(false);
         receiveEmail.text = source.FromOverallSuccess;
         Debug.Log("Won Ruining Relationships!");
         MinigameManager.Current.EndMinigame(CompletionState.Completed);
@@ -248,15 +245,13 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     private void MinigameLost()
     {
-        email.gameObject.SetActive(false);
         receiveEmail.gameObject.SetActive(true);
         fromWho.gameObject.SetActive(true);
         profile.gameObject.SetActive(true);
-        choice1.gameObject.SetActive(false);
-        choice2.gameObject.SetActive(false);
-        sendButton.gameObject.SetActive(false);
+        choiceSection.gameObject.SetActive(false);
+        typingSection.gameObject.SetActive(false);
         receiveEmail.text = source.FromOverallFailure;
-        Debug.Log("Picked incorrect color! Closing the game...");
+        Debug.Log("Lost Ruining Relationships...");
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
         // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
     }
