@@ -4520,10 +4520,11 @@ MonoBehaviour:
   mainTrashCan: {fileID: 2018235862}
   spawnZone: {fileID: 1863401577}
   trashObjects:
-  - {fileID: 2212081497514901907, guid: 2a3caa123b3884316b04619bb60d417c, type: 3}
+  - {fileID: 3914833136282032687, guid: 1ee72789fecec42caa583c5740b4047a, type: 3}
+  - {fileID: 4485284167055367303, guid: 9f67ae9fb546f4585955ac22931dac42, type: 3}
+  - {fileID: 1110161916441519111, guid: 25f58356d52b94433b54530848a4e4b4, type: 3}
   - {fileID: 2212081497514901907, guid: 4448c58ba80fc43c2aaf75b70bec4368, type: 3}
-  - {fileID: 2212081497514901907, guid: 4448c58ba80fc43c2aaf75b70bec4368, type: 3}
-  - {fileID: 2212081497514901907, guid: 2a3caa123b3884316b04619bb60d417c, type: 3}
+  - {fileID: 5791272877604550133, guid: 3f27944617fd64d22bc1e357e0f64e8c, type: 3}
   goal: 10
 --- !u!1 &2070145195
 GameObject:

@@ -66,7 +66,17 @@ public class PickupTrash : MonoBehaviour
 
     private Vector3 CreatePosition()
     {
-        Vector3 randomPosition = new Vector3(Random.Range(-.5f, .5f), 0, Random.Range(0.0f, .6f));
+        float xRange = 0;
+        int rand = Random.Range(0,2);
+        if (rand == 1)
+        {
+            xRange = Random.Range(-1.0f, -.6f);
+        }
+        else 
+        {
+            xRange = Random.Range(.6f, 1f);
+        }
+        Vector3 randomPosition = new Vector3(xRange, 0, Random.Range(0.0f, .6f));
         Vector3 spawnPosition = spawnZone.transform.position + randomPosition;
         spawnPosition.y = 2;
         return spawnPosition;
