@@ -2703,6 +2703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketPrefab: {fileID: 7295892364533035998, guid: 76fc57d591a1440468c954ee4d2834db, type: 3}
   ticketSpawnObject: {fileID: 496075299}
+  ticketSpawnLocation: {fileID: 0}
   ticketsPrinted: []
 --- !u!1 &239523296
 GameObject:
@@ -21783,6 +21784,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838872655}
   m_CullTransparentMesh: 1
+--- !u!1 &1843475064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843475065}
+  m_Layer: 0
+  m_Name: TicketSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1843475065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843475064}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000015221719, y: -0.99995595, z: 0.009307741, w: -0.0012082752}
+  m_LocalPosition: {x: -1.104, y: 0.7861685, z: 0.109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1847391571
 GameObject:
   m_ObjectHideFlags: 0
@@ -32176,3 +32208,4 @@ SceneRoots:
   - {fileID: 685790858}
   - {fileID: 1992948370}
   - {fileID: 496075304}
+  - {fileID: 1843475065}
