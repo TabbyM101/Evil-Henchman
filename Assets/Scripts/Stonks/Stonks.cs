@@ -1,5 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -16,13 +20,19 @@ public class Stonks : MonoBehaviour, IMinigame
     public float maxMoveInterval = 2f;
     public float minFishSpeed = 1f;
     public float maxFishSpeed = 5f;
-    
-    [Header("Game Goal")]
-    public Slider completionSlider;  // assign in Inspector
+    [FormerlySerializedAs("fishViolence")] [Range(0, 100)]public float maxFishViolence = 30f;
+    public float minFishViolence = 10f;
+    public int delayStart = 2;
 
-    public float defaultStartingValue = 20f;
+    [Header("Game Goal")] 
+    public float score;
+    public float time;
+    [SerializeField] private TextMeshProUGUI timeText;
     public float increaseSpeed = 10f;  // adjust in Inspector
-    public float decreaseSpeed = 10f;  // adjust in Inspector
+    public float decreaseSpeed = 10f;  // adjust in Inspector*/
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject goodFeedback;
+    [SerializeField] private GameObject badFeedback;
 
     private bool isRunning = false;
     private float playerForce = 0f;
@@ -30,7 +40,23 @@ public class Stonks : MonoBehaviour, IMinigame
     private float bottomBound;
 
     private Coroutine FishCoroutine;
+    public float FishPositionPercentage { get; private set; }
+    
+    [Header("Fish Position Tracking")]
+    public int fishMovesCount = 100;  // Number of fish moves to generate initially
+    public List<float> fishMoves;  // Stores the target percentage positions for the fish
+    public List<float> fishEndPositions;  // Stores the end percentage positions of each fish movement
+    public List<float> fishMoveDelays; // Stores the delays between each movement
 
+    // Converts a y-position in the bar's local space to a percentage from the bottom of the bar.
+    private float PositionToPercentage(float yPosition)
+    {
+        float barHeight = topBound - bottomBound;
+        return ((yPosition - bottomBound) / barHeight) * 100f;
+    }
+
+
+    
     private void Start()
     {
         StartMinigame();
@@ -40,6 +66,7 @@ public class Stonks : MonoBehaviour, IMinigame
     {
         isRunning = true;
         playerForce = 0f;
+        fishMovesCount = Mathf.RoundToInt(time);
 
         // calculate boundaries
         float barHeight = outerBar.rect.height;
@@ -51,9 +78,62 @@ public class Stonks : MonoBehaviour, IMinigame
         playerBar.anchoredPosition = new Vector2(playerBar.anchoredPosition.x, bottomBound);
         fish.anchoredPosition = new Vector2(fish.anchoredPosition.x, Random.Range(bottomBound, topBound));
 
-        completionSlider.value = defaultStartingValue;
+        //completionSlider.value = defaultStartingValue;
         
-        Invoke(nameof(StartFishMovement), 2);
+        fishMoves = new List<float>(fishMovesCount);
+        fishEndPositions = new List<float>(fishMovesCount);
+        fishMoveDelays = new List<float>(fishMovesCount);
+        for (int i = 0; i < fishMovesCount; i++)
+        {
+            fishMoves.Add(GenerateFishMove());
+            fishMoveDelays.Add(Random.Range(minMoveInterval, maxMoveInterval));
+        }
+        
+        Invoke(nameof(StartFishMovement), delayStart);
+    }
+
+    private float GenerateFishMove()
+    {
+        float randomPercentage;
+
+        if (fishEndPositions.Count > 0)
+        {
+            float lastFishMove = fishEndPositions[fishEndPositions.Count - 1];
+            float moveRange = maxFishViolence;
+
+            float minRange = Mathf.Max(0, lastFishMove - moveRange);
+            float maxRange = Mathf.Min(100, lastFishMove + moveRange);
+
+            // add a minimum distance the fish should move
+            float minDistance = minFishViolence;
+
+            if (lastFishMove - minDistance > minRange)
+            {
+                minRange = lastFishMove - minDistance;
+            }
+
+            if (lastFishMove + minDistance < maxRange)
+            {
+                maxRange = lastFishMove + minDistance;
+            }
+
+            randomPercentage = Random.Range(minRange, maxRange);
+        }
+        else
+        {
+            randomPercentage = Random.Range(0f, 100f);
+        }
+
+        fishEndPositions.Add(randomPercentage);
+        return PercentageToPosition(randomPercentage);
+    }
+    
+    // Converts a percentage from the bottom of the bar to a y-position in the bar's local space.
+    private float PercentageToPosition(float percentage)
+    {
+        float barHeight = topBound - bottomBound;
+//        Debug.Log((percentage / 100f) * barHeight + bottomBound);
+        return (percentage / 100f) * barHeight + bottomBound;
     }
 
     public void StartFishMovement()
@@ -70,6 +150,28 @@ public class Stonks : MonoBehaviour, IMinigame
         {
             HandlePlayerInput();
             HandlePerformanceTracking();
+
+            if(time >= 0) 
+            {
+                time -= Time.deltaTime;
+                timeText.text = Mathf.RoundToInt(time).ToString();
+            }
+            else
+            {
+                EndGame();
+            }
+        }
+    }
+
+    public void EndGame()
+    {
+        if (score <= 0)
+        {
+            MinigameManager.Current.EndMinigame(CompletionState.Failed);
+        }
+        else
+        {
+            MinigameManager.Current.EndMinigame(CompletionState.Completed);
         }
     }
 
@@ -105,31 +207,32 @@ public class Stonks : MonoBehaviour, IMinigame
 
     private IEnumerator FishMovement()
     {
-        while (true)
+        for (int i = 0; i < fishMoves.Count; i++)
         {
-            float randomInterval = Random.Range(minMoveInterval, maxMoveInterval);
-            float fishVelocity = Random.Range(minFishSpeed, maxFishSpeed);
-            float fishDirection = Random.Range(0, 2) * 2 - 1; // Will return -1 or 1 for down or up direction
+            float startY = fish.anchoredPosition.y;
+            float targetY = fishMoves[i];
+            float delay = fishMoveDelays[i];
 
             float elapsedTime = 0f;
-
-            while (elapsedTime < randomInterval)
+            while (elapsedTime < delay)
             {
-                if (fish.anchoredPosition.y >= topBound && fishDirection > 0)
-                {
-                    fishDirection = -1;
-                }
-                else if (fish.anchoredPosition.y <= bottomBound && fishDirection < 0)
-                {
-                    fishDirection = 1;
-                }
-
-                fish.anchoredPosition += Vector2.up * fishVelocity * fishDirection * Time.deltaTime;
+                float newY = Mathf.Lerp(startY, targetY, elapsedTime / delay);
+                fish.anchoredPosition = new Vector2(fish.anchoredPosition.x, newY);
+                yield return null;
 
                 elapsedTime += Time.deltaTime;
-                yield return null;
             }
+
+            // Ensuring the fish ends precisely at the targetY
+            fish.anchoredPosition = new Vector2(fish.anchoredPosition.x, targetY);
         }
+    }
+    
+    private void UpdateFishPositionPercentage()
+    {
+        float fishY = fish.anchoredPosition.y;
+        float barHeight = topBound - bottomBound;
+        FishPositionPercentage = ((fishY - bottomBound) / barHeight) * 100f;
     }
 
     private void HandlePerformanceTracking()
@@ -141,24 +244,18 @@ public class Stonks : MonoBehaviour, IMinigame
         if (fishY <= playerBarTop && fishY >= playerBarBottom)
         {
             // fish is within the y boundaries of the player bar
-            completionSlider.value = Mathf.Min(completionSlider.value + increaseSpeed * Time.deltaTime,
-                completionSlider.maxValue);
+            score += increaseSpeed * Time.deltaTime;
+            scoreText.text = Math.Round(score, 1) + "k";
+            goodFeedback.SetActive(true);
+            badFeedback.SetActive(false);
         }
         else
         {
             // fish is outside the y boundaries of the player bar
-            completionSlider.value = Mathf.Max(completionSlider.value - decreaseSpeed * Time.deltaTime,
-                completionSlider.minValue);
-        }
-
-        // Check for game end conditions
-        if (completionSlider.value >= completionSlider.maxValue)
-        {
-            MinigameManager.Current.EndMinigame(CompletionState.Completed);
-        }
-        else if (completionSlider.value <= completionSlider.minValue)
-        {
-            MinigameManager.Current.EndMinigame(CompletionState.Failed);
+            score -= decreaseSpeed * Time.deltaTime;
+            scoreText.text = Math.Round(score, 1) + "k";
+            goodFeedback.SetActive(false);
+            badFeedback.SetActive(true);
         }
     }
 }

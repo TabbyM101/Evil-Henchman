@@ -46,7 +46,7 @@ public class UILineRenderer : Graphic
             DrawVerticesForPoint(point, vh, angle);
         }
 
-        for (int i = 0; i<points.Count; i++)
+        for (int i = 0; i<points.Count-1; i++)
         {
             int index = i * 2;
             vh.AddTriangle(index + 0, index + 1, index + 3);
@@ -83,5 +83,10 @@ public class UILineRenderer : Graphic
                 SetVerticesDirty();
             }
         }
+    }
+    
+    public List<Vector2> Clone()
+    {
+        return new List<Vector2>(points);
     }
 }
