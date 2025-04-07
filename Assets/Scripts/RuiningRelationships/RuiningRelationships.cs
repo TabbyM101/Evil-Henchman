@@ -80,7 +80,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         profile.sprite = source.FromProfile;
         choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To1ShortGood;
         choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To1ShortBad;
-        sendButton.onClick.AddListener(SendParagraph);
+        sendButton.onClick.AddListener(() => {StartCoroutine(SendParagraph());});
     }
 
     private IEnumerator TransitionToMinigame()
@@ -189,10 +189,15 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         }
     }
 
-    private void SendParagraph() {
+    private IEnumerator SendParagraph() {
+        float waitTime = 0.5f;
+
         RuiningEmail newEmail = Instantiate(sentEmail, emailSpawn);
         newEmail.SetEmailContents(email.text);
         newEmail.gameObject.SetActive(true);
+        // ADDING WAIT
+        yield return new WaitForSeconds(waitTime);
+
         currentRound++;
         currentIndex = 0;
         if (currentRound == 4) {
@@ -227,7 +232,6 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
             profile.gameObject.SetActive(true);
             choiceSection.gameObject.SetActive(true);
             choiceSection.SetAsLastSibling();
-            Debug.Log("here!");
         }
     }
 
