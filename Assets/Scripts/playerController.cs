@@ -95,6 +95,11 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(ray, out var hit, 1000))
         {
+            if (PickupObject.Current.heldItem is not null && PickupObject.Current.heldItem.GetComponent<Trash>() is not null)
+            {
+                PickupObject.Current.Throw(hit.point);
+                return;
+            }
             var clickableObject = hit.collider.gameObject.GetComponent<IClickableObject>();
             clickableObject?.ClickableObject_Clicked(hit);
 

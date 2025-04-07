@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Minigame
   - FishCheck
+  - Trash
   layers:
   - Default
   - TransparentFX

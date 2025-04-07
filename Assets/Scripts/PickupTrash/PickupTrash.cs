@@ -6,6 +6,9 @@ public class PickupTrash : MonoBehaviour
     [SerializeField] private GameObject mainTrashCan;
     [SerializeField] private GameObject spawnZone;
     [SerializeField] private GameObject[] trashObjects;
+    [SerializeField] private int goal;
+    private int score;
+    public static PickupTrash Current;
 
 
     // move the trashcan to the top of the desk 
@@ -17,8 +20,23 @@ public class PickupTrash : MonoBehaviour
 
     private void Start()
     {
+        Current = this;
+        score = 0;
         MoveTrashCan();
         SpawnTrash();
+    }
+
+    private void Update()
+    {
+        if (score == goal)
+        {
+            RoomClean();
+        }
+    }
+
+    public void Score()
+    {
+        score++;
     }
 
     private void MoveTrashCan()
@@ -35,6 +53,11 @@ public class PickupTrash : MonoBehaviour
         }
     }
 
+    public void ReSpawn(GameObject trash)
+    {
+        Spawn(trash);
+    }
+
     private void Spawn(GameObject trash)
     {
         Vector3 spawnPosition = CreatePosition();
@@ -43,7 +66,7 @@ public class PickupTrash : MonoBehaviour
 
     private Vector3 CreatePosition()
     {
-        Vector3 randomPosition = new Vector3(Random.Range(-.5f, .5f), 0, Random.Range(-.5f, .5f));
+        Vector3 randomPosition = new Vector3(Random.Range(-.5f, .5f), 0, Random.Range(0.0f, .6f));
         Vector3 spawnPosition = spawnZone.transform.position + randomPosition;
         spawnPosition.y = 2;
         return spawnPosition;
@@ -51,6 +74,15 @@ public class PickupTrash : MonoBehaviour
 
     private void RoomClean()
     {
-
+        Debug.Log("Done!");
+        GameObject[] trash = GameObject.FindGameObjectsWithTag("Trash");
+        foreach(GameObject t in trash)
+        {
+            Destroy(t);
+        }
+        ogTrashCan.SetActive(true);
+        mainTrashCan.SetActive(false);
+        Destroy(gameObject);
     }
+    
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8486986807225522987}
   m_Layer: 0
   m_Name: WIPTrash 1
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2212081497514901907}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e76a7b9bec26447c89570f6865506ceb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,3 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1c393bcc7b44cd482552d3f5144694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particals: {fileID: 1338385167447166245, guid: d4b02fc76928f4e04badfa1ad12a0655, type: 3}

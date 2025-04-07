@@ -32,4 +32,17 @@ public class PickupObject : MonoBehaviour
             heldItem = null;
         }
     }
+
+    public void Throw(Vector3 point)
+    {
+        if (heldItem && heldItem.GetComponent<Trash>())
+        {
+            Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            Vector3 throwDirection = (point - heldItem.transform.position).normalized;
+            rb.AddForce(throwDirection * 8, ForceMode.Impulse);
+            heldItem.transform.SetParent(null, true);
+            heldItem = null;
+        }
+    }
 }
