@@ -20,7 +20,7 @@ public class MinigameManager : MonoBehaviour
     public void EndMinigame(CompletionState state)
     {
         Debug.Log($"MinigameManager: Game ended with state {state}");
-        MinigameEnded.Invoke(state);
+        MinigameEnded?.Invoke(state);
         if (curTicket.sceneType is Ticket.TicketMinigameType.AdditiveScene)
         {
             SceneManager.UnloadSceneAsync(curTicket.minigameScene);

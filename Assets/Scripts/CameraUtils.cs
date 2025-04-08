@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraUtils : MonoBehaviour
 {
     public static CameraUtils Current;
+    public Action OnZoomComplete;
+    public Action OnZoomStarted;
     public CameraPos currentPos;
     private Transform cameraTransform;
     private bool isMoving = false;
@@ -88,6 +90,7 @@ public class CameraUtils : MonoBehaviour
 
     public IEnumerator ZoomCoroutine(Transform targetTransform, Action onComplete = null)
     {
+        OnZoomStarted?.Invoke();
         isMoving = true;
         while (Vector3.Distance(cameraTransform.position, targetTransform.position) > 0.01f || Quaternion.Angle(cameraTransform.rotation, targetTransform.rotation) > 0.1f)
         {
@@ -100,6 +103,7 @@ public class CameraUtils : MonoBehaviour
         cameraTransform.rotation = targetTransform.rotation; // Ensure the camera snaps to the exact rotation at the end
 
         onComplete?.Invoke();
+        OnZoomComplete?.Invoke();
         isMoving = false;
     }
 }

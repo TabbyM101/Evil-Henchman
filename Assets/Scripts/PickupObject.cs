@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PickupObject : MonoBehaviour
 {
     public static PickupObject Current;
     public GameObject heldItem;
+
+    public Action OnPickup;
+    public Action OnDrop;
 
     void Start()
     {
@@ -20,6 +23,7 @@ public class PickupObject : MonoBehaviour
             item.transform.position = gameObject.transform.position;
             heldItem.transform.SetParent(gameObject.transform, true);
             item.transform.localRotation = Quaternion.identity;
+            OnPickup?.Invoke();
         }
     }
 
@@ -31,6 +35,7 @@ public class PickupObject : MonoBehaviour
             heldItem.transform.position = ray.point;
             heldItem.transform.SetParent(parent.transform, true);
             heldItem = null;
+            OnDrop?.Invoke();
         }
     }
 }

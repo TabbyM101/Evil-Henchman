@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +10,7 @@ public class AudioManager : MonoBehaviour
     {
         MainMenuMusic,
         GameMusic,
+        RoomAmbience,
     }
 
     void Awake()
@@ -42,6 +40,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case SongChoice.GameMusic:
                 audioSource.clip = ClipWithName("GameMusic");
+                break;
+            case SongChoice.RoomAmbience:
+                audioSource.clip = ClipWithName("RoomAmbience");
                 break;
         }
         
