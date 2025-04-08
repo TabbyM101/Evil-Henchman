@@ -31,9 +31,7 @@ public class DayManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Current = this;
-        dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
-        Standing = 100;
-        SceneManager.LoadScene("MainMenu");
+        GoToMainMenu();
     }
 
     private void OnDestroy()
@@ -48,13 +46,15 @@ public class DayManager : MonoBehaviour
         }
     }
 
-    public void ReturnToMenu()
+    public void GoToMainMenu()
     {
         // Reset values that are transient between multiple days
         dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
         CompletedScore = 0;
         WonScore = 0;
+        Standing = 100;
         SceneManager.LoadScene("MainMenu");
+        AudioManager.Current?.PlayMusic(AudioManager.SongChoice.MainMenuMusic);
     }
 
     public void RestartDay()
@@ -63,6 +63,7 @@ public class DayManager : MonoBehaviour
         StartNewDay();
     }
 
+    // Sets necessary variables in DayManager and starts scene before invoking other singletons in the loaded scene 
     public void StartNewDay()
     {
         SelectTaskDisplay.minigameIsOpen = false; // If you fail a day mid-minigame, this needs to be reset
@@ -88,9 +89,11 @@ public class DayManager : MonoBehaviour
                 break;
         }
        
+        AudioManager.Current.PlayMusic(AudioManager.SongChoice.GameMusic);
         Invoke(nameof(StartDay), 0.1f); // Wait for other singletons in the scene to get started
     }
 
+    // Initializes gameplay loop for other managers
     private void StartDay()
     {
         if (TicketManager.Current is null || MinigameManager.Current is null ||

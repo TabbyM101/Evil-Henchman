@@ -27,6 +27,7 @@ public class PickupObject : MonoBehaviour
     {
         if (heldItem)
         {
+            AudioManager.Current.PlayClip("place_ticket");
             heldItem.transform.position = ray.point;
             heldItem.transform.SetParent(parent.transform, true);
             heldItem = null;

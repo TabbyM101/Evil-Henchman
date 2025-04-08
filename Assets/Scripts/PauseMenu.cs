@@ -61,7 +61,7 @@ public class PauseMenu : MonoBehaviour, IClickableObject
 
     public void QuitTitle()
     {
-        DayManager.Current.ReturnToMenu();
+        DayManager.Current.GoToMainMenu();
     }
 
     public void QuitGame() {

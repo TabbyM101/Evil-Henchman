@@ -24,6 +24,6 @@ public class EndGameText : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        DayManager.Current.ReturnToMenu();
+        DayManager.Current.GoToMainMenu();
     }
 }
