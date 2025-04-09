@@ -9,6 +9,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private int numOfHours;
     [SerializeField] private float realtimeSecondsPerIngameHour;
 
+    private int ingameHour => hour + 9 == 12 ? 12 : (hour + 9) % 12;
     private int hour;
 
     void Start()
@@ -24,11 +25,9 @@ public class TimeManager : MonoBehaviour
     private string GetTimeString()
     {
         string endString;
-        int ingameHour;
         if (hour + 9 >= 12)
         {
             endString = "PM";
-            ingameHour = hour + 9 == 12 ? 12 : (hour + 9) % 12;
             if (ingameHour == 4)
             {
                 timeText.color = Color.red;
@@ -37,7 +36,6 @@ public class TimeManager : MonoBehaviour
         else
         {
             endString = "AM";
-            ingameHour = hour + 9;
         }
 
         return $"{ingameHour}{endString}";
@@ -45,11 +43,19 @@ public class TimeManager : MonoBehaviour
 
     private IEnumerator KeepTime()
     {
-        for (int i = 0; i < numOfHours; i++)
-        {
+        while(true){
+            if (DialogueManager.Current.dialogueRunning)
+            {
+                // Don't advance time if dialogue is running
+                continue;
+            }
             hour++;
             timeText.text = GetTimeString();
             yield return new WaitForSecondsRealtime(realtimeSecondsPerIngameHour);
+            if (hour >= numOfHours)
+            {
+                break;
+            }
         }
 
         // If we reach this before the TimeManager has been unloaded, then the level should fail
