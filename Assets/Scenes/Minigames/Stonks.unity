@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.97735846, g: 0.65676224, b: 0.3227126, a: 1}
+  m_Color: {r: 0.6876254, g: 0.8692169, b: 0.93207544, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -367,8 +367,8 @@ MonoBehaviour:
   score: 0
   time: 40
   timeText: {fileID: 1169576264}
-  increaseSpeed: 6
-  decreaseSpeed: 6
+  increaseSpeed: 4
+  decreaseSpeed: 4
   scoreText: {fileID: 441651519}
   goodFeedback: {fileID: 1897827471}
   badFeedback: {fileID: 1336777923}
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 17703244d51cf6149b72b63a332a62e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c55d13d15a5e3034b91904a7fdca20df, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2672,14 +2672,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.4509434, b: 0.901532, a: 1}
+  m_Color: {r: 0.3529412, g: 0.7176471, b: 0.96470594, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 51859a1f6add6d04ebaf04f10f569464, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04bd00fc2dcef9f4bac09ca40be8c12d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2786,9 +2786,15 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  gridSize: {x: 40, y: 100}
+  gridSize: {x: 40, y: 200}
   grid: {fileID: 0}
-  points: []
+  points:
+  - {x: 0, y: 50}
+  - {x: 1.19, y: 53.5}
+  - {x: 10, y: 47.2}
+  - {x: 13.28, y: 50}
+  - {x: 0, y: 50}
+  - {x: 0, y: 50}
   thickness: 10
 --- !u!222 &1730780722
 CanvasRenderer:
