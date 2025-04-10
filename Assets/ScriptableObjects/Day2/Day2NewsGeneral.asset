@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day2NewsGeneral
+  m_EditorClassIdentifier: 
+  Headline: Top 10 Best Ways to Save Money
+  Content: "I get it y\u2019all, times are tough. But that\u2019s why I am here today
+    to help you. As someone who prides herself on being able to make smart financial
+    decisions, I am here to give you advice on how to best save money. #1 Spend Less
+    Yes, I know this sounds stupid, but listen. It\u2019s true all the money you
+    don\u2019t spend, you just get to keep that for yourself. So instead of taking
+    an ambulance when you have a medical emergency, try walking to the hospital or
+    asking a friend to drive you. Don\u2019t buy gifts for your loved ones, you should
+    have enough. Sure it might ruin some relationships, but it\u2019s all worth it
+    at the end of the day. "
+  Author: Michelle Geller
+  SuspicionReq: 0
+  MinimumSuspicionReq: 0

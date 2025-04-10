@@ -18,4 +18,6 @@ public class DayObj : ScriptableObject
     public Dialogue startDay;
     // TODO if we want to implement endDay dialogue, then it will need to not close the scene until XYZ seconds after dialogue is done.
     // public Dialogue endDay;
+
+    public List<NewsArticleObj> Articles;
 }

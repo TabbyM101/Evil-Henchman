@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7af09a384b9b2104f842a6854b4428f4
   - enabled: 1
+    path: Assets/Scenes/TrainingVideo.unity
+    guid: af44ad853378f48558f6223811625e30
+  - enabled: 1
     path: Assets/Scenes/OfficeScene.unity
     guid: 9329a838e76044910a0a215d8bb2d63e
   - enabled: 1

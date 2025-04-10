@@ -49,7 +49,7 @@ public class DayManager : MonoBehaviour
     public void GoToMainMenu()
     {
         // Reset values that are transient between multiple days
-        dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
+        dayNumber = 0; // Main Menu will call StartNewDay which increments this to 0
         CompletedScore = 0;
         WonScore = 0;
         Standing = 100;

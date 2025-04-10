@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day1NewsMal
+  m_EditorClassIdentifier: 
+  Headline: Gregory Crocker Biography
+  Content: 'Gregory Crocker, CEO of Mal Enterprises, made headlines today announcing
+    that he is working on an autobiography. The book will focus on his beginnings
+    in Malibu, his relationship with his father (the illustrious train tycoon), and
+    his personal hardships. Crocker says this will be an exploration of him as a
+    person, letting people into the suffering he had as a child due to wearing glasses
+    which inspired him to create Mal in the first place. With his signature glasses
+    look, he has somewhat become famous on the internet for his style and his harsh
+    thoughts on work culture. He has been able to both appeal to older and younger
+    generations with his strong work ethic as well as innovative ideas for the future.  '
+  Author: Jasmine Cooper
+  MinimumSuspicionReq: 0

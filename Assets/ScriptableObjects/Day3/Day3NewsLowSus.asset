@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day3NewsLowSus
+  m_EditorClassIdentifier: 
+  Headline: Market Dominance by Mal Enterprises
+  Content: 'When they launched a couple years ago, Mal Enterprises seemed like it
+    could not be stopped. With their pretty consistent rollout of new products, they
+    have dominated the market share for eyewear. And this does not seem to be stopping.
+    Other companies have cropped up over the years but none have been able to rival
+    the power that is Mal. This has even been reflected in internal policies at Mal.
+    While they are notorious for not providing pay increases or promotions, it has
+    been hinted that some of these policies may be rolled back. A 0.02% pay increase
+    has been floating around the executive offices and might be put in place if they
+    continue performing as they have been. '
+  Author: Jennifer Small
+  SuspicionReq: 1
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 5

@@ -18,6 +18,7 @@ public class OpeningRoomManager : MonoBehaviour
     [SerializeField] private GameObject jobNotif;
     [SerializeField] private GameObject emailNotif;
     [SerializeField] private GameObject successNotif;
+    [SerializeField] private GameObject newsCompleteNotif;
     [Header("Minigame Stage")]
     [SerializeField] private GameObject simonSaysTicket;
     [SerializeField] private GameObject angelicLight;
@@ -27,6 +28,7 @@ public class OpeningRoomManager : MonoBehaviour
     [SerializeField] private GameObject messagingIndicator;
     [SerializeField] private GameObject emailIndicator;
     [SerializeField] private GameObject ebayIndicator;
+    [SerializeField] private GameObject malEmailHelpText;
     [SerializeField] Image[] indicators;
     public Color minColor;
     public Color maxColor;
@@ -58,6 +60,10 @@ public class OpeningRoomManager : MonoBehaviour
         foreach (Image img in indicators) {
             img.color = lerped;
         }
+
+        if (emailNotifSent && Input.GetKeyDown(KeyCode.Escape)) {
+            malEmailHelpText.SetActive(false);
+        }
     }
 
     public void OpenEmail() {
@@ -81,8 +87,20 @@ public class OpeningRoomManager : MonoBehaviour
 
     public void IntroCompleted()
     {
-        // At this point, the DayManager can handle the rest. Tutorial done.
-        DayManager.Current.StartNewDay();
+        successNotif.SetActive(false);
+        StartCoroutine(DisplayNews());
+        //DayManager.Current.StartNewDay();
+    }
+
+    public IEnumerator DisplayNews() {
+        yield return new WaitForSeconds(0.03f);
+        NewsManager.Current.DisplayNews();
+        yield return new WaitForSeconds(2f);
+        newsCompleteNotif.SetActive(true);
+    }
+
+    public void PlayVideoScene() {
+        SceneManager.LoadScene("TrainingVideo");
     }
 
     private void SummonAngelicTicket()

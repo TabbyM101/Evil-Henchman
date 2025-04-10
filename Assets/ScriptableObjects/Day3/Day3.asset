@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8d04b3369015a4481d36f614c23b49, type: 3}
   m_Name: Day3
   m_EditorClassIdentifier: 
+  sceneType: 0
   Minigames:
   - {fileID: 11400000, guid: 840952092657341a8ab7fbbc32769858, type: 2}
   - {fileID: 11400000, guid: 3377c5df0f9e64077a91b1013b608425, type: 2}
@@ -22,3 +23,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 139ba502ea0bf4f388c90b0df7b9cbc9, type: 2}
   - {fileID: 11400000, guid: 139ba502ea0bf4f388c90b0df7b9cbc9, type: 2}
   startDay: {fileID: 11400000, guid: f2b53afb39c9d4245b86016976cae56d, type: 2}
+  Articles:
+  - {fileID: 11400000, guid: 43637b1957057184aa666e508612ddff, type: 2}
+  - {fileID: 11400000, guid: 43b03fe00bafe31449d837b6a9f134fc, type: 2}
+  - {fileID: 11400000, guid: 76095ae6e30ec014ab2880aa124c066b, type: 2}
+  - {fileID: 11400000, guid: e67fd1450bd184b469213825b1648b6a, type: 2}

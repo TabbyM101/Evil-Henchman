@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day3NewsMal
+  m_EditorClassIdentifier: 
+  Headline: A Look Into Mal Enterprises Testing
+  Content: 'For a while now, Mal Enterprises has been rolling out new eyewear technology.
+    Most recently, they came out with their new pair of smart glasses, letting you
+    text straight from your eyes. But how are these products tested? Talking to some
+    people, it seems to be that Mal tests their software in the interview stage.
+    They have new recruits play a game which is actually testing and checking the
+    performance of their technology. Is this illegal? Technically not, as in very
+    small print when you apply, you agree that they may use your interview for training
+    purposes. '
+  Author: Lucy Gold
+  SuspicionReq: 0
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0
