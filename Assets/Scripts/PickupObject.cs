@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class PickupObject : MonoBehaviour
@@ -31,7 +32,12 @@ public class PickupObject : MonoBehaviour
     {
         if (heldItem)
         {
-            AudioManager.Current.PlayClip("place_ticket");
+            var ticket = heldItem.GetComponent<Ticket>();
+            if (ticket is not null)
+            {
+                AudioManager.Current.PlayClip("place_ticket");
+                SelectTaskManager.Current.tickets.Add(ticket);
+            }
             heldItem.transform.position = ray.point;
             heldItem.transform.SetParent(parent.transform, true);
             heldItem = null;

@@ -32,6 +32,13 @@ public class Ticket : MonoBehaviour, IClickableObject
 
     public void ClickableObject_Clicked(RaycastHit ray)
     {
-        PickupObject.Current.Pickup(gameObject);
+        if (gameObject.transform.parent is not null && gameObject.transform.parent.name == "TicketHolder")
+        {
+            CameraUtils.Current.Zoom(CameraPos.Billboard, () => SelectTaskManager.Current.TaskSelected(this));
+        }
+        else 
+        {
+            PickupObject.Current.Pickup(gameObject);
+        }
     }
 }

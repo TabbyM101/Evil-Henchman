@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectTaskManager : MonoBehaviour
@@ -5,6 +6,7 @@ public class SelectTaskManager : MonoBehaviour
     public static SelectTaskManager Current; // Singleton
     [SerializeField] private SelectTaskDisplay display;
     [SerializeField] private GameObject selectTaskWindow;
+    public List<Ticket> tickets;
 
     /// <summary>
     /// Initialize singleton var.
@@ -18,16 +20,16 @@ public class SelectTaskManager : MonoBehaviour
     void Start()
     {
         selectTaskWindow.SetActive(false);
-        UpdateTickets();
     }
 
     public void TaskSelected(Ticket ticketIndex) {
+        UpdateTickets();
         selectTaskWindow.SetActive(true);
         display.OpenDisplay(ticketIndex);
     }
 
     public void UpdateTickets() {
-        display.UpdateTickets(TicketManager.Current.ticketsPrinted);
+        display.UpdateTickets(tickets);
     }
 
     public void CloseWindow()
