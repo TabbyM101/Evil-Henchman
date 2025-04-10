@@ -11,6 +11,7 @@ public class NewsManager : MonoBehaviour
     [SerializeField] private NewsArticle newsPrefab;
     [SerializeField] private RectTransform articleSpawn;
     [SerializeField] private TextMeshProUGUI dayIndicator;
+    [SerializeField] private GameObject newsNotif;
     private List<NewsArticleObj> articles = new List<NewsArticleObj>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,5 +44,9 @@ public class NewsManager : MonoBehaviour
                 LayoutRebuilder.MarkLayoutForRebuild(articleSpawn);
             }
         }
+    }
+
+    public void SendCompleteNewsNotification() {
+        newsNotif.SetActive(true);
     }
 }

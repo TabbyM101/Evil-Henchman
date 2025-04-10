@@ -16,11 +16,11 @@ MonoBehaviour:
   Content: "Day by day, it seems as if Mal Enterprises is growing, but is it growing
     too fast? Yesterday marked a day of training at the company as they hired many
     new employees. This is part of their program focused on hiring young people \u201Cwho
-    need a job.\u201D Insiders report a rocky day at the company as \u201Cnot everyone
-    lived up to our standards\u201D said one manager. It is very known that CEO and
-    Founder, Gregory Crocker, expects a lot from his employees, but what happens
-    when they are not themselves up to the task. We will see if this is a sign of
-    rocky days ahead for what seemed like an unstoppable company. "
+    need a job.\u201D \n\nInsiders report a rocky day at the company as \u201Cnot
+    everyone lived up to our standards\u201D said one manager. It is very known that
+    CEO and Founder, Gregory Crocker, expects a lot from his employees, but what
+    happens when they are not themselves up to the task. We will see if this is a
+    sign of rocky days ahead for what seemed like an unstoppable company. "
   Author: Cole Hauser
   SuspicionReq: 1
   MinimumSuspicionReq: 5

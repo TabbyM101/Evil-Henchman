@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Day2NewsMal
   m_EditorClassIdentifier: 
   Headline: New Studies On Vision
-  Content: 'A new study has been making the rounds recently in the scientific community
+  Content: "A new study has been making the rounds recently in the scientific community
     and has had everyone on edge. Compared to 5 years ago, this study performed at
     Harvard, concluded that general eyesight has gone down by roughly 20%. Now while
     this number is scary on its own, the final conclusions are even more daunting. 
-    Researchers suggest that eyesight will continuously decline in the years to come.
-    With the invention of new technology such as brighter phones or high tech eyewear,
-    it seems like our eyes are being constantly stimulated and not protected. The
-    dangers of this are that it is irreversible and will be a problem for years to
-    come. '
+    \n\nResearchers suggest that eyesight will continuously decline in the years
+    to come. With the invention of new technology such as brighter phones or high
+    tech eyewear, it seems like our eyes are being constantly stimulated and not
+    protected. The dangers of this are that it is irreversible and will be a problem
+    for years to come. "
   Author: Grant Sheffon
   SuspicionReq: 0
   MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0

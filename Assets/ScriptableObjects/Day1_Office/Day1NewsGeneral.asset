@@ -16,12 +16,13 @@ MonoBehaviour:
   Content: "This current administration is finding itself in hot water with the country
     of Portovia. After the president called their people \u201Cpoverty stricken wealthfare
     state junkies\u201D, the nation has since put embargoes on trading and promised
-    more is to come. Prime Minister of Portovia, Lance Jackson, responded to these
-    claims saying that the US has a higher percentage of homeless people and that
-    Portovia is working on creating a stronger infrastructure for those in need of
-    assistance. Jackson also includes that these remarks are a signifier that relations
-    between the two countries will become much harder and promises that the president
-    will not be able to sweep these comments under the rug. "
+    more is to come. \n\nPrime Minister of Portovia, Lance Jackson, responded to
+    these claims saying that the US has a higher percentage of homeless people and
+    that Portovia is working on creating a stronger infrastructure for those in need
+    of assistance. Jackson also includes that these remarks are a signifier that
+    relations between the two countries will become much harder and promises that
+    the president will not be able to sweep these comments under the rug. "
   Author: Hugh Rancher
   SuspicionReq: 0
   MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0

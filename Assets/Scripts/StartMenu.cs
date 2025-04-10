@@ -40,7 +40,7 @@ public class StartMenu : MonoBehaviour
     public void StartGame() {
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        CameraUtils.Current.Zoom(CameraPos.PlayerView, () => SceneManager.LoadScene("RoomScene"));
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, () => SceneManager.LoadScene("TutorialRoomScene"));
     }
 
     public void OpenOptions() {

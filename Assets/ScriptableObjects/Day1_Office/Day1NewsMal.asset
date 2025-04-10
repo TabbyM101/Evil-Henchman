@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Day1NewsMal
   m_EditorClassIdentifier: 
   Headline: Gregory Crocker Biography
-  Content: 'Gregory Crocker, CEO of Mal Enterprises, made headlines today announcing
+  Content: "Gregory Crocker, CEO of Mal Enterprises, made headlines today announcing
     that he is working on an autobiography. The book will focus on his beginnings
     in Malibu, his relationship with his father (the illustrious train tycoon), and
     his personal hardships. Crocker says this will be an exploration of him as a
     person, letting people into the suffering he had as a child due to wearing glasses
-    which inspired him to create Mal in the first place. With his signature glasses
+    which inspired him to create Mal in the first place. \n\nWith his signature glasses
     look, he has somewhat become famous on the internet for his style and his harsh
     thoughts on work culture. He has been able to both appeal to older and younger
-    generations with his strong work ethic as well as innovative ideas for the future.  '
+    generations with his strong work ethic as well as innovative ideas for the future.  "
   Author: Jasmine Cooper
+  SuspicionReq: 0
   MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0

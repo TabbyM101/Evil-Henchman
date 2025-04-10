@@ -18,7 +18,7 @@ public class OpeningRoomManager : MonoBehaviour
     [SerializeField] private GameObject jobNotif;
     [SerializeField] private GameObject emailNotif;
     [SerializeField] private GameObject successNotif;
-    [SerializeField] private GameObject newsCompleteNotif;
+
     [Header("Minigame Stage")]
     [SerializeField] private GameObject simonSaysTicket;
     [SerializeField] private GameObject angelicLight;
@@ -43,6 +43,7 @@ public class OpeningRoomManager : MonoBehaviour
     void Start()
     {
         AudioManager.Current.PlayMusic(AudioManager.SongChoice.RoomAmbience);
+        CameraUtils.Current.Zoom(CameraPos.Computer);
     }
     
     void FixedUpdate()
@@ -96,7 +97,7 @@ public class OpeningRoomManager : MonoBehaviour
         yield return new WaitForSeconds(0.03f);
         NewsManager.Current.DisplayNews();
         yield return new WaitForSeconds(2f);
-        newsCompleteNotif.SetActive(true);
+        NewsManager.Current.SendCompleteNewsNotification();
     }
 
     public void PlayVideoScene() {

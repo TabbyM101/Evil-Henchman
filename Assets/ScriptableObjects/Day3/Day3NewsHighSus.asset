@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Day3NewsHighSus
   m_EditorClassIdentifier: 
   Headline: A Shrinking Market Presence
-  Content: 'When they launched a couple years ago, Mal Enterprises seemed like it
+  Content: "When they launched a couple years ago, Mal Enterprises seemed like it
     could not be stopped. With their pretty consistent rollout of new products, they
     have dominated the market share for eyewear. Recently, however, it seems that
     there may be some competition on the horizon. New companies have been cropping
-    up and we have seen this reflected in Mal Enterprises stock and revenue. Mal
+    up and we have seen this reflected in Mal Enterprises stock and revenue. \n\nMal
     seems to be too big to fail, but that depiction may not be as accurate as we
     once thought. Internally, while there is no major panic, there is some internal
     pressure. Talks of salary cuts, not paying overtime and potential layoffs loom
     over the workers. Mal seems confident that these measures will not have to be
-    used, but it always remains a possibility. '
+    used, but it always remains a possibility. "
   Author: Jennifer Small
   SuspicionReq: 1
   MinimumSuspicionReq: 5

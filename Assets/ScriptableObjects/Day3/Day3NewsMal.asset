@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Day3NewsMal
   m_EditorClassIdentifier: 
   Headline: A Look Into Mal Enterprises Testing
-  Content: 'For a while now, Mal Enterprises has been rolling out new eyewear technology.
+  Content: "For a while now, Mal Enterprises has been rolling out new eyewear technology.
     Most recently, they came out with their new pair of smart glasses, letting you
-    text straight from your eyes. But how are these products tested? Talking to some
-    people, it seems to be that Mal tests their software in the interview stage.
-    They have new recruits play a game which is actually testing and checking the
-    performance of their technology. Is this illegal? Technically not, as in very
-    small print when you apply, you agree that they may use your interview for training
-    purposes. '
+    text straight from your eyes. But how are these products tested? \n\nTalking
+    to some people, it seems to be that Mal tests their software in the interview
+    stage. They have new recruits play a game which is actually testing and checking
+    the performance of their technology. Is this illegal? Technically not, as in
+    very small print when you apply, you agree that they may use your interview for
+    training purposes. "
   Author: Lucy Gold
   SuspicionReq: 0
   MinimumSuspicionReq: 0

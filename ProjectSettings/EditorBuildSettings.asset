@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/OfficeScene.unity
     guid: 9329a838e76044910a0a215d8bb2d63e
   - enabled: 1
-    path: Assets/Scenes/RoomScene.unity
+    path: Assets/Scenes/TutorialRoomScene.unity
     guid: 81b3d7f4cf4794bdbbf65a51b1f80506
   - enabled: 1
     path: Assets/Scenes/EndDayScreen.unity
