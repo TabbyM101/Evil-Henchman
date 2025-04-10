@@ -12,6 +12,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     private bool isTyping = false;
     private bool isHacking = true;
 
+    [SerializeField] private GameObject glitches;
+
     [SerializeField] private TextMeshProUGUI email;
     [SerializeField] private RuiningEmail receivedEmail;
     [SerializeField] private GameObject emailSection;
@@ -64,6 +66,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     }
 
     private void ActuallyStartMinigame() {
+        glitches.SetActive(true);
         emailSection.SetActive(true);
         choiceSection.SetAsLastSibling();
         receiveEmail.gameObject.SetActive(true);

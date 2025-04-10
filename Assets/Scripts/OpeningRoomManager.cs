@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -22,8 +23,18 @@ public class OpeningRoomManager : MonoBehaviour
     [SerializeField] private GameObject angelicLight;
     [SerializeField] private GameObject billboardLight;
 
+    [Header("Indicators")]
+    [SerializeField] private GameObject messagingIndicator;
+    [SerializeField] private GameObject emailIndicator;
+    [SerializeField] private GameObject ebayIndicator;
+    [SerializeField] Image[] indicators;
+    public Color minColor;
+    public Color maxColor;
+    [SerializeField] float lerpRate;
+    private float t;
+
     [NonSerialized] public bool emailOpened = false;
-    [NonSerialized] public bool messagesOpened = false;
+    [NonSerialized] public bool messagesOpened = true;
     [NonSerialized] public bool ebayOpened = false;
     [NonSerialized] public bool assessmentComplete = false;
 
@@ -41,16 +52,27 @@ public class OpeningRoomManager : MonoBehaviour
         }
     }
 
+    void Update() {
+        t += Time.deltaTime;
+        Color lerped =  Color.Lerp(minColor, maxColor, Mathf.Abs(Mathf.Sin(t * lerpRate)));
+        foreach (Image img in indicators) {
+            img.color = lerped;
+        }
+    }
+
     public void OpenEmail() {
         emailOpened = true;
+        emailIndicator.SetActive(false);
     }
 
     public void OpenMessages() {
         messagesOpened = true;
+        messagingIndicator.SetActive(false);
     }
 
     public void OpenEbay() {
         ebayOpened = true;
+        ebayIndicator.SetActive(false);
     }
 
     public void SendNotification() {
@@ -92,6 +114,7 @@ public class OpeningRoomManager : MonoBehaviour
         billboardLight.SetActive(false);
         MinigameManager.Current.MinigameEnded -= SimonSaysCompleted; // Unsubscribe
         assessmentComplete = true;
+        successNotif.SetActive(true);
     }
 
     private IEnumerator NextIntroNotification() {
