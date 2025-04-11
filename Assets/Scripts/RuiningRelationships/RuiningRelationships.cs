@@ -41,6 +41,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     private int currentRound = 0;
     private int badCounter = 0;
     private bool lastPicked;
+    private bool finishSpace = false;
 
     private KeyCode lastKey = KeyCode.None;
     int keyPressCount = 0;
@@ -143,6 +144,16 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
                     }
                 }
             }
+
+            if (currentRound == 4) {
+                if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space)) {
+                    if (badCounter >= 2) {
+                        MinigameWon();
+                    } else {
+                        MinigameLost();
+                    }
+                }
+            }
         }
     }
 
@@ -204,15 +215,25 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
         currentRound++;
         currentIndex = 0;
+        RuiningEmail newRecvEmail = Instantiate(receivedEmail, emailSpawn);
         if (currentRound == 4) {
             if (badCounter >= 2) {
-                MinigameWon();
+                receiveEmail.gameObject.SetActive(true);
+                fromWho.gameObject.SetActive(true);
+                profile.gameObject.SetActive(true);
+                choiceSection.gameObject.SetActive(false);
+                typingSection.gameObject.SetActive(false);
+                newRecvEmail.SetEmailContents(source.FromOverallSuccess);
             } else {
-                MinigameLost();
+                receiveEmail.gameObject.SetActive(true);
+                fromWho.gameObject.SetActive(true);
+                profile.gameObject.SetActive(true);
+                choiceSection.gameObject.SetActive(false);
+                typingSection.gameObject.SetActive(false);
+                newRecvEmail.SetEmailContents(source.FromOverallFailure);
             }
         } else {
             isTyping = false;
-            RuiningEmail newRecvEmail = Instantiate(receivedEmail, emailSpawn);
             if (currentRound == 2) {
                 choice1.GetComponentInChildren<TextMeshProUGUI>().text = source.To2ShortGood;
                 choice2.GetComponentInChildren<TextMeshProUGUI>().text = source.To2ShortBad;
@@ -241,24 +262,12 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     private void MinigameWon()
     {
-        receiveEmail.gameObject.SetActive(true);
-        fromWho.gameObject.SetActive(true);
-        profile.gameObject.SetActive(true);
-        choiceSection.gameObject.SetActive(false);
-        typingSection.gameObject.SetActive(false);
-        receiveEmail.text = source.FromOverallSuccess;
         Debug.Log("Won Ruining Relationships!");
         MinigameManager.Current.EndMinigame(CompletionState.Completed);
     }
 
     private void MinigameLost()
     {
-        receiveEmail.gameObject.SetActive(true);
-        fromWho.gameObject.SetActive(true);
-        profile.gameObject.SetActive(true);
-        choiceSection.gameObject.SetActive(false);
-        typingSection.gameObject.SetActive(false);
-        receiveEmail.text = source.FromOverallFailure;
         Debug.Log("Lost Ruining Relationships...");
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
         // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
