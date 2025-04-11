@@ -51,7 +51,8 @@ public class EndDayText : MonoBehaviour
         else
         {
             // Start new day
-            DayManager.Current.StartNewDay();
+            SceneManager.LoadScene("NewsRoomScene");
+            //DayManager.Current.StartNewDay();
         }
     }
 }

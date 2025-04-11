@@ -184,6 +184,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         choiceSection.gameObject.SetActive(false);
         typingSection.gameObject.SetActive(true);
         typingSection.SetAsLastSibling();
+        helpText.SetActive(true);
         sendButton.interactable = false;
         email.text = "";
         lastPicked = isGood;

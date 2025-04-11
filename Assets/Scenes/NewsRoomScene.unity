@@ -1235,9 +1235,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: OpeningRoomManager, Assembly-CSharp
-          m_MethodName: PlayVideoScene
+        - m_Target: {fileID: 1000119230}
+          m_TargetAssemblyTypeName: NewsManager, Assembly-CSharp
+          m_MethodName: DoneReading
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

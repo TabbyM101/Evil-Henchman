@@ -43,7 +43,6 @@ public class OpeningRoomManager : MonoBehaviour
     void Start()
     {
         AudioManager.Current.PlayMusic(AudioManager.SongChoice.RoomAmbience);
-        CameraUtils.Current.Zoom(CameraPos.Computer);
     }
     
     void FixedUpdate()
@@ -96,8 +95,7 @@ public class OpeningRoomManager : MonoBehaviour
     public IEnumerator DisplayNews() {
         yield return new WaitForSeconds(0.03f);
         NewsManager.Current.DisplayNews();
-        yield return new WaitForSeconds(2f);
-        NewsManager.Current.SendCompleteNewsNotification();
+        StartCoroutine(NewsManager.Current.SendCompleteNewsNotification());
     }
 
     public void PlayVideoScene() {

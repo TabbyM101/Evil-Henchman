@@ -8,6 +8,7 @@ public class NewsSceneManager : MonoBehaviour
     {
         CameraUtils.Current.Zoom(CameraPos.Computer);
         NewsManager.Current.DisplayNews();
+        StartCoroutine(NewsManager.Current.SendCompleteNewsNotification());
     }
 
 }

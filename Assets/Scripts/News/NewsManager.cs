@@ -46,7 +46,12 @@ public class NewsManager : MonoBehaviour
         }
     }
 
-    public void SendCompleteNewsNotification() {
+    public System.Collections.IEnumerator SendCompleteNewsNotification() {
+        yield return new WaitForSeconds(1 * articleSpawn.childCount); //scales with amount of articles
         newsNotif.SetActive(true);
+    }
+
+    public void DoneReading() {
+        DayManager.Current.StartNewDay();
     }
 }
