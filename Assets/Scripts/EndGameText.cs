@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class responsible for handling display of EndGameText. In a different (non-additive) scene, so can only access Managers who are DontDestroyOnLoad.
@@ -8,18 +8,33 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class EndGameText : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private Image profitsGraph;
+    [SerializeField] private TextMeshProUGUI profitsPercentage;
+    [SerializeField] private TextMeshProUGUI reportText;
+    [SerializeField] private Image standing;
+    [SerializeField] private TextMeshProUGUI standingPercentage;
+    [SerializeField] private GameObject failedText;
 
     void Start()
     {
         var playedGames = DayManager.Current.CompletedScore;
         var wonGames = DayManager.Current.WonScore;
+        var lostGames = playedGames - wonGames;
         var wonGamesPercent = wonGames / (float)playedGames;
-        scoreText.text = "Your Week is Complete!\n" +
-                         $"Approved Tickets: {wonGames}\n" +
-                         $"Failed Tickets: {playedGames - wonGames}\n" +
-                         $"Success Percent: {(int)(wonGamesPercent * 100)}%\n" +
-                         (wonGamesPercent >= 0.6 ? "Not too shabby. Good work, Quentin." : "Your employment is terminated immediately.");
+
+        profitsGraph.fillAmount = lostGames;
+        Debug.Log(wonGamesPercent);
+        profitsPercentage.text = (int)(wonGamesPercent * 100) + "%";
+        
+        if (wonGamesPercent >= 0.6) {
+            failedText.SetActive(false);
+        }
+
+        string text = wonGamesPercent >= 0.6 ? "Room for improvement but you have performed adequately." : "Poor performance. Your employment will be terminated immediately.";
+        reportText.text = text;
+
+        standing.fillAmount = (float)DayManager.Current.Standing / 100;
+        standingPercentage.text = DayManager.Current.Standing + "%";
     }
 
     public void ReturnToMenu()

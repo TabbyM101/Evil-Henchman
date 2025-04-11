@@ -36,6 +36,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     [SerializeField] private Image background;
 
+    [SerializeField] private GameObject endHelp;
+
     private string currentParagraph;
     private int currentIndex;
     private int currentRound = 0;
@@ -55,6 +57,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
 
     public void StartMinigame()
     {
+        endHelp.SetActive(false);
         emailSection.SetActive(false);
         hackingText.gameObject.SetActive(true);
         hackingStatus.gameObject.SetActive(true);
@@ -146,6 +149,8 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
             }
 
             if (currentRound == 4) {
+                endHelp.SetActive(true);
+                endHelp.transform.SetAsLastSibling();
                 if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Space)) {
                     if (badCounter >= 2) {
                         MinigameWon();

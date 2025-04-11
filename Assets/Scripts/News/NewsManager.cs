@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewsManager : MonoBehaviour
 {
@@ -52,6 +53,14 @@ public class NewsManager : MonoBehaviour
     }
 
     public void DoneReading() {
-        DayManager.Current.StartNewDay();
+
+        if (DayManager.Current.isLastDay)
+        {
+            // Last day
+            SceneManager.LoadScene("EndGameScreen");
+        }
+        else {
+            DayManager.Current.StartNewDay();
+        }
     }
 }
