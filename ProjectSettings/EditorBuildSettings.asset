@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/EndGameScreen.unity
     guid: 093f8abedd733499ab4c0b0b8ab91a9f
   - enabled: 1
+    path: Assets/Scenes/NewsRoomScene.unity
+    guid: 3555f2d067de3414cb7d871998817331
+  - enabled: 1
     path: Assets/Scenes/Minigames/SimonSays.unity
     guid: 8157dfc397eb4407caf262d346febe32
   - enabled: 1

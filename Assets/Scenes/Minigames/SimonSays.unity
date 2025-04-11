@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659c2675bfbe04d9dbbc2233ee4cc3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfRounds: 1
+  numOfRounds: 6
   flashDuration: 0.33
   topRight: {fileID: 258547471}
   botRight: {fileID: 1376202397}

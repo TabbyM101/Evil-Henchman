@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 
 public class SelectTaskDisplay : MonoBehaviour
 {
+    public bool isTutorialScene = false;
     [SerializeField] private GameObject panel;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject leftArrow;
@@ -75,6 +76,9 @@ public class SelectTaskDisplay : MonoBehaviour
         // Zoom out player and allow another minigame to open
         tickets[selectedTicketIdx].state = state;
         minigameIsOpen = false;
+
+        if (isTutorialScene) return;
+
         CameraUtils.Current.Zoom(CameraPos.PlayerView, () =>
         {
             MinigameManager.Current.MinigameEnded -= OnMinigameEnded;

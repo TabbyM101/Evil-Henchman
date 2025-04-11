@@ -675,8 +675,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 9AM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: caa15e789763d344a95b71172c3d080b, type: 2}
-  m_sharedMaterial: {fileID: -8220453204374990717, guid: caa15e789763d344a95b71172c3d080b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dbb9f79d286223d45995caf19d012f65, type: 2}
+  m_sharedMaterial: {fileID: -8220453204374990717, guid: dbb9f79d286223d45995caf19d012f65, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2490,6 +2490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 1479128670}
   selectTaskWindow: {fileID: 369651280}
+  tickets: []
 --- !u!4 &1280878658
 Transform:
   m_ObjectHideFlags: 0
