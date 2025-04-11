@@ -12,10 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7af09a384b9b2104f842a6854b4428f4
   - enabled: 1
+    path: Assets/Scenes/TrainingVideo.unity
+    guid: af44ad853378f48558f6223811625e30
+  - enabled: 1
     path: Assets/Scenes/OfficeScene.unity
     guid: 9329a838e76044910a0a215d8bb2d63e
   - enabled: 1
-    path: Assets/Scenes/RoomScene.unity
+    path: Assets/Scenes/TutorialRoomScene.unity
     guid: 81b3d7f4cf4794bdbbf65a51b1f80506
   - enabled: 1
     path: Assets/Scenes/EndDayScreen.unity
@@ -23,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndGameScreen.unity
     guid: 093f8abedd733499ab4c0b0b8ab91a9f
+  - enabled: 1
+    path: Assets/Scenes/NewsRoomScene.unity
+    guid: 3555f2d067de3414cb7d871998817331
   - enabled: 1
     path: Assets/Scenes/Minigames/SimonSays.unity
     guid: 8157dfc397eb4407caf262d346febe32

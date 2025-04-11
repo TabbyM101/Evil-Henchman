@@ -16,3 +16,6 @@ MonoBehaviour:
   Minigames:
   - {fileID: 11400000, guid: 139ba502ea0bf4f388c90b0df7b9cbc9, type: 2}
   startDay: {fileID: 11400000, guid: 7c7aba9777eda432f8e839f53033c0d5, type: 2}
+  Articles:
+  - {fileID: 11400000, guid: a6cf38e153b7c484a9254bc542bb9dc4, type: 2}
+  - {fileID: 11400000, guid: dac87d242c48d104f9ec85d2a81028c6, type: 2}

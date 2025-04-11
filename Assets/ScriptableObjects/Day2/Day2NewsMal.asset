@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day2NewsMal
+  m_EditorClassIdentifier: 
+  Headline: New Studies On Vision
+  Content: "A new study has been making the rounds recently in the scientific community
+    and has had everyone on edge. Compared to 5 years ago, this study performed at
+    Harvard, concluded that general eyesight has gone down by roughly 20%. Now while
+    this number is scary on its own, the final conclusions are even more daunting. 
+    \n\nResearchers suggest that eyesight will continuously decline in the years
+    to come. With the invention of new technology such as brighter phones or high
+    tech eyewear, it seems like our eyes are being constantly stimulated and not
+    protected. The dangers of this are that it is irreversible and will be a problem
+    for years to come. "
+  Author: Grant Sheffon
+  SuspicionReq: 0
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0

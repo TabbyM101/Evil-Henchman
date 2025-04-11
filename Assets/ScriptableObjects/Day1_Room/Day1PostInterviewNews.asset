@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day1PostInterviewNews
+  m_EditorClassIdentifier: 
+  Headline: New Product Alert
+  Content: "Mal Enterprises has released a new product to the market that has been
+    in testing for some time now. It just finally passed recent user tests and Mal
+    was ready to roll it out. People overall seemed excited about this new product.\n\r\nNow
+    while it did have some side effects like causing seizures in a few users, it
+    overall seems like the rollout was successful. This has established Mal as a
+    behemoth in the tech space and has ensured that they will stick around for some
+    time.\r"
+  Author: Michelle Geller
+  SuspicionReq: 0
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0
