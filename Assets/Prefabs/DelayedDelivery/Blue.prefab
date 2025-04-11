@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3937576803559589592}
   - component: {fileID: 212476769390268234}
   m_Layer: 5
-  m_Name: Box
+  m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 403.9, y: -29}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2350757866563257593
 CanvasRenderer:
@@ -60,14 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43921322, g: 0.8867924, b: 0.54007614, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1269153125, guid: 42c11e8078f144ef497f9cd35c7f8e16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

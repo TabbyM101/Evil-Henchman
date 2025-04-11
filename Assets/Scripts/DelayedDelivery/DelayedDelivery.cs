@@ -22,7 +22,11 @@ public class DelayedDelivery : MonoBehaviour, IMinigame
 
     [Header("Game Settings")]
     [SerializeField] private float conveyorSpeed = 20f;
-    [SerializeField] private GameObject boxPrefab; // The box prefab to instantiate
+    [SerializeField] private GameObject blueBoxPrefab; // The box prefab to instantiate
+    [SerializeField] private GameObject redBoxPrefab;
+    [SerializeField] private GameObject greenBoxPrefab;
+
+    private Color currentColor = Color.black;
 
     private GameObject currentBox;
 
@@ -56,25 +60,25 @@ public class DelayedDelivery : MonoBehaviour, IMinigame
     private void SpawnBox()
     {
         int boxColorIndex = Random.Range(0, 3); 
-        Color boxColor = Color.black;
         switch (boxColorIndex) {
             case 0:
-                boxColor = Color.red;
+                currentBox = Instantiate(redBoxPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                currentColor = Color.red;
                 break;
             case 1:
-                boxColor = Color.green;
+                currentBox = Instantiate(blueBoxPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                currentColor = Color.blue;
                 break;
             case 2:
-                boxColor = Color.blue;
+                currentBox = Instantiate(greenBoxPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                currentColor = Color.green;
                 break;
         }
-        currentBox = Instantiate(boxPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        currentBox.GetComponent<Image>().color = boxColor;
 
 
         var canvasBounds = gameObject.GetComponent<Collider>().bounds;
         currentBox.transform.SetParent(gameObject.transform);
-        currentBox.transform.position = new Vector3(canvasBounds.max.x - 0.01f, canvasBounds.max.y - 0.05f, canvasBounds.min.z);
+        currentBox.transform.position = new Vector3(canvasBounds.max.x - 0.07f, canvasBounds.max.y - 0.03f, canvasBounds.min.z);
 
         // Move the box across the conveyor belt
         StartCoroutine(MoveBox(currentBox));
@@ -133,14 +137,12 @@ public class DelayedDelivery : MonoBehaviour, IMinigame
     {
         if (currentBox == null) return;
 
-        Color correctColor = currentBox.GetComponent<Image>().color;
-
         int correctColorIndex = 3;
-        if (correctColor == Color.red) {
+        if (currentColor == Color.red) {
             correctColorIndex = 0;
-        } else if (correctColor == Color.green) {
+        } else if (currentColor == Color.green) {
             correctColorIndex = 1;
-        } else if (correctColor == Color.blue) {
+        } else if (currentColor == Color.blue) {
             correctColorIndex = 2;
         }
 
