@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,24 +14,15 @@ public class NewsManager : MonoBehaviour
     [SerializeField] private RectTransform articleSpawn;
     [SerializeField] private TextMeshProUGUI dayIndicator;
     [SerializeField] private GameObject newsNotif;
+    [SerializeField] [Tooltip("Overrides any articles from the dayObj")] private List<NewsArticleObj> injectedArticles; // Manually inject news articles for tutorial scene
     private List<NewsArticleObj> articles = new List<NewsArticleObj>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Current = this;
-        Debug.Log(DayManager.Current.CurrentDayObj.name);
-        articles = DayManager.Current.CurrentDayObj.Articles;
+        articles = injectedArticles.Any() ? injectedArticles : DayManager.Current.CurrentDayObj.Articles;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
+    
     public void DisplayNews() {
         newsIcon.SetActive(true);
         newsPanel.SetActive(true);

@@ -14137,6 +14137,8 @@ MonoBehaviour:
   articleSpawn: {fileID: 1470974548}
   dayIndicator: {fileID: 980934920}
   newsNotif: {fileID: 550458641}
+  injectedArticles:
+  - {fileID: 11400000, guid: 145aae71aa92a004591d887e72faba07, type: 2}
 --- !u!4 &1000119231
 Transform:
   m_ObjectHideFlags: 0

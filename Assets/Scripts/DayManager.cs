@@ -12,7 +12,18 @@ public class DayManager : MonoBehaviour
     private Coroutine processTicketsCoroutine;
 
     public int dayNumber { get; private set; }
-    public DayObj CurrentDayObj => dayObjs.ElementAt(dayNumber);
+
+    public DayObj CurrentDayObj
+    {
+        get
+        {
+            if (dayNumber != -1) return dayObjs.ElementAt(dayNumber);
+            
+            Debug.LogError("Attempting to grab a day obj during the tutorial! Tutorial objects should be injected.");
+            return dayObjs.First();
+
+        }
+    }
 
     public bool isLastDay => dayNumber + 1 >= dayObjs.Count;
 
@@ -54,7 +65,6 @@ public class DayManager : MonoBehaviour
         WonScore = 0;
         Standing = 100;
         SceneManager.LoadScene("MainMenu");
-        AudioManager.Current?.PlayMusic(AudioManager.SongChoice.MainMenuMusic);
     }
 
     public void RestartDay()
