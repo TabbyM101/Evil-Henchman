@@ -12,7 +12,7 @@ public class CameraUtils : MonoBehaviour
     private bool isMoving = false;
     private bool canMove => !isMoving && !SelectTaskDisplay.minigameIsOpen;
     private bool lockedInDialogue => DialogueManager.Current?.dialogueRunning ?? false;
-    [SerializeField] private float zoomSpeed = 0.5f;
+    [SerializeField] private float zoomSpeed = 0.25f;
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
