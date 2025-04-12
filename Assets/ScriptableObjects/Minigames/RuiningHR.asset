@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0fdc2a767b4779825166436fdca5f1, type: 3}
+  m_Name: RuiningHR
+  m_EditorClassIdentifier: 
+  ticketSceneType: 0
+  minigameScene: RuiningHR
+  ticketColor: {r: 0.60721064, g: 0, b: 1, a: 1}
+  ticketName: Be HR
+  ticketDescription: So today, you'll pretend to be an HR rep at Mal. We are just
+    so swamped. Please make sure to calm the employee with the complaint.
