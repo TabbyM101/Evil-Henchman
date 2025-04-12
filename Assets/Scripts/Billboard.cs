@@ -20,6 +20,10 @@ public class Billboard : MonoBehaviour, IClickableObject
 
     private void OpenTicketScreen()
     {
+        if (parent.transform.childCount <= 0) {
+            return;
+        }
+        
         Ticket ticket = null;
         if (parent.transform.childCount > 0)
         {

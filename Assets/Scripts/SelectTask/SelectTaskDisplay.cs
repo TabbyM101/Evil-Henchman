@@ -52,12 +52,10 @@ public class SelectTaskDisplay : MonoBehaviour
         leftArrow.SetActive(true);
         rightArrow.SetActive(true);
         selectedTicketIdx = tickets.IndexOf(selected);
-        Debug.Log(selectedTicketIdx + " " + tickets[selectedTicketIdx].ticketName);
         if (tickets.Count < 3) {
             rightTicket.SetActive(false);
         }
         if (tickets.Count < 2) {
-            Debug.Log("less than 2");
             leftTicket.SetActive(false);
             leftArrow.SetActive(false);
             rightArrow.SetActive(false);
