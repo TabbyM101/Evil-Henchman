@@ -117,7 +117,6 @@ public class SelectTaskDisplay : MonoBehaviour
         if (front) {
             bool canSelect = ticket.state == CompletionState.Pending;
             selectFrontTicketButton.gameObject.SetActive(canSelect);
-            Debug.Log("ticket can be selected? " + canSelect);
         }
     }
 
@@ -164,23 +163,41 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     private System.Collections.IEnumerator RotateTickets(bool rotateLeft) {
+        if (tickets.Count > 3) {
+            Debug.Log("old selected: " + selectedTicketIdx);
+            if (rotateLeft) {
+                Debug.Log("Rotating Left");
+                //update right ticket
+                selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
+                int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+                Debug.Log("left idx " + leftIdx);
+                UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground, leftCompleted, leftFailed);
+            }
+            else {
+                Debug.Log("Rotating right");
+                //update left ticket
+                selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
+                int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+                Debug.Log("right idx " + rightIdx);
+                UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground, rightCompleted, rightFailed);
+            }
+            Debug.Log("new selected idx " + selectedTicketIdx);
+        }
         yield return new WaitForEndOfFrame();
         selectFrontTicketButton.gameObject.SetActive(false);
         if (rotateLeft) animator.SetTrigger("RotateLeft");
         else animator.SetTrigger("RotateRight");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        SnapBackToStartPos(true, rotateLeft);
+        SnapBackToStartPos(true);
     }
 
-    private void SnapBackToStartPos(bool shift, bool rotateLeft = false) {
+    private void SnapBackToStartPos(bool shift) {
         if (shift) {
-            if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
-            else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
 
             int rightIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
             int leftIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
 
-            Debug.Log("rotated values: " + selectedTicketIdx + " left idx: " + leftIdx + " right idx: " + rightIdx);
+            Debug.Log("rotated values, selected ticket idx: " + selectedTicketIdx + " left idx: " + leftIdx + " right idx: " + rightIdx);
             UpdateTickets(rightIdx, leftIdx);
         }
         animator.SetTrigger("Idle");

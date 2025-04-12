@@ -512,7 +512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '                Lead Programmer, Designer'
+  m_text: '             Lead Programmer, Designer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fda92252d2239b4ead082f23c6e5110, type: 2}
   m_sharedMaterial: {fileID: 4305298395008380604, guid: 6fda92252d2239b4ead082f23c6e5110, type: 2}
@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Zakaria Lembarra:'
+  m_text: 'Zak Lembarra:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: caa15e789763d344a95b71172c3d080b, type: 2}
   m_sharedMaterial: {fileID: -8220453204374990717, guid: caa15e789763d344a95b71172c3d080b, type: 2}
@@ -3774,15 +3774,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click to Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: caa15e789763d344a95b71172c3d080b, type: 2}
-  m_sharedMaterial: {fileID: -8220453204374990717, guid: caa15e789763d344a95b71172c3d080b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dbb9f79d286223d45995caf19d012f65, type: 2}
+  m_sharedMaterial: {fileID: -8220453204374990717, guid: dbb9f79d286223d45995caf19d012f65, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4489,7 +4489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1286505544
 SpriteRenderer:
   m_ObjectHideFlags: 0
