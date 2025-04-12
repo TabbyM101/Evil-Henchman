@@ -8,35 +8,37 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int limitAmount;
     [SerializeField] private float edgePercentage;
     [SerializeField] private float cameraSpeed;
+
+    private bool canMoveLeft => -cameraSpeed + playerCamera.transform.localEulerAngles.y > startYRotation - limitAmount;
+    private bool canMoveRight => cameraSpeed + playerCamera.transform.localEulerAngles.y < startYRotation + limitAmount;
     private Camera playerCamera;
     private Vector2 mousePosition;
     private float startYRotation;
-    private float movement;
-    private bool lookRight, lookLeft, canMoveLeft, canMoveRight = false;
+    private bool lookRight, lookLeft = false;
 
     void Start()
     {
         Current = this;
         playerCamera = Camera.main;
         startYRotation = playerCamera.transform.localEulerAngles.y;
-        movement = cameraSpeed * Time.deltaTime;
     }
 
     void Update()
     {
-        canMoveHelper();
         if (lookRight && canMoveRight)
         {
-            playerCamera.transform.Rotate(0, movement, 0);
+            playerCamera.transform.Rotate(0, cameraSpeed * Time.deltaTime, 0);
         }
         else if (lookLeft && canMoveLeft)
         {
-            playerCamera.transform.Rotate(0, -movement, 0);
+            playerCamera.transform.Rotate(0, -cameraSpeed * Time.deltaTime, 0);
         }
     }
 
     public void DisableLook()
     {
+        lookLeft = false;
+        lookRight = false;
         PlaytimeInputManager.inputActions.Player.Look.performed -= Look;
     }
 
@@ -61,7 +63,6 @@ public class PlayerController : MonoBehaviour
 
     private void Look(InputAction.CallbackContext callbackContext)
     {
-        canMoveHelper();
         mousePosition = Mouse.current.position.ReadValue();
 
         if (mousePosition.x < Screen.width * edgePercentage && canMoveLeft)
@@ -81,12 +82,6 @@ public class PlayerController : MonoBehaviour
         {
             lookRight = false;
         }
-    }
-
-    private void canMoveHelper()
-    {
-        canMoveLeft = (-movement + playerCamera.transform.localEulerAngles.y) > (startYRotation - limitAmount);
-        canMoveRight = (movement + playerCamera.transform.localEulerAngles.y) < (startYRotation + limitAmount);
     }
 
     private void Interact(InputAction.CallbackContext callbackContext)

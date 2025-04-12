@@ -46,7 +46,9 @@ public class SelectTaskDisplay : MonoBehaviour
         tickets = list;   
     }
 
-    public void OpenDisplay(Ticket selected) {
+    public void OpenDisplay(Ticket selected)
+    {
+        PlayerController.Current?.DisableLook();
         frontTicket.SetActive(true);
         leftTicket.SetActive(true);
         rightTicket.SetActive(true);
@@ -123,10 +125,10 @@ public class SelectTaskDisplay : MonoBehaviour
         yield return new WaitForEndOfFrame();
         animator.SetTrigger("SelectTask");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
-
+        
+        PlayerController.Current?.EnableLook();
         panel.SetActive(false);
-
+        
         if (!minigameIsOpen)
         {
             // Bind to MinigameEnded event to get callback when minigame ends
@@ -134,9 +136,6 @@ public class SelectTaskDisplay : MonoBehaviour
             
             // Assuming the minigame "locks" your PC to that game, we can safely disable the button here.
             selectFrontTicketButton.gameObject.SetActive(false);
-            
-            // disable to ability to move before zoom
-            PlaytimeInputManager.DisableAllActionMaps();
 
             minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
             {
