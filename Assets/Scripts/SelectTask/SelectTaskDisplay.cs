@@ -49,6 +49,7 @@ public class SelectTaskDisplay : MonoBehaviour
     public void OpenDisplay(Ticket selected)
     {
         PlayerController.Current?.DisableLook();
+        PlayerController.Current?.DisableInteract();
         frontTicket.SetActive(true);
         leftTicket.SetActive(true);
         rightTicket.SetActive(true);
@@ -127,6 +128,7 @@ public class SelectTaskDisplay : MonoBehaviour
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         
         PlayerController.Current?.EnableLook();
+        PlayerController.Current?.EnableInteract();
         panel.SetActive(false);
         
         if (!minigameIsOpen)

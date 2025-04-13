@@ -47,6 +47,16 @@ public class PlayerController : MonoBehaviour
         PlaytimeInputManager.inputActions.Player.Look.performed += Look;
     }
 
+    public void EnableInteract()
+    {
+        PlaytimeInputManager.inputActions.Player.Interact.performed += Interact;
+    }
+
+    public void DisableInteract()
+    {
+        PlaytimeInputManager.inputActions.Player.Interact.performed -= Interact;
+    }
+
     private void OnEnable()
     {
         PlaytimeInputManager.inputActions.Player.Interact.performed += Interact;
