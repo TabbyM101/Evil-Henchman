@@ -38,28 +38,28 @@ public class StartMenu : MonoBehaviour
     }
 
     public void StartGame() {
-        AudioManager.Current.PlayClip("pickCard");
+        AudioManager.Current.PlayClip("place_ticket");
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         CameraUtils.Current.Zoom(CameraPos.PlayerView, () => SceneManager.LoadScene("TutorialRoomScene"));
     }
 
     public void OpenOptions() {
-        AudioManager.Current.PlayClip("pickCard");
+        AudioManager.Current.PlayClip("place_ticket");
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
         CameraUtils.Current.Zoom(CameraPos.Computer);
     }
 
     public void OpenCredits() {
-        AudioManager.Current.PlayClip("pickCard");
+        AudioManager.Current.PlayClip("place_ticket");
         creditsPanel.SetActive(true);
         optionsPanel.SetActive(false);
         CameraUtils.Current.Zoom(CameraPos.Computer);
     }
 
     public void QuitGame() {
-        AudioManager.Current.PlayClip("pickCard");
+        AudioManager.Current.PlayClip("place_ticket");
         Application.Quit();
     }
 

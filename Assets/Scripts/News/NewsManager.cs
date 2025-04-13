@@ -45,6 +45,10 @@ public class NewsManager : MonoBehaviour
         newsNotif.SetActive(true);
     }
 
+    public void PlayClickSound() {
+        AudioManager.Current.PlayClip("mouseClick");
+    }
+
     public void DoneReading() {
 
         if (DayManager.Current.isLastDay)
