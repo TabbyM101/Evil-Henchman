@@ -67,16 +67,19 @@ public class OpeningRoomManager : MonoBehaviour
     }
 
     public void OpenEmail() {
+        PlayClickSound();
         emailOpened = true;
         emailIndicator.SetActive(false);
     }
 
     public void OpenMessages() {
+        PlayClickSound();
         messagesOpened = true;
         messagingIndicator.SetActive(false);
     }
 
     public void OpenEbay() {
+        PlayClickSound();
         ebayOpened = true;
         ebayIndicator.SetActive(false);
     }
@@ -89,7 +92,7 @@ public class OpeningRoomManager : MonoBehaviour
     {
         successNotif.SetActive(false);
         StartCoroutine(DisplayNews());
-        //DayManager.Current.StartNewDay();
+        SceneManager.LoadScene("TrainingVideo");
     }
 
     public IEnumerator DisplayNews() {
@@ -134,25 +137,29 @@ public class OpeningRoomManager : MonoBehaviour
         successNotif.SetActive(true);
     }
 
+    public void PlayClickSound() {
+        AudioManager.Current.PlayClip("mouseClick");
+    }
+
     private IEnumerator NextIntroNotification() {
         yield return new WaitForSeconds(0.75f);
         if (!jobNotifSent) {
             // send job notif
-            AudioManager.Current.PlayClip("generalNotification");
+            AudioManager.Current.PlayClip("notification");
             jobNotif.SetActive(true);
             jobNotifSent = true;
             Debug.Log("Sent job notif");
         }
         else if (!emailNotifSent) {
             // send email with task
-            AudioManager.Current.PlayClip("generalNotification");
+            AudioManager.Current.PlayClip("notification");
             emailNotif.SetActive(true);
             emailNotifSent = true;
             CameraUtils.Current.OnZoomStarted += SummonAngelicTicket; // Next time the player leaves their computer, summon the angelic ticket
         }
         else if (assessmentComplete) {
             //send last success notif
-            AudioManager.Current.PlayClip("generalNotification");
+            AudioManager.Current.PlayClip("notification");
             successNotif.SetActive(true);
             openingSceneStart = true;
         }

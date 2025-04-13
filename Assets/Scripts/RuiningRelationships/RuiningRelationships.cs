@@ -210,6 +210,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     }
 
     private IEnumerator SendParagraph() {
+        AudioManager.Current.PlayClip("mail-sent");
         float waitTime = 0.5f;
 
         RuiningEmail newEmail = Instantiate(sentEmail, emailSpawn);
