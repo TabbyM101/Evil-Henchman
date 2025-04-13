@@ -18,9 +18,24 @@ MonoBehaviour:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
-      CharacterPfp: {fileID: 0}
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      DialogueLine: You made it to day 2. Nice!
+      DialogueLine: You made it to day 2! Congrats! I'm happy I rooted for you!
+      PlayNextLine: 0
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      type: 0
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+      targetSceneName: 
+  - Type: 0
+    DialogueLine:
+      CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
+      receivedMessage: 1
+      DialogueLine: We are going to be ramping somethings up now so I hope you are
+        ready for that!
       PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}
