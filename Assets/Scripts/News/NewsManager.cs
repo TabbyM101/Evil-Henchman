@@ -51,6 +51,8 @@ public class NewsManager : MonoBehaviour
         {
             // Last day
             SceneManager.LoadScene("EndGameScreen");
+        } else if (DayManager.Current.dayNumber == -1) {
+            SceneManager.LoadScene("TrainingVideo");
         }
         else {
             DayManager.Current.StartNewDay();
