@@ -41,8 +41,12 @@ public class NewsManager : MonoBehaviour
 
     public System.Collections.IEnumerator SendCompleteNewsNotification() {
         yield return new WaitForSeconds(1 * articleSpawn.childCount); //scales with amount of articles
-        AudioManager.Current.PlayClip("generalNotification");
+        AudioManager.Current.PlayClip("notification");
         newsNotif.SetActive(true);
+    }
+
+    public void PlayClickSound() {
+        AudioManager.Current.PlayClip("mouseClick");
     }
 
     public void DoneReading() {

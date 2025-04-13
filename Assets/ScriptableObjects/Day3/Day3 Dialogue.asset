@@ -12,12 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8929c56f6332574c9d9e06897460ddd, type: 3}
   m_Name: Day3 Dialogue
   m_EditorClassIdentifier: 
+  SenderPFP: {fileID: 0}
+  SenderName: 
   DialogueLines:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
       receivedMessage: 1
-      DialogueLine: Day 3?! No way!
+      DialogueLine: Another day, more tasks!
+      PlayNextLine: 0
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      type: 0
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+      targetSceneName: 
+  - Type: 0
+    DialogueLine:
+      CharacterName: Manager
+      CharacterPfp: {fileID: 0}
+      receivedMessage: 1
+      DialogueLine: How are you doing?
+      PlayNextLine: 0
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      type: 0
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+      targetSceneName: 
+  - Type: 0
+    DialogueLine:
+      CharacterName: Quentin
+      CharacterPfp: {fileID: 21300000, guid: ada6ab5914127074abc4b10e7740220b, type: 3}
+      receivedMessage: 0
+      DialogueLine: I'm doing pretty good! Money has been tight but I think with
+        this job I can turn things around.
+      PlayNextLine: 0
+    DialogueReation:
+      reactionImage: {fileID: 0}
+    DialogueEvent:
+      type: 0
+      targetLocation: {fileID: 0}
+      returnLocation: {fileID: 0}
+      targetSceneName: 
+  - Type: 0
+    DialogueLine:
+      CharacterName: Manager
+      CharacterPfp: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
+      receivedMessage: 1
+      DialogueLine: Wow kid! No need to write a novel. Get to work!
       PlayNextLine: 0
     DialogueReation:
       reactionImage: {fileID: 0}

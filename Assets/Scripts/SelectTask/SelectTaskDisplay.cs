@@ -119,6 +119,7 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void SelectTicket() {
+        AudioManager.Current.PlayClip("pickCard");
         StartCoroutine(PlaySelectAnimation());
     }
 
@@ -178,6 +179,7 @@ public class SelectTaskDisplay : MonoBehaviour
             else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
         }
         yield return new WaitForEndOfFrame();
+        AudioManager.Current.PlayClip("rotateCards");
         selectFrontTicketButton.gameObject.SetActive(false);
         if (rotateLeft) animator.SetTrigger("RotateLeft");
         else animator.SetTrigger("RotateRight");
