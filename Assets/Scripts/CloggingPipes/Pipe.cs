@@ -16,6 +16,7 @@ public class Pipe : MonoBehaviour
     [SerializeField] private float FillDecayRate = 10f;
     [SerializeField] public GameObject plumberSpot;
     [SerializeField] public Image pipeImage;
+    [SerializeField] public Color cloggedColor;
     private float currentAmount;
 
     private void Awake()
@@ -71,14 +72,14 @@ public class Pipe : MonoBehaviour
     public void Clog()
     {
         clogged = true;
-        pipeImage.color = Color.blue;
+        pipeImage.color = cloggedColor;
         currentAmount = 0;
     }
     
     public void UnclogPipe()
     {
         clogged = false;
-        pipeImage.color = Color.yellow;
+        pipeImage.color = Color.white;
     }
 
     public void Plumb()

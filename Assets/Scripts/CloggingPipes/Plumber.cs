@@ -7,9 +7,11 @@ public class Plumber : MonoBehaviour
     private Pipe _pipe;
     [SerializeField] private int clicksToRemove = 3;
     [SerializeField] private float timeToUnclog = 5;
-    private float currentClicks = 0;
-    private float clickTimer = 2f;
-    
+    private int currentClicks = 0;
+    [SerializeField]private float clickTimer = 2f;
+    private float? lastClickTime = null;
+    [SerializeField] private Animation clickAnimation;
+
     public void SetPipeToPlumb(Pipe pipeToPlumb)
     {
         _pipe = pipeToPlumb;
@@ -21,17 +23,31 @@ public class Plumber : MonoBehaviour
         Invoke(nameof(UnclogPipe), timeToUnclog);
     }
 
+    private void Update()
+    {
+        if (lastClickTime.HasValue && Time.time - lastClickTime.Value >= clickTimer)
+        {
+            currentClicks = 0; // reset click count
+            lastClickTime = null; // clear last click time
+        }
+    }
+
     public void OnPointerClick()
     {
-            if (currentClicks < clicksToRemove - 1)
-            {
-                currentClicks++;
-            }
-            else
-            {
-                _pipe.Unplumb();
-                Destroy(this.gameObject);
-            }
+        clickAnimation.Stop(); // stop current animation
+        clickAnimation.Play(); // play animation from start
+
+        currentClicks++;
+
+        if (currentClicks >= clicksToRemove)
+        {
+            _pipe.Unplumb();
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            lastClickTime = Time.time; // update last click time
+        }
     }
 
     public void UnclogPipe()
@@ -40,5 +56,4 @@ public class Plumber : MonoBehaviour
         _pipe.UnclogPipe();
         Destroy(this.gameObject);
     }
-    
 }
