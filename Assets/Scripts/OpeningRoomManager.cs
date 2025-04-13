@@ -92,7 +92,6 @@ public class OpeningRoomManager : MonoBehaviour
     {
         successNotif.SetActive(false);
         StartCoroutine(DisplayNews());
-        SceneManager.LoadScene("TrainingVideo");
     }
 
     public IEnumerator DisplayNews() {
