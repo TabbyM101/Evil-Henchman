@@ -112,6 +112,7 @@ public class CameraUtils : MonoBehaviour
         {
             // SelectTaskDisplay will enable looks in the case of the Billboard Zoom.
             PlayerController.Current?.EnableLook();
+            PlayerController.Current?.EnableInteract();
         }
     }
 }
