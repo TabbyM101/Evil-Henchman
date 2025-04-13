@@ -34,11 +34,14 @@ public class Ticket : MonoBehaviour, IClickableObject
     {
         if (gameObject.transform.parent is not null && gameObject.transform.parent.name == "TicketHolder")
         {
-            CameraUtils.Current.Zoom(CameraPos.Billboard, () => SelectTaskManager.Current.TaskSelected(this));
+            if (PickupObject.Current?.heldItem is null)
+            {
+                CameraUtils.Current.Zoom(CameraPos.Billboard, () => SelectTaskManager.Current.TaskSelected(this));
+            }
         }
         else 
         {
-            PickupObject.Current.Pickup(gameObject);
+            PickupObject.Current?.Pickup(gameObject);
         }
     }
 }
