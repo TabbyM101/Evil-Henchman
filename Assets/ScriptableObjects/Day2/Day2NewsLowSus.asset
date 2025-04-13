@@ -23,5 +23,5 @@ MonoBehaviour:
     if this means we are going to be getting new quality products from them. "
   Author: Cole Hauser
   SuspicionReq: 1
-  MinimumSuspicionReq: 0
-  MaximumSuspicionReq: 5
+  MinimumSuspicionReq: 50
+  MaximumSuspicionReq: 100

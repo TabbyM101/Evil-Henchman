@@ -29,7 +29,7 @@ public class NewsManager : MonoBehaviour
         bool firstArticle = true;
         dayIndicator.text = "Day " + DayManager.Current.dayNumber;
         foreach (NewsArticleObj article in articles) {
-            if (!article.SuspicionReq || (DayManager.Current.Standing <= article.MinimumSuspicionReq && DayManager.Current.Standing >= article.MaximumSuspicionReq)) {
+            if (!article.SuspicionReq || (DayManager.Current.Standing > article.MinimumSuspicionReq && DayManager.Current.Standing <= article.MaximumSuspicionReq)) {
                 NewsArticle obj = Instantiate(newsPrefab, articleSpawn);
                 obj.gameObject.SetActive(true);
                 obj.SetArticleContent(article, !firstArticle);
