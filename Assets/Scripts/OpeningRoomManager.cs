@@ -88,7 +88,8 @@ public class OpeningRoomManager : MonoBehaviour
     public void IntroCompleted()
     {
         successNotif.SetActive(false);
-        StartCoroutine(DisplayNews());
+        SceneManager.LoadScene("TrainingVideo");
+        //StartCoroutine(DisplayNews());
         //DayManager.Current.StartNewDay();
     }
 

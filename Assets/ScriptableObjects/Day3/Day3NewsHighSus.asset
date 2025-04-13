@@ -25,5 +25,5 @@ MonoBehaviour:
     used, but it always remains a possibility. "
   Author: Jennifer Small
   SuspicionReq: 1
-  MinimumSuspicionReq: 5
-  MaximumSuspicionReq: 10
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 50

@@ -23,5 +23,5 @@ MonoBehaviour:
     sign of rocky days ahead for what seemed like an unstoppable company. "
   Author: Cole Hauser
   SuspicionReq: 1
-  MinimumSuspicionReq: 5
-  MaximumSuspicionReq: 10
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 50
