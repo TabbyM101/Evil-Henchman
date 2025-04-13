@@ -138,18 +138,21 @@ public class OpeningRoomManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         if (!jobNotifSent) {
             // send job notif
+            AudioManager.Current.PlayClip("generalNotification");
             jobNotif.SetActive(true);
             jobNotifSent = true;
             Debug.Log("Sent job notif");
         }
         else if (!emailNotifSent) {
             // send email with task
+            AudioManager.Current.PlayClip("generalNotification");
             emailNotif.SetActive(true);
             emailNotifSent = true;
             CameraUtils.Current.OnZoomStarted += SummonAngelicTicket; // Next time the player leaves their computer, summon the angelic ticket
         }
         else if (assessmentComplete) {
             //send last success notif
+            AudioManager.Current.PlayClip("generalNotification");
             successNotif.SetActive(true);
             openingSceneStart = true;
         }

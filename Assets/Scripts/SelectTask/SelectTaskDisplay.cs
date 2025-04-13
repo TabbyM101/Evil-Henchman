@@ -173,6 +173,10 @@ public class SelectTaskDisplay : MonoBehaviour
                 UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground, rightCompleted, rightFailed);
             }
         }
+        else {
+            if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
+            else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
+        }
         yield return new WaitForEndOfFrame();
         selectFrontTicketButton.gameObject.SetActive(false);
         if (rotateLeft) animator.SetTrigger("RotateLeft");

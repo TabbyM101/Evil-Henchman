@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPos: 0
-  cameraSpeed: 4.5
+  zoomSpeed: 0.25
   zoomComputerPos: {fileID: 1023008494}
   zoomPlayerViewPos: {fileID: 726910873}
   zoomBillboardPos: {fileID: 314563641}
@@ -3827,6 +3827,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6262848737108973964, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
+      propertyPath: lerpRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7201831185879493744, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3938,6 +3942,22 @@ PrefabInstance:
     - target: {fileID: 8265038495855773566, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726924847977981371, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.60009
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726924847977981371, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.34061
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726924847977981371, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00279
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726924847977981371, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00063
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 494405498791231701, guid: 9cde030ff19da144caa6252ddf7e52b2, type: 3}

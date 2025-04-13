@@ -57,6 +57,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogueToStart, bool isBotTalking = false, bool failedDayTalking = false)
     {
+        if (indicator != null) indicator.SetActive(true);
         ClearDialogue();
         lastMessageTypeSent = false;
         selectedChatPfp.sprite = dialogueToStart.SenderPFP;
@@ -79,7 +80,6 @@ public class DialogueManager : MonoBehaviour
     public void SendNextMessage()
     {
         if (!dialogueRunning) return;
-        if (indicator != null) indicator.SetActive(!firstMessage);
         if (needReturn)
         {
             coroutineActive = true;
@@ -146,6 +146,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue(Action onComplete = null)
     {
         dialogueRunning = false;
+
+        if (indicator != null) indicator.SetActive(false);
 
         if (isBot && onComplete == null) {
             onComplete = () => BotEnded.Invoke();

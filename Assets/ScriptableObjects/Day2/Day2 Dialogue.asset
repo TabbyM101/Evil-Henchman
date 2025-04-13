@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8929c56f6332574c9d9e06897460ddd, type: 3}
   m_Name: Day2 Dialogue
   m_EditorClassIdentifier: 
+  SenderPFP: {fileID: 21300000, guid: b01bb0f50ec8c8946b82becacb327a5c, type: 3}
+  SenderName: Manager
   DialogueLines:
   - Type: 0
     DialogueLine:
       CharacterName: Manager
+      CharacterPfp: {fileID: 0}
       receivedMessage: 1
       DialogueLine: You made it to day 2. Nice!
       PlayNextLine: 0
