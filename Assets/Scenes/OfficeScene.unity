@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeText: {fileID: 591339506}
   numOfHours: 8
-  realtimeSecondsPerIngameHour: 10
+  realtimeSecondsPerIngameHour: 60
 --- !u!114 &591339506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5150,7 +5150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f8b46c16b6cac42e99fbbd255b9633ff, type: 2}
+  - {fileID: 2100000, guid: 9101e450864284ad4b307303c7396b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
