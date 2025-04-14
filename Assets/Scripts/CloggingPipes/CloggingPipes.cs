@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 
 public class CloggingPipes : AMinigame
 {
+    [SerializeField] private GameObject instructionText;
+    private bool hasCloggingStarted = false;
+    
     [SerializeField] private Transform PipeFolder; // Where all pipes reside for the sake of organization and ease of use.
     [SerializeField] private GameObject PlumberPrefab; // Plumber prefab to spawn
     [SerializeField] private GameObject PipePrefab; // Pipe prefab to spawn
@@ -43,21 +46,7 @@ public class CloggingPipes : AMinigame
         goalProgress = goalAmount;
         pipes = new List<Pipe>();
         SpawnPipes();
-        
-        if (timerCoroutine == null)
-        {
-            timerCoroutine = StartCoroutine(Timer());
-        }
-
-        if (progressCoroutine == null)
-        {
-            progressCoroutine = StartCoroutine(ProgressUpdate());
-        }
-
-        if (plumberCoroutine == null)
-        {
-            plumberCoroutine = StartCoroutine(PlumberSpawner());
-        }
+        timeLeftText.text = Mathf.FloorToInt(timeLeft).ToString();
     }
 
     private void SetUpSlider()
@@ -176,7 +165,29 @@ public class CloggingPipes : AMinigame
             GameObject pipe = Instantiate(PipePrefab, randomPosition, Quaternion.identity);
             pipe.transform.SetParent(PipeFolder, false);
             pipe.transform.localScale = new Vector3(1, 1, 1);
-            pipes.Add(pipe.GetComponent<Pipe>());
+            Pipe pipeComponent = pipe.GetComponent<Pipe>();
+            pipeComponent.SetMinigameManager(this);
+            pipes.Add(pipeComponent);
         }
     }
+    
+    public void OnFirstClog()
+    {
+        if (hasCloggingStarted) return;
+
+        hasCloggingStarted = true;
+
+        if (instructionText != null)
+            instructionText.SetActive(false);
+
+        if (timerCoroutine == null)
+            timerCoroutine = StartCoroutine(Timer());
+
+        if (progressCoroutine == null)
+            progressCoroutine = StartCoroutine(ProgressUpdate());
+
+        if (plumberCoroutine == null)
+            plumberCoroutine = StartCoroutine(PlumberSpawner());
+    }
+
 }
