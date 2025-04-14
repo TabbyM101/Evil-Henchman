@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPos: 0
-  zoomSpeed: 0.25
+  camZoomSpeed: 20
   zoomComputerPos: {fileID: 1023008494}
   zoomPlayerViewPos: {fileID: 726910873}
   zoomBillboardPos: {fileID: 314563641}
@@ -8299,7 +8299,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740561389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
