@@ -115,7 +115,6 @@ public class CameraUtils : MonoBehaviour
             PlayerController.Current?.EnableLook();
             PlayerController.Current?.EnableInteract();
         }
-        Debug.Log("Zoom done");
     }
 }
 
