@@ -108,19 +108,19 @@ public class DelayedDelivery : AMinigame
 
     public void OnRedBinClicked()
     {
-        Debug.Log("red clicked");
+        AudioManager.Current.PlayClip("mouseClick");
         CheckBin(0); // Red Bin
     }
 
     public void OnGreenBinClicked()
     {
-        Debug.Log("green clicked");
+        AudioManager.Current.PlayClip("mouseClick");
         CheckBin(1); // Green Bin
     }
 
     public void OnBlueBinClicked()
     {
-        Debug.Log("blue clicked");
+        AudioManager.Current.PlayClip("mouseClick");
         CheckBin(2); // Blue Bin
     }
 
