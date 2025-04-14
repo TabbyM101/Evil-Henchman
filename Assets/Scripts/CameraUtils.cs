@@ -12,7 +12,7 @@ public class CameraUtils : MonoBehaviour
     private bool isMoving = false;
     private bool canMove => !isMoving && !SelectTaskDisplay.minigameIsOpen;
     private bool lockedInDialogue => DialogueManager.Current?.dialogueRunning ?? false;
-    [SerializeField] private float zoomSpeed = 0.25f;
+    [SerializeField] private float camZoomSpeed = 20f;
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
@@ -31,6 +31,7 @@ public class CameraUtils : MonoBehaviour
 
     public bool Zoom(CameraPos pos, Action onComplete = null)
     {
+        Debug.Log($"Zooming to {pos}");
         bool status;
         switch (pos)
         {
@@ -97,8 +98,8 @@ public class CameraUtils : MonoBehaviour
         while (Vector3.Distance(cameraTransform.position, targetTransform.position) > 0.01f ||
                Quaternion.Angle(cameraTransform.rotation, targetTransform.rotation) > 0.1f)
         {
-            cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetTransform.position, (Time.time - startZoomTime) * zoomSpeed);
-            cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetTransform.rotation, (Time.time - startZoomTime) * zoomSpeed);
+            cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetTransform.position, (Time.time - startZoomTime) * camZoomSpeed * Time.deltaTime);
+            cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetTransform.rotation, (Time.time - startZoomTime) * camZoomSpeed * Time.deltaTime);
             yield return null;
         }
 

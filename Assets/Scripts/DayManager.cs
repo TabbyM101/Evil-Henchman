@@ -40,6 +40,7 @@ public class DayManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         DontDestroyOnLoad(gameObject);
         Current = this;
         GoToMainMenu();
