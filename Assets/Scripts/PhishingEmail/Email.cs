@@ -18,7 +18,7 @@ public class Email : MonoBehaviour
         StartCoroutine(MoveEmail());
     }
 
-    IEnumerator MoveEmail()
+    private IEnumerator MoveEmail()
     {
         while(!caught)
         {

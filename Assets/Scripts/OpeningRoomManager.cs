@@ -29,10 +29,10 @@ public class OpeningRoomManager : MonoBehaviour
     [SerializeField] private GameObject emailIndicator;
     [SerializeField] private GameObject ebayIndicator;
     [SerializeField] private GameObject malEmailHelpText;
-    [SerializeField] Image[] indicators;
+    [SerializeField] private Image[] indicators;
     public Color minColor;
     public Color maxColor;
-    [SerializeField] float lerpRate;
+    [SerializeField] private float lerpRate;
     private float t;
 
     [NonSerialized] public bool emailOpened = false;
@@ -40,12 +40,12 @@ public class OpeningRoomManager : MonoBehaviour
     [NonSerialized] public bool ebayOpened = false;
     [NonSerialized] public bool assessmentComplete = false;
 
-    void Start()
+    private void Start()
     {
         AudioManager.Current.PlayMusic(AudioManager.SongChoice.RoomAmbience);
     }
-    
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         if (!openingSceneStart && emailOpened && messagesOpened && ebayOpened &&!jobNotifSent && !firstSending) {
             // send first notif
@@ -54,7 +54,7 @@ public class OpeningRoomManager : MonoBehaviour
         }
     }
 
-    void Update() {
+    private void Update() {
         t += Time.deltaTime;
         Color lerped =  Color.Lerp(minColor, maxColor, Mathf.Abs(Mathf.Sin(t * lerpRate)));
         foreach (Image img in indicators) {

@@ -22,8 +22,8 @@ public class Ticket : MonoBehaviour, IClickableObject
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descText;
     public Image bg;
-    
-    void Start()
+
+    private void Start()
     {
         nameText.text = ticketName;
         descText.text = ticketDesc;

@@ -16,7 +16,7 @@ public class StartMenu : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         foreach (EventTrigger button in menuButtons) {
             button.enabled = false;
@@ -24,7 +24,7 @@ public class StartMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !zoomedIn)
         {

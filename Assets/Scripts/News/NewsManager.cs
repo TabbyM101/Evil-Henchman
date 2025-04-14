@@ -17,7 +17,7 @@ public class NewsManager : MonoBehaviour
     [SerializeField] [Tooltip("Overrides any articles from the dayObj")] private List<NewsArticleObj> injectedArticles; // Manually inject news articles for tutorial scene
     private List<NewsArticleObj> articles = new List<NewsArticleObj>();
 
-    void Start()
+    private void Start()
     {
         Current = this;
         articles = injectedArticles.Any() ? injectedArticles : DayManager.Current.CurrentDayObj.Articles;

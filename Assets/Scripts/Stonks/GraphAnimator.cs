@@ -27,7 +27,7 @@ public class GraphAnimator : MonoBehaviour
         }
     }
 
-    void AnimateLine(UILineRenderer line)
+    private void AnimateLine(UILineRenderer line)
     {
         List<Vector2> points = line.Clone();
         

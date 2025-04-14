@@ -23,7 +23,7 @@ public class CameraUtils : MonoBehaviour
         Current = this;
     }
 
-    void Start()
+    private void Start()
     {
         cameraTransform = Camera.main.transform;
         currentPos = CameraPos.PlayerView;

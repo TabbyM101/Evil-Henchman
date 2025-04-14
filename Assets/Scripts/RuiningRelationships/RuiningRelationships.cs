@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class RuiningRelationships : MonoBehaviour, IMinigame
+public class RuiningRelationships : AMinigame
 {
     private bool gameRunning = false;
     private bool isTyping = false;
@@ -46,16 +46,10 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
     private bool finishSpace = false;
 
     private KeyCode lastKey = KeyCode.None;
-    int keyPressCount = 0;
+    private int keyPressCount = 0;
     private string[] fakeCodeSnippets = {"int", "void", "return", "class", "public", "private", "if", "else", "while", "for", "Console.WriteLine", "new", "string", "bool", "float"};
 
-
-    public void Start()
-    {
-        StartMinigame();
-    }
-
-    public void StartMinigame()
+    protected override void StartMinigame()
     {
         endHelp.SetActive(false);
         emailSection.SetActive(false);
@@ -98,7 +92,7 @@ public class RuiningRelationships : MonoBehaviour, IMinigame
         ActuallyStartMinigame();
     }
 
-    void Update() {
+    private void Update() {
         if (isHacking) {
             if (Input.anyKeyDown) {
                 keyPressCount++;

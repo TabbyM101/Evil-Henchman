@@ -38,7 +38,7 @@ public class DayManager : MonoBehaviour
 
     public int Standing { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         Current = this;

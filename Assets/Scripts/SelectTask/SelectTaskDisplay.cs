@@ -37,7 +37,7 @@ public class SelectTaskDisplay : MonoBehaviour
     private int selectedTicketIdx;
     [NonSerialized] public static bool minigameIsOpen = false;
 
-    void Start() {
+    private void Start() {
         SnapBackToStartPos(false);
     }
 

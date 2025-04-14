@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class Stonks : MonoBehaviour, IMinigame
+public class Stonks : AMinigame
 {
     public RectTransform outerBar; // assign in Inspector
     public float gravity = -300f;
@@ -55,14 +55,7 @@ public class Stonks : MonoBehaviour, IMinigame
         return ((yPosition - bottomBound) / barHeight) * 100f;
     }
 
-
-    
-    private void Start()
-    {
-        StartMinigame();
-    }
-
-    public void StartMinigame()
+    protected override void StartMinigame()
     {
         isRunning = true;
         playerForce = 0f;

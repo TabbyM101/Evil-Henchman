@@ -9,7 +9,7 @@ public class SuspicionManager : MonoBehaviour
     // Singleton pattern
     public static SuspicionManager Current;
 
-    [SerializeField] Dialogue baseDialogue;
+    [SerializeField] private Dialogue baseDialogue;
 
     public int Standing { get; set; }
 

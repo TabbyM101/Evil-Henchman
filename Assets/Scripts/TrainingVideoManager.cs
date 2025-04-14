@@ -4,13 +4,13 @@ using UnityEngine.Video;
 
 public class TrainingVideoManager : MonoBehaviour
 {
-    VideoPlayer videoPlayer;
+    private VideoPlayer videoPlayer;
     private bool videoStarted = false;
     private float startDelay = 1f;
 
     private float time = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.started += VideoPlayerStart;
@@ -28,7 +28,7 @@ public class TrainingVideoManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (time >= startDelay) {
             videoPlayer.Play();

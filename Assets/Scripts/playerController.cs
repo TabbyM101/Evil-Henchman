@@ -16,14 +16,14 @@ public class PlayerController : MonoBehaviour
     private float startYRotation;
     private bool lookRight, lookLeft = false;
 
-    void Start()
+    private void Start()
     {
         Current = this;
         playerCamera = Camera.main;
         startYRotation = playerCamera.transform.localEulerAngles.y;
     }
 
-    void Update()
+    private void Update()
     {
         if (lookRight && canMoveRight)
         {

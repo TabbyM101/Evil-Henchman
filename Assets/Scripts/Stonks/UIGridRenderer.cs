@@ -6,10 +6,10 @@ public class UIGridRenderer : Graphic
    public Vector2Int gridSize = new Vector2Int(1, 1);
    public float thickness = 10f;
 
-   float width;
-   float height;
-   float cellWidth;
-   float cellHeight;
+   private float width;
+   private float height;
+   private float cellWidth;
+   private float cellHeight;
    
    
    protected override void OnPopulateMesh(VertexHelper vh)

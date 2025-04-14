@@ -9,14 +9,7 @@ public class AlphaLerp : MonoBehaviour
     public float lerpRate = 1f;
     private float t;
     
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         t += Time.deltaTime;
         Color lerped =  Color.Lerp(minColor, maxColor, Mathf.Abs(Mathf.Sin(t * lerpRate)));

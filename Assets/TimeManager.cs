@@ -12,7 +12,7 @@ public class TimeManager : MonoBehaviour
     private int ingameHour => hour + 9 == 12 ? 12 : (hour + 9) % 12;
     private int hour;
 
-    void Start()
+    private void Start()
     {
         Current = this;
         hour = -1; // gets immediately incremented by KeepTime

@@ -23,7 +23,7 @@ public class EndDayText : MonoBehaviour
     private int IncompleteMinigames =>
         DayManager.Current.IncompleteMinigameCount - DayManager.Current.CompletedMinigameCount;
 
-    void Start()
+    private void Start()
     {
         var playedGames = DayManager.Current.CompletedMinigameCount;
         var wonGames = DayManager.Current.WonMinigameCount;

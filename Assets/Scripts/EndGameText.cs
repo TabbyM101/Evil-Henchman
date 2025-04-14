@@ -15,7 +15,7 @@ public class EndGameText : MonoBehaviour
     [SerializeField] private TextMeshProUGUI standingPercentage;
     [SerializeField] private GameObject failedText;
 
-    void Start()
+    private void Start()
     {
         var playedGames = DayManager.Current.CompletedScore;
         var wonGames = DayManager.Current.WonScore;
