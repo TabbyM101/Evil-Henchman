@@ -20,6 +20,10 @@ public class Billboard : MonoBehaviour, IClickableObject
 
     private void OpenTicketScreen()
     {
+        if (parent.transform.childCount <= 0) {
+            return;
+        }
+        
         Ticket ticket = null;
         if (parent.transform.childCount > 0)
         {
@@ -30,7 +34,7 @@ public class Billboard : MonoBehaviour, IClickableObject
         {
             SelectTaskManager.Current.TaskSelected(ticket);
         }
-        else
+        else if (TicketManager.Current.ticketsPrinted.Any())
         {
             // We default to first for now, might want to change this behavior later.
             SelectTaskManager.Current.TaskSelected(TicketManager.Current.ticketsPrinted.First());

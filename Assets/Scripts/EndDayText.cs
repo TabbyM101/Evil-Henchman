@@ -1,5 +1,7 @@
+
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -7,32 +9,48 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class EndDayText : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI dayCount;
+    [SerializeField] private Image profitsGraph;
+    [SerializeField] private TextMeshProUGUI profitsPercentage;
+    [SerializeField] private TextMeshProUGUI tasksCompletedText;
+    [SerializeField] private TextMeshProUGUI tasksIncompletedText;
+    [SerializeField] private GameObject tasksCompletedFailedOverlay;
+    [SerializeField] private Image standing;
+    [SerializeField] private TextMeshProUGUI standingPercentage;
+    [SerializeField] private GameObject failedText;
     [SerializeField] private TextMeshProUGUI nextButtonText;
 
     private int IncompleteMinigames =>
         DayManager.Current.IncompleteMinigameCount - DayManager.Current.CompletedMinigameCount;
 
-    void Start()
+    private void Start()
     {
         var playedGames = DayManager.Current.CompletedMinigameCount;
         var wonGames = DayManager.Current.WonMinigameCount;
+        var lostGames = playedGames - wonGames;
         var wonGamesPercent = wonGames / (float)playedGames;
-        var endDayHeader = IncompleteMinigames > 0
-            ? $"Day {DayManager.Current.dayNumber + 1} Failed\n"
-            : $"Day {DayManager.Current.dayNumber + 1} Complete!\n";
+
+        dayCount.text = "Day " + DayManager.Current.dayNumber;
+
+        profitsGraph.fillAmount = lostGames;
+        Debug.Log(wonGamesPercent);
+        profitsPercentage.text = (int)(wonGamesPercent * 100) + "%";
+
+        tasksCompletedText.text = "Tasks Completed: " + (int)(playedGames / (IncompleteMinigames + playedGames) * 100);
+        tasksIncompletedText.text = "Tasks Incompleted: " + (int)(IncompleteMinigames / (IncompleteMinigames + playedGames) * 100);
         
-        // Set text objects
-        scoreText.text =
-            endDayHeader +
-            $"Incomplete Tickets: {IncompleteMinigames}\n" +
-            $"Approved Tickets: {wonGames}\n" +
-            $"Failed Tickets: {playedGames - wonGames}\n" +
-            $"Success Percent: {(int)(wonGamesPercent * 100)}%";
+        if (IncompleteMinigames <= 0) {
+            tasksIncompletedText.gameObject.SetActive(false);
+            tasksCompletedFailedOverlay.SetActive(false);
+            failedText.SetActive(false);
+        }
+
+        standing.fillAmount = (float)DayManager.Current.Standing / 100;
+        standingPercentage.text = DayManager.Current.Standing + "%";
+
         
         nextButtonText.text =
-            IncompleteMinigames > 0 ? "Restart Day" :
-            DayManager.Current.isLastDay ? "See Performance Report" : "On to Tomorrow!";
+            IncompleteMinigames > 0 ? "Retry Day" : "Go Home";
     }
 
     public void StartNextDay()
@@ -42,15 +60,10 @@ public class EndDayText : MonoBehaviour
             // Incomplete minigame
             DayManager.Current.RestartDay();
         }
-        else if (DayManager.Current.isLastDay)
-        {
-            // Last day
-            SceneManager.LoadScene("EndGameScreen");
-        }
         else
         {
             // Start new day
-            DayManager.Current.StartNewDay();
+            SceneManager.LoadScene("NewsRoomScene");
         }
     }
 }

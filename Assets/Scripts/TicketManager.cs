@@ -8,6 +8,7 @@ public class TicketManager : MonoBehaviour
     public static TicketManager Current;
     [SerializeField] private GameObject ticketPrefab;
     [SerializeField] private GameObject ticketSpawnObject;
+    [SerializeField] private Transform ticketSpawnLocation;
 
     public Queue<TicketObj> pendingTickets = new Queue<TicketObj>();
     public List<Ticket> ticketsPrinted = new List<Ticket>();
@@ -20,7 +21,7 @@ public class TicketManager : MonoBehaviour
         Current = this;
     }
 
-    void Start() {
+    private void Start() {
         ticketsPrinted = new List<Ticket>();
     }
 
@@ -47,9 +48,7 @@ public class TicketManager : MonoBehaviour
 
     private void TicketPosition(GameObject ticket)
     {
-        var spawnBounds = ticketSpawnObject.GetComponent<Collider>().bounds;
-
-        ticket.transform.position = new Vector3(Random.Range(spawnBounds.min.x, spawnBounds.max.x),
-            Random.Range(spawnBounds.min.y, spawnBounds.max.y), 0);
+        ticket.transform.rotation = Quaternion.Euler(90, Random.Range(0,180), 0);
+        ticket.transform.position = ticketSpawnLocation.position;
     }
 }

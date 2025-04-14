@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 public class SelectTaskDisplay : MonoBehaviour
 {
+    public bool isTutorialScene = false;
     [SerializeField] private GameObject panel;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject leftArrow;
@@ -35,32 +37,29 @@ public class SelectTaskDisplay : MonoBehaviour
     private int selectedTicketIdx;
     [NonSerialized] public static bool minigameIsOpen = false;
 
-    void Start() {
+    private void Start() {
         SnapBackToStartPos(false);
     }
 
     public void UpdateTickets(List<Ticket> list) {
         Debug.Log("updating tickets");
-        tickets = list;
-        for (int i = 0; i < tickets.Count; i++) {
-            Debug.Log(i + " " + tickets[i].ticketName);
-        }
-        
+        tickets = list;   
     }
 
-    public void OpenDisplay(Ticket selected) {
+    public void OpenDisplay(Ticket selected)
+    {
+        PlayerController.Current?.DisableLook();
+        PlayerController.Current?.DisableInteract();
         frontTicket.SetActive(true);
         leftTicket.SetActive(true);
         rightTicket.SetActive(true);
         leftArrow.SetActive(true);
         rightArrow.SetActive(true);
         selectedTicketIdx = tickets.IndexOf(selected);
-        Debug.Log(selectedTicketIdx + " " + tickets[selectedTicketIdx].ticketName);
         if (tickets.Count < 3) {
             rightTicket.SetActive(false);
         }
         if (tickets.Count < 2) {
-            Debug.Log("less than 2");
             leftTicket.SetActive(false);
             leftArrow.SetActive(false);
             rightArrow.SetActive(false);
@@ -70,11 +69,14 @@ public class SelectTaskDisplay : MonoBehaviour
         UpdateTickets(rightIdx, leftIdx);
     }
 
+    // Zoom out player and allow another minigame to open
     private void OnMinigameEnded(CompletionState state)
     {
-        // Zoom out player and allow another minigame to open
-        tickets[selectedTicketIdx].state = state;
         minigameIsOpen = false;
+        if (isTutorialScene) return;
+        
+        tickets[selectedTicketIdx].state = state;
+        
         CameraUtils.Current.Zoom(CameraPos.PlayerView, () =>
         {
             MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
@@ -117,6 +119,7 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     public void SelectTicket() {
+        AudioManager.Current.PlayClip("pickCard");
         StartCoroutine(PlaySelectAnimation());
     }
 
@@ -124,10 +127,11 @@ public class SelectTaskDisplay : MonoBehaviour
         yield return new WaitForEndOfFrame();
         animator.SetTrigger("SelectTask");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-
-
+        
+        PlayerController.Current?.EnableLook();
+        PlayerController.Current?.EnableInteract();
         panel.SetActive(false);
-
+        
         if (!minigameIsOpen)
         {
             // Bind to MinigameEnded event to get callback when minigame ends
@@ -135,9 +139,6 @@ public class SelectTaskDisplay : MonoBehaviour
             
             // Assuming the minigame "locks" your PC to that game, we can safely disable the button here.
             selectFrontTicketButton.gameObject.SetActive(false);
-            
-            // disable to ability to move before zoom
-            PlaytimeInputManager.DisableAllActionMaps();
 
             minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
             {
@@ -159,23 +160,50 @@ public class SelectTaskDisplay : MonoBehaviour
     }
 
     private System.Collections.IEnumerator RotateTickets(bool rotateLeft) {
-        yield return new WaitForEndOfFrame();
-        selectFrontTicketButton.gameObject.SetActive(false);
-        if (rotateLeft) animator.SetTrigger("RotateLeft");
-        else animator.SetTrigger("RotateRight");
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        SnapBackToStartPos(true, rotateLeft);
-    }
-
-    private void SnapBackToStartPos(bool shift, bool rotateLeft = false) {
-        if (shift) {
+        if (tickets.Count > 3) {
+            if (rotateLeft) {
+                //update right ticket
+                selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
+                int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
+                UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground, leftCompleted, leftFailed);
+            }
+            else {
+                //update left ticket
+                selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
+                int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
+                UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground, rightCompleted, rightFailed);
+            }
+        }
+        else {
             if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
             else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
+        }
+        yield return new WaitForEndOfFrame();
+        AudioManager.Current.PlayClip("rotateCards");
+        selectFrontTicketButton.gameObject.SetActive(false);
 
+        Debug.Log(tickets.Count);
+        if (tickets.Count == 2) {
+            Debug.Log("2 tickets !!");
+            if (rotateLeft) animator.SetTrigger("RotateLeft2Cards");
+            else animator.SetTrigger("RotateRight2Cards");
+        }
+        else {
+            Debug.Log("NOT 2 tickets !!");
+            if (rotateLeft) animator.SetTrigger("RotateLeft");
+            else animator.SetTrigger("RotateRight");
+        }
+        Debug.Log("left: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RotateLeft2Cards"));
+        Debug.Log("right: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RotateRight2Cards"));
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        
+        SnapBackToStartPos(true);
+    }
+
+    private void SnapBackToStartPos(bool shift) {
+        if (shift) {
             int rightIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
             int leftIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
-
-            Debug.Log("rotated values: " + selectedTicketIdx + " left idx: " + leftIdx + " right idx: " + rightIdx);
             UpdateTickets(rightIdx, leftIdx);
         }
         animator.SetTrigger("Idle");

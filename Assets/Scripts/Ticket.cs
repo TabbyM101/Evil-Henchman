@@ -22,8 +22,8 @@ public class Ticket : MonoBehaviour, IClickableObject
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descText;
     public Image bg;
-    
-    void Start()
+
+    private void Start()
     {
         nameText.text = ticketName;
         descText.text = ticketDesc;
@@ -32,6 +32,16 @@ public class Ticket : MonoBehaviour, IClickableObject
 
     public void ClickableObject_Clicked(RaycastHit ray)
     {
-        PickupObject.Current.Pickup(gameObject);
+        if (gameObject.transform.parent is not null && gameObject.transform.parent.name == "TicketHolder")
+        {
+            if (PickupObject.Current?.heldItem is null)
+            {
+                CameraUtils.Current.Zoom(CameraPos.Billboard, () => SelectTaskManager.Current.TaskSelected(this));
+            }
+        }
+        else 
+        {
+            PickupObject.Current?.Pickup(gameObject);
+        }
     }
 }

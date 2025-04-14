@@ -3,19 +3,19 @@ using System.Collections;
 
 public class LightFlicker : MonoBehaviour
 {
-    [SerializeField] float minIntensity;
-    [SerializeField] float maxIntensity;
-    [SerializeField] float flickerStrength;
-    [SerializeField] float flickerRate;
+    [SerializeField] private float minIntensity;
+    [SerializeField] private float maxIntensity;
+    [SerializeField] private float flickerStrength;
+    [SerializeField] private float flickerRate;
     private Light light;
 
-    void Start()
+    private void Start()
     {
         light = GetComponent<Light>();
         StartCoroutine(Flicker());
     }
 
-    IEnumerator Flicker()
+    private IEnumerator Flicker()
     {
         while (true)
         {

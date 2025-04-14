@@ -9,12 +9,12 @@ public class PauseMenu : MonoBehaviour, IClickableObject
     [SerializeField] private EventTrigger[] menuButtons;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         EnableButtons(false);
     }
 
-    void Update()
+    private void Update()
     {
       if (CameraUtils.Current.currentPos != CameraPos.EscMenu && menuButtons[0].enabled) 
       {
@@ -61,7 +61,7 @@ public class PauseMenu : MonoBehaviour, IClickableObject
 
     public void QuitTitle()
     {
-        DayManager.Current.ReturnToMenu();
+        DayManager.Current.GoToMainMenu();
     }
 
     public void QuitGame() {

@@ -16,7 +16,7 @@ public class StartMenu : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         foreach (EventTrigger button in menuButtons) {
             button.enabled = false;
@@ -24,7 +24,7 @@ public class StartMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !zoomedIn)
         {
@@ -38,24 +38,28 @@ public class StartMenu : MonoBehaviour
     }
 
     public void StartGame() {
+        AudioManager.Current.PlayClip("place_ticket");
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
-        CameraUtils.Current.Zoom(CameraPos.PlayerView, () => DayManager.Current.StartNewDay());
+        CameraUtils.Current.Zoom(CameraPos.PlayerView, () => SceneManager.LoadScene("TutorialRoomScene"));
     }
 
     public void OpenOptions() {
+        AudioManager.Current.PlayClip("place_ticket");
         optionsPanel.SetActive(true);
         creditsPanel.SetActive(false);
         CameraUtils.Current.Zoom(CameraPos.Computer);
     }
 
     public void OpenCredits() {
+        AudioManager.Current.PlayClip("place_ticket");
         creditsPanel.SetActive(true);
         optionsPanel.SetActive(false);
         CameraUtils.Current.Zoom(CameraPos.Computer);
     }
 
     public void QuitGame() {
+        AudioManager.Current.PlayClip("place_ticket");
         Application.Quit();
     }
 

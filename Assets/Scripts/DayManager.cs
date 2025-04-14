@@ -12,7 +12,18 @@ public class DayManager : MonoBehaviour
     private Coroutine processTicketsCoroutine;
 
     public int dayNumber { get; private set; }
-    public DayObj CurrentDayObj => dayObjs.ElementAt(dayNumber);
+
+    public DayObj CurrentDayObj
+    {
+        get
+        {
+            if (dayNumber != -1) return dayObjs.ElementAt(dayNumber);
+            
+            Debug.LogError("Attempting to grab a day obj during the tutorial! Tutorial objects should be injected.");
+            return dayObjs.First();
+
+        }
+    }
 
     public bool isLastDay => dayNumber + 1 >= dayObjs.Count;
 
@@ -25,12 +36,13 @@ public class DayManager : MonoBehaviour
     public int CompletedScore { get; private set; }
     public int WonScore { get; private set; }
 
-    void Awake()
+    public int Standing { get; private set; }
+
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         Current = this;
-        dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
-        SceneManager.LoadScene("MainMenu");
+        GoToMainMenu();
     }
 
     private void OnDestroy()
@@ -39,15 +51,21 @@ public class DayManager : MonoBehaviour
         {
             MinigameManager.Current.MinigameEnded -= UpdateEndState;
         }
+
+        if (DialogueManager.Current != null) {
+            DialogueManager.Current.BotEnded -= CheckEndDay;
+        }
     }
 
-    public void ReturnToMenu()
+    public void GoToMainMenu()
     {
         // Reset values that are transient between multiple days
         dayNumber = -1; // Main Menu will call StartNewDay which increments this to 0
         CompletedScore = 0;
         WonScore = 0;
+        Standing = 100;
         SceneManager.LoadScene("MainMenu");
+        AudioManager.Current.PlayMusic(AudioManager.SongChoice.MainMenuMusic);
     }
 
     public void RestartDay()
@@ -56,6 +74,7 @@ public class DayManager : MonoBehaviour
         StartNewDay();
     }
 
+    // Sets necessary variables in DayManager and starts scene before invoking other singletons in the loaded scene 
     public void StartNewDay()
     {
         SelectTaskDisplay.minigameIsOpen = false; // If you fail a day mid-minigame, this needs to be reset
@@ -74,16 +93,20 @@ public class DayManager : MonoBehaviour
         switch (CurrentDayObj.sceneType)
         {
             case DayObj.SceneType.Office:
+                AudioManager.Current.PlayMusic(AudioManager.SongChoice.GameMusic);
                 SceneManager.LoadScene("OfficeScene");
                 break;
             case DayObj.SceneType.Room:
-                SceneManager.LoadScene("RoomScene");
+                AudioManager.Current.PlayMusic(AudioManager.SongChoice.RoomAmbience);
+                SceneManager.LoadScene("NewsRoomScene");
                 break;
         }
        
+        AudioManager.Current.PlayMusic(AudioManager.SongChoice.GameMusic);
         Invoke(nameof(StartDay), 0.1f); // Wait for other singletons in the scene to get started
     }
 
+    // Initializes gameplay loop for other managers
     private void StartDay()
     {
         if (TicketManager.Current is null || MinigameManager.Current is null ||
@@ -105,6 +128,10 @@ public class DayManager : MonoBehaviour
 
         MinigameManager.Current.MinigameEnded += UpdateEndState;
 
+        DialogueManager.Current.BotEnded += CheckEndDay;
+
+        SuspicionManager.Current.Standing = Standing;
+
         if (CurrentDayObj.startDay != null)
         {
             DialogueManager.Current.StartDialogue(CurrentDayObj.startDay);
@@ -124,6 +151,10 @@ public class DayManager : MonoBehaviour
             WonMinigameCount++;
         }
 
+        SuspicionManager.Current.ChangeSuspicion(state);
+    }
+
+    private void CheckEndDay() {
         if (IncompleteMinigameCount == ++CompletedMinigameCount)
         {
             EndDay();
@@ -143,6 +174,7 @@ public class DayManager : MonoBehaviour
         // Save stats
         CompletedScore += CompletedMinigameCount;
         WonScore += WonMinigameCount;
+        Standing = SuspicionManager.Current.Standing;
         SceneManager.LoadScene("EndDayScreen");
     }
 }

@@ -7,7 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private DialogueManager manager;
 
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(0)) {
             Debug.Log("Triggering!!");

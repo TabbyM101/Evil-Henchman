@@ -52,5 +52,7 @@ public class DialogueAction
 [CreateAssetMenu(menuName = "ScriptableObjects/DialogueObject")]
 public class Dialogue: ScriptableObject
 {
+    public Sprite SenderPFP;
+    public string SenderName;
     public DialogueAction[] DialogueLines;
 }

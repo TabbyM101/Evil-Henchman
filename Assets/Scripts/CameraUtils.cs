@@ -5,12 +5,14 @@ using UnityEngine;
 public class CameraUtils : MonoBehaviour
 {
     public static CameraUtils Current;
+    public Action OnZoomComplete;
+    public Action OnZoomStarted;
     public CameraPos currentPos;
     private Transform cameraTransform;
     private bool isMoving = false;
     private bool canMove => !isMoving && !SelectTaskDisplay.minigameIsOpen;
     private bool lockedInDialogue => DialogueManager.Current?.dialogueRunning ?? false;
-    [SerializeField] private float cameraSpeed = 2.0f;
+    [SerializeField] private float zoomSpeed = 0.25f;
     [SerializeField] private Transform zoomComputerPos;
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
@@ -21,7 +23,7 @@ public class CameraUtils : MonoBehaviour
         Current = this;
     }
 
-    void Start()
+    private void Start()
     {
         cameraTransform = Camera.main.transform;
         currentPos = CameraPos.PlayerView;
@@ -30,24 +32,25 @@ public class CameraUtils : MonoBehaviour
     public bool Zoom(CameraPos pos, Action onComplete = null)
     {
         bool status;
-        switch(pos)
+        switch (pos)
         {
             case CameraPos.Billboard:
                 status = ZoomBillboardCoroutine(onComplete);
                 break;
             case CameraPos.Computer:
-                status =  ZoomComputerCoroutine(onComplete);
+                status = ZoomComputerCoroutine(onComplete);
                 break;
             case CameraPos.PlayerView:
-                status =  ZoomPlayerViewCoroutine(onComplete);
+                status = ZoomPlayerViewCoroutine(onComplete);
                 break;
             case CameraPos.EscMenu:
-                status =  ZoomEscMenuCoroutine(onComplete);
+                status = ZoomEscMenuCoroutine(onComplete);
                 break;
             default:
                 Debug.Log("Given Wrong Enum");
                 return false;
         }
+
         if (status) currentPos = pos;
         return status;
     }
@@ -64,16 +67,14 @@ public class CameraUtils : MonoBehaviour
     private bool ZoomComputerCoroutine(Action onComplete = null)
     {
         if (!canMove) return false;
-        PlayerController.Current?.DisableLook();
         StartCoroutine(ZoomCoroutine(zoomComputerPos, onComplete));
         return true;
     }
-    
+
     /// <returns> True if the zoom was successfully initiated, false if it was unable to initiate </returns>
     private bool ZoomPlayerViewCoroutine(Action onComplete = null)
     {
         if (!canMove || lockedInDialogue) return false;
-        PlayerController.Current?.EnableLook();
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
         return true;
     }
@@ -88,11 +89,16 @@ public class CameraUtils : MonoBehaviour
 
     public IEnumerator ZoomCoroutine(Transform targetTransform, Action onComplete = null)
     {
+        OnZoomStarted?.Invoke();
+        var startZoomTime = Time.time;
+        PlayerController.Current?.DisableLook();
+
         isMoving = true;
-        while (Vector3.Distance(cameraTransform.position, targetTransform.position) > 0.01f || Quaternion.Angle(cameraTransform.rotation, targetTransform.rotation) > 0.1f)
+        while (Vector3.Distance(cameraTransform.position, targetTransform.position) > 0.01f ||
+               Quaternion.Angle(cameraTransform.rotation, targetTransform.rotation) > 0.1f)
         {
-            cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetTransform.position, Time.deltaTime * cameraSpeed);
-            cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetTransform.rotation, Time.deltaTime * cameraSpeed);
+            cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetTransform.position, (Time.time - startZoomTime) * zoomSpeed);
+            cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, targetTransform.rotation, (Time.time - startZoomTime) * zoomSpeed);
             yield return null;
         }
 
@@ -100,11 +106,19 @@ public class CameraUtils : MonoBehaviour
         cameraTransform.rotation = targetTransform.rotation; // Ensure the camera snaps to the exact rotation at the end
 
         onComplete?.Invoke();
+        OnZoomComplete?.Invoke();
         isMoving = false;
+        if (currentPos != CameraPos.Billboard)
+        {
+            // SelectTaskDisplay will enable looks in the case of the Billboard Zoom.
+            PlayerController.Current?.EnableLook();
+            PlayerController.Current?.EnableInteract();
+        }
     }
 }
 
-public enum CameraPos{
+public enum CameraPos
+{
     Billboard,
     Computer,
     PlayerView,

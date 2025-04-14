@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day1NewsGeneral
+  m_EditorClassIdentifier: 
+  Headline: Tensions with Portovia
+  Content: "This current administration is finding itself in hot water with the country
+    of Portovia. After the president called their people \u201Cpoverty stricken wealthfare
+    state junkies\u201D, the nation has since put embargoes on trading and promised
+    more is to come. \n\nPrime Minister of Portovia, Lance Jackson, responded to
+    these claims saying that the US has a higher percentage of homeless people and
+    that Portovia is working on creating a stronger infrastructure for those in need
+    of assistance. Jackson also includes that these remarks are a signifier that
+    relations between the two countries will become much harder and promises that
+    the president will not be able to sweep these comments under the rug. "
+  Author: Hugh Rancher
+  SuspicionReq: 0
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 0

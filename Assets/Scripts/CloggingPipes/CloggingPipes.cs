@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class CloggingPipes : MonoBehaviour, IMinigame
+public class CloggingPipes : AMinigame
 {
     [SerializeField] private Transform PipeFolder; // Where all pipes reside for the sake of organization and ease of use.
     [SerializeField] private GameObject PlumberPrefab; // Plumber prefab to spawn
@@ -37,12 +37,7 @@ public class CloggingPipes : MonoBehaviour, IMinigame
     private Coroutine plumberCoroutine;
     private float goalProgress;
 
-    private void Start()
-    {
-        StartMinigame();
-    }
-
-    public void StartMinigame()
+    protected override void StartMinigame()
     {
         SetUpSlider();
         goalProgress = goalAmount;
