@@ -47,7 +47,7 @@ public class TimeManager : MonoBehaviour
             if (DialogueManager.Current.dialogueRunning)
             {
                 // Don't advance time if dialogue is running
-                continue;
+                yield return null;
             }
             hour++;
             timeText.text = GetTimeString();
