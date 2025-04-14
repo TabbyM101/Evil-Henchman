@@ -69,14 +69,14 @@ public class SelectTaskDisplay : MonoBehaviour
         UpdateTickets(rightIdx, leftIdx);
     }
 
+    // Zoom out player and allow another minigame to open
     private void OnMinigameEnded(CompletionState state)
     {
-        // Zoom out player and allow another minigame to open
-        tickets[selectedTicketIdx].state = state;
         minigameIsOpen = false;
-
         if (isTutorialScene) return;
-
+        
+        tickets[selectedTicketIdx].state = state;
+        
         CameraUtils.Current.Zoom(CameraPos.PlayerView, () =>
         {
             MinigameManager.Current.MinigameEnded -= OnMinigameEnded;

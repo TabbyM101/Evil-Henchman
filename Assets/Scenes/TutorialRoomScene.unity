@@ -3347,7 +3347,8 @@ MonoBehaviour:
   jobNotif: {fileID: 2093581300}
   emailNotif: {fileID: 716989632}
   successNotif: {fileID: 713875997}
-  simonSaysTicket: {fileID: 1996529565}
+  ticketPrefab: {fileID: 7295892364533035998, guid: 76fc57d591a1440468c954ee4d2834db, type: 3}
+  ticketSpawnPos: {fileID: 1996529565}
   angelicLight: {fileID: 1416242925}
   billboardLight: {fileID: 1647660682}
   messagingIndicator: {fileID: 8396336259235600186}

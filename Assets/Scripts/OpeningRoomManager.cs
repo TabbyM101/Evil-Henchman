@@ -19,8 +19,10 @@ public class OpeningRoomManager : MonoBehaviour
     [SerializeField] private GameObject emailNotif;
     [SerializeField] private GameObject successNotif;
 
-    [Header("Minigame Stage")]
-    [SerializeField] private GameObject simonSaysTicket;
+    [Header("Minigame Stage")] 
+    [SerializeField] private GameObject ticketPrefab;
+    private GameObject curSimonSaysTicket;
+    [SerializeField] private GameObject ticketSpawnPos;
     [SerializeField] private GameObject angelicLight;
     [SerializeField] private GameObject billboardLight;
 
@@ -109,13 +111,16 @@ public class OpeningRoomManager : MonoBehaviour
         CameraUtils.Current.OnZoomStarted -= SummonAngelicTicket; // Unsubscribe
         AudioManager.Current.PlayClip("angelic_choir");
         angelicLight.gameObject.SetActive(true); 
-        simonSaysTicket.gameObject.SetActive(true);
-        var ticket = simonSaysTicket.GetComponent<Ticket>(); // Hardcoding the values for the ticket
-        ticket.ticketName = "Mal Enterprise Assessment";
-        ticket.ticketDesc =
+        var ticket = Instantiate(ticketPrefab);
+        ticket.transform.position = ticketSpawnPos.transform.position;
+        ticket.transform.rotation = ticketSpawnPos.transform.rotation;
+        curSimonSaysTicket = ticket;
+        var ticketComponent = ticket.GetComponent<Ticket>();
+        ticketComponent.ticketName = "Mal Enterprise Assessment";
+        ticketComponent.ticketDesc =
             "Thank you for applying to Mal. Just take this friendly at-home assessment so we can determine your eligibility for hire.";
-        ticket.minigameScene = "SimonSays";
-        TicketManager.Current.ticketsPrinted.Add(ticket); // Add this so SelectTaskDisplay can process it
+        ticketComponent.minigameScene = "SimonSays";
+        TicketManager.Current.ticketsPrinted.Add(ticketComponent); // Add this so SelectTaskDisplay can process it
         PickupObject.Current.OnPickup += HighlightBillboard;
     }
 
@@ -132,8 +137,19 @@ public class OpeningRoomManager : MonoBehaviour
     {
         billboardLight.SetActive(false);
         MinigameManager.Current.MinigameEnded -= SimonSaysCompleted; // Unsubscribe
-        assessmentComplete = true;
-        successNotif.SetActive(true);
+        if (state is CompletionState.Failed)
+        {
+            // Respawn ticket
+            TicketManager.Current.ticketsPrinted.Clear();
+            SelectTaskManager.Current.tickets.Clear();
+            Destroy(curSimonSaysTicket);
+            SummonAngelicTicket();
+        }
+        else
+        {
+            assessmentComplete = true;
+            successNotif.SetActive(true);
+        }
     }
 
     public void PlayClickSound() {

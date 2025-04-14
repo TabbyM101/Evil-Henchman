@@ -65,6 +65,7 @@ public class DayManager : MonoBehaviour
         WonScore = 0;
         Standing = 100;
         SceneManager.LoadScene("MainMenu");
+        AudioManager.Current.PlayMusic(AudioManager.SongChoice.MainMenuMusic);
     }
 
     public void RestartDay()
@@ -92,9 +93,11 @@ public class DayManager : MonoBehaviour
         switch (CurrentDayObj.sceneType)
         {
             case DayObj.SceneType.Office:
+                AudioManager.Current.PlayMusic(AudioManager.SongChoice.GameMusic);
                 SceneManager.LoadScene("OfficeScene");
                 break;
             case DayObj.SceneType.Room:
+                AudioManager.Current.PlayMusic(AudioManager.SongChoice.RoomAmbience);
                 SceneManager.LoadScene("NewsRoomScene");
                 break;
         }
