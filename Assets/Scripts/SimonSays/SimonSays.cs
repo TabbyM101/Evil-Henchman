@@ -13,8 +13,12 @@ public class SimonSays : AMinigame
 
     private int curRound = 1;
 
+    [Header("Countdown Phase")]
     [SerializeField] private float secondsPerCountdownSecond = 1.0f;
     [SerializeField] private TextMeshProUGUI countdownText;
+
+    [Header("Game Phase")] 
+    [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private GameObject tileGameObject;
     [SerializeField] private Button topRight;
     [SerializeField] private Button botRight;
@@ -142,6 +146,7 @@ public class SimonSays : AMinigame
         Debug.Log("Round complete. Advancing to next!");
         curRound++;
         colorIndex = 0;
+        roundText.text = $"{curRound} out of {numOfRounds}";
         StartCoroutine(PlaySequence());
     }
 
