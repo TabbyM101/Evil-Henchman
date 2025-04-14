@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ public class MinigameManager : MonoBehaviour
     public static MinigameManager Current;
     [NonSerialized] public Ticket curTicket;
     public Action<CompletionState> MinigameEnded;
+
+    [Header("Office Minigame Managers")]
+    [SerializeField] private GameObject pickupTrash;
     
     #region Singleton / Shared Logic
     // Initialize singleton var
@@ -33,16 +37,9 @@ public class MinigameManager : MonoBehaviour
     #region In-Office Minigame Logic
     
     // Called by CleanUpTrash ticket
-    private void PlayCleanUpTrash()
+    [UsedImplicitly] private void PlayCleanUpTrash()
     {
-        Debug.Log("Playing Clean Up Trash Minigame!");
-        // For the hot and sexy producer:
-        // Either write all the logic in here,
-        // or pass an event call to another singleton,
-        // or (favorite imo) instantiate a temporary manager for the trash minigame which destroys itself after the minigame is done
-        // or whatever else you wanna do
-        // and lmk if you run into any issues!
-        EndMinigame(CompletionState.Completed);
+        pickupTrash.SetActive(true);
     }
     #endregion
 }

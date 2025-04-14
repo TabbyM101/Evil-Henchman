@@ -12,7 +12,7 @@ public class Billboard : MonoBehaviour, IClickableObject
         {
             CameraUtils.Current.Zoom(CameraPos.Billboard, () => OpenTicketScreen());
         }
-        else
+        else if (PickupObject.Current.heldItem.GetComponent<Ticket>() is not null)
         {
             PickupObject.Current.Drop(ray, parent);
         }
