@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void EscMenu(InputAction.CallbackContext callbackContext)
     {
-        if (CameraUtils.Current.currentPos == CameraPos.PlayerView)
+        if (CameraUtils.Current.currentPos == CameraPos.PlayerView && Input.GetKeyDown(KeyCode.Escape))
         {
             CameraUtils.Current.Zoom(CameraPos.EscMenu);
         }

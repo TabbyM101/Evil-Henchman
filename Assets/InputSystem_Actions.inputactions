@@ -122,6 +122,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f80000b1-a16f-463e-9130-cd741e683db7",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "EscMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "85d0ede6-04a6-4572-9244-baa4a75ccf7d",
                     "path": "<Keyboard>/s",
                     "interactions": "",
