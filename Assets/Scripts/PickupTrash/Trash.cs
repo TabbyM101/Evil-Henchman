@@ -21,7 +21,6 @@ public class Trash : MonoBehaviour, IClickableObject
     {
         if (gameObject.transform.position.y < .5f)
         {
-            Debug.Log("Fallen");
             PickupTrash.Current.ReSpawn(gameObject);
             Destroy(gameObject);
         }

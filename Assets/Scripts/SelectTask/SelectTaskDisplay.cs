@@ -37,13 +37,15 @@ public class SelectTaskDisplay : MonoBehaviour
     private int selectedTicketIdx;
     [NonSerialized] public static bool minigameIsOpen = false;
 
-    private void Start() {
+    private void Start()
+    {
         SnapBackToStartPos(false);
     }
 
-    public void UpdateTickets(List<Ticket> list) {
+    public void UpdateTickets(List<Ticket> list)
+    {
         Debug.Log("updating tickets");
-        tickets = list;   
+        tickets = list;
     }
 
     public void OpenDisplay(Ticket selected)
@@ -56,14 +58,18 @@ public class SelectTaskDisplay : MonoBehaviour
         leftArrow.SetActive(true);
         rightArrow.SetActive(true);
         selectedTicketIdx = tickets.IndexOf(selected);
-        if (tickets.Count < 3) {
+        if (tickets.Count < 3)
+        {
             rightTicket.SetActive(false);
         }
-        if (tickets.Count < 2) {
+
+        if (tickets.Count < 2)
+        {
             leftTicket.SetActive(false);
             leftArrow.SetActive(false);
             rightArrow.SetActive(false);
         }
+
         int rightIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
         int leftIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
         UpdateTickets(rightIdx, leftIdx);
@@ -74,30 +80,36 @@ public class SelectTaskDisplay : MonoBehaviour
     {
         minigameIsOpen = false;
         if (isTutorialScene) return;
-        
+
         tickets[selectedTicketIdx].state = state;
-        
-        CameraUtils.Current.Zoom(CameraPos.PlayerView, () =>
-        {
-            MinigameManager.Current.MinigameEnded -= OnMinigameEnded;
-        });
+
+        CameraUtils.Current.Zoom(CameraPos.PlayerView,
+            () => { MinigameManager.Current.MinigameEnded -= OnMinigameEnded; });
     }
 
-    public void Rotate(bool rotateLeft) {
+    public void Rotate(bool rotateLeft)
+    {
         StartCoroutine(RotateTickets(rotateLeft));
     }
 
-    public void UpdateTickets(int rightIdx, int leftIdx) {
-        UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground, frontCompleted, frontFailed, true);
-        UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground, leftCompleted, leftFailed);
-        UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground, rightCompleted, rightFailed);
+    public void UpdateTickets(int rightIdx, int leftIdx)
+    {
+        UpdateTicketInfo(tickets[selectedTicketIdx], frontTicketTitle, frontTicketDescription, frontTicketBackground,
+            frontCompleted, frontFailed, true);
+        UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground, leftCompleted,
+            leftFailed);
+        UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground,
+            rightCompleted, rightFailed);
     }
 
-    private void UpdateTicketInfo(Ticket ticket, TextMeshProUGUI ticketName, TextMeshProUGUI ticketDescription, Image ticketBackground, GameObject completed, GameObject failed, bool front = false) {
+    private void UpdateTicketInfo(Ticket ticket, TextMeshProUGUI ticketName, TextMeshProUGUI ticketDescription,
+        Image ticketBackground, GameObject completed, GameObject failed, bool front = false)
+    {
         ticketName.text = ticket.ticketName;
         ticketDescription.text = ticket.ticketDesc;
         ticketBackground.color = ticket.ticketColor;
-        switch(ticket.state) {
+        switch (ticket.state)
+        {
             case CompletionState.Pending:
                 completed.SetActive(false);
                 failed.SetActive(false);
@@ -106,108 +118,131 @@ public class SelectTaskDisplay : MonoBehaviour
                 completed.SetActive(true);
                 failed.SetActive(false);
                 break;
-            case CompletionState.Failed: 
+            case CompletionState.Failed:
                 completed.SetActive(false);
                 failed.SetActive(true);
                 break;
         }
 
-        if (front) {
+        if (front)
+        {
             bool canSelect = ticket.state == CompletionState.Pending;
             selectFrontTicketButton.gameObject.SetActive(canSelect);
         }
     }
 
-    public void SelectTicket() {
+    public void SelectTicket()
+    {
         AudioManager.Current.PlayClip("pickCard");
         StartCoroutine(PlaySelectAnimation());
     }
 
-    private System.Collections.IEnumerator PlaySelectAnimation() {
+    private System.Collections.IEnumerator PlaySelectAnimation()
+    {
         yield return new WaitForEndOfFrame();
         animator.SetTrigger("SelectTask");
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        
+
         PlayerController.Current?.EnableLook();
         PlayerController.Current?.EnableInteract();
         panel.SetActive(false);
-        
+
         if (!minigameIsOpen)
         {
             // Bind to MinigameEnded event to get callback when minigame ends
             MinigameManager.Current.MinigameEnded += OnMinigameEnded;
-            
+
             // Assuming the minigame "locks" your PC to that game, we can safely disable the button here.
             selectFrontTicketButton.gameObject.SetActive(false);
 
-            minigameIsOpen = CameraUtils.Current.Zoom(CameraPos.Computer, () =>
+            minigameIsOpen = OpenMinigame();
+        }
+    }
+
+    private bool OpenMinigame()
+    {
+        var ticketType = tickets[selectedTicketIdx].sceneType;
+        if (ticketType is Ticket.TicketMinigameType.AdditiveScene)
+        {
+            return CameraUtils.Current.Zoom(CameraPos.Computer, () =>
             {
                 MinigameManager.Current.curTicket = tickets[selectedTicketIdx];
-                switch (tickets[selectedTicketIdx].sceneType)
-                {
-                    case Ticket.TicketMinigameType.AdditiveScene:
-                        SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);
-                        break;
-                    case Ticket.TicketMinigameType.NoScene:
-                        // MinigameScene is used for method name when it comes to no-scene tickets
-                        var methodName = tickets[selectedTicketIdx].minigameScene;
-                        MinigameManager.Current.Invoke(methodName, 0f);
-                        break;
-                }
-                
+                SceneManager.LoadScene(tickets[selectedTicketIdx].minigameScene, LoadSceneMode.Additive);
+            });
+        }
+        else
+        {
+            return CameraUtils.Current.Zoom(CameraPos.PlayerView, () =>
+            {
+                // MinigameScene is used for method name when it comes to no-scene tickets
+                MinigameManager.Current.curTicket = tickets[selectedTicketIdx];
+                var methodName = tickets[selectedTicketIdx].minigameScene;
+                MinigameManager.Current.Invoke(methodName, 0f);
             });
         }
     }
 
-    private System.Collections.IEnumerator RotateTickets(bool rotateLeft) {
-        if (tickets.Count > 3) {
-            if (rotateLeft) {
+    private System.Collections.IEnumerator RotateTickets(bool rotateLeft)
+    {
+        if (tickets.Count > 3)
+        {
+            if (rotateLeft)
+            {
                 //update right ticket
                 selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
                 int leftIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
-                UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground, leftCompleted, leftFailed);
+                UpdateTicketInfo(tickets[leftIdx], leftTicketTitle, leftTicketDescription, leftTicketBackground,
+                    leftCompleted, leftFailed);
             }
-            else {
+            else
+            {
                 //update left ticket
                 selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
                 int rightIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
-                UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground, rightCompleted, rightFailed);
+                UpdateTicketInfo(tickets[rightIdx], rightTicketTitle, rightTicketDescription, rightTicketBackground,
+                    rightCompleted, rightFailed);
             }
         }
-        else {
+        else
+        {
             if (rotateLeft) selectedTicketIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx -= 1;
             else selectedTicketIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx += 1;
         }
+
         yield return new WaitForEndOfFrame();
         AudioManager.Current.PlayClip("rotateCards");
         selectFrontTicketButton.gameObject.SetActive(false);
 
         Debug.Log(tickets.Count);
-        if (tickets.Count == 2) {
+        if (tickets.Count == 2)
+        {
             Debug.Log("2 tickets !!");
             if (rotateLeft) animator.SetTrigger("RotateLeft2Cards");
             else animator.SetTrigger("RotateRight2Cards");
         }
-        else {
+        else
+        {
             Debug.Log("NOT 2 tickets !!");
             if (rotateLeft) animator.SetTrigger("RotateLeft");
             else animator.SetTrigger("RotateRight");
         }
+
         Debug.Log("left: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RotateLeft2Cards"));
         Debug.Log("right: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RotateRight2Cards"));
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        
+
         SnapBackToStartPos(true);
     }
 
-    private void SnapBackToStartPos(bool shift) {
-        if (shift) {
+    private void SnapBackToStartPos(bool shift)
+    {
+        if (shift)
+        {
             int rightIdx = selectedTicketIdx == 0 ? tickets.Count - 1 : selectedTicketIdx - 1;
             int leftIdx = selectedTicketIdx == tickets.Count - 1 ? 0 : selectedTicketIdx + 1;
             UpdateTickets(rightIdx, leftIdx);
         }
+
         animator.SetTrigger("Idle");
     }
-
-
 }

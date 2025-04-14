@@ -65,7 +65,7 @@ public class DayManager : MonoBehaviour
         WonScore = 0;
         Standing = 100;
         SceneManager.LoadScene("MainMenu");
-        AudioManager.Current.PlayMusic(AudioManager.SongChoice.MainMenuMusic);
+        AudioManager.Current?.PlayMusic(AudioManager.SongChoice.MainMenuMusic);
     }
 
     public void RestartDay()

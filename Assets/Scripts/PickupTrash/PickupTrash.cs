@@ -10,33 +10,25 @@ public class PickupTrash : MonoBehaviour
     private int score;
     public static PickupTrash Current;
 
-
-    // move the trashcan to the top of the desk 
-    // have the trash fall from the sky 
-    // trash that gets out of bounds needs to be respawned 
-    // have the player be able to pickup the trash 
-    // when the player clicks again the trash should be thrown 
-    // when hitting top of trash the trash gets destoryed 
-
-    private void Start()
+    void Awake()
     {
         Current = this;
+    }
+    
+    private void OnEnable()
+    {
         score = 0;
         MoveTrashCan();
         SpawnTrash();
     }
 
-    private void Update()
+    public void Score()
     {
+        score++;
         if (score == goal)
         {
             RoomClean();
         }
-    }
-
-    public void Score()
-    {
-        score++;
     }
 
     private void MoveTrashCan()
@@ -61,7 +53,8 @@ public class PickupTrash : MonoBehaviour
     private void Spawn(GameObject trash)
     {
         Vector3 spawnPosition = CreatePosition();
-        Instantiate(trash, spawnPosition, Quaternion.identity);
+        var spawnedTrash = Instantiate(trash, spawnPosition, Quaternion.identity);
+        spawnedTrash.transform.parent = gameObject.transform;
     }
 
     private Vector3 CreatePosition()
@@ -92,7 +85,8 @@ public class PickupTrash : MonoBehaviour
         }
         ogTrashCan.SetActive(true);
         mainTrashCan.SetActive(false);
-        Destroy(gameObject);
+        MinigameManager.Current.EndMinigame(CompletionState.Completed);
+        gameObject.SetActive(false);
     }
     
 }
