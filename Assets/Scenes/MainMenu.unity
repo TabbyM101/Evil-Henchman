@@ -2256,6 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132dbcca594f4ab4a989d1cd166e0058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipIntro: 0
   stickyNoteZoomPos: {fileID: 4824813645406285014}
   interactionText: {fileID: 1190240215}
   optionsPanel: {fileID: 1244388213}
@@ -6221,7 +6222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPos: 0
-  cameraSpeed: 4.5
+  camZoomSpeed: 20
   zoomComputerPos: {fileID: 1416590557}
   zoomPlayerViewPos: {fileID: 1174419276}
   zoomBillboardPos: {fileID: 765555020}

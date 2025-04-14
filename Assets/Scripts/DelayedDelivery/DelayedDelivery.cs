@@ -108,21 +108,25 @@ public class DelayedDelivery : AMinigame
 
     public void OnRedBinClicked()
     {
+        Debug.Log("red clicked");
         CheckBin(0); // Red Bin
     }
 
     public void OnGreenBinClicked()
     {
+        Debug.Log("green clicked");
         CheckBin(1); // Green Bin
     }
 
     public void OnBlueBinClicked()
     {
+        Debug.Log("blue clicked");
         CheckBin(2); // Blue Bin
     }
 
     private void CheckBin(int binIndex)
     {
+        Debug.Log("checking bin " + binIndex);
         if (currentBox == null) return;
 
         int correctColorIndex = 3;
