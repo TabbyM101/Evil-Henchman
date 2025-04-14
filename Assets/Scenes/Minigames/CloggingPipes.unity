@@ -995,7 +995,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 405.88, y: 50}
+  m_SizeDelta: {x: 490.7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698666387
 MonoBehaviour:
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CLICK and HOLD a Pipe to clog it and Start!
+  m_text: CLICK and HOLD Pipes to clog them and Start!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbb9f79d286223d45995caf19d012f65, type: 2}
   m_sharedMaterial: {fileID: -8220453204374990717, guid: dbb9f79d286223d45995caf19d012f65, type: 2}
