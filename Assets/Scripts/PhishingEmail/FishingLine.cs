@@ -18,7 +18,7 @@ public class FishingLine : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasTransform, canvas.transform.position, Camera.main, out canvasPos);
     }
 
-    void Update()
+    private void Update()
     {
         UpdateHeight();
 

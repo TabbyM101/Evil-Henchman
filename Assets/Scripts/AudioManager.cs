@@ -13,14 +13,14 @@ public class AudioManager : MonoBehaviour
         RoomAmbience,
     }
 
-    void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         Current = this;
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Start()
+    private void Start()
     {
         PlayMusic(SongChoice.MainMenuMusic); // Assume we always start at main menu
     }

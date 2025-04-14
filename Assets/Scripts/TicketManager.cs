@@ -21,7 +21,7 @@ public class TicketManager : MonoBehaviour
         Current = this;
     }
 
-    void Start() {
+    private void Start() {
         ticketsPrinted = new List<Ticket>();
     }
 

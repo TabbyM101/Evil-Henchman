@@ -59,7 +59,7 @@ public class UILineRenderer : Graphic
         return (float)(Mathf.Atan2(target.y - me.y, target.x - me.x) * (180 / Mathf.PI));
     }
 
-    void DrawVerticesForPoint(Vector2 point, VertexHelper vh, float angle)
+    private void DrawVerticesForPoint(Vector2 point, VertexHelper vh, float angle)
     {
         UIVertex vertex = UIVertex.simpleVert;
         vertex.color = color;

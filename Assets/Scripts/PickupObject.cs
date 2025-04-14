@@ -10,7 +10,7 @@ public class PickupObject : MonoBehaviour
     public Action OnPickup;
     public Action OnDrop;
 
-    void Start()
+    private void Start()
     {
         heldItem = null;
         Current = this;

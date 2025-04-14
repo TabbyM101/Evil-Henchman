@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PhishingEmail : MonoBehaviour, IMinigame
+public class PhishingEmail : AMinigame
 {
     [SerializeField] private int emailGoal = 5;
     [SerializeField] private GameObject emailSpawnObject;
@@ -14,34 +14,13 @@ public class PhishingEmail : MonoBehaviour, IMinigame
     private int goodEmails = 0;
     private int badEmails = 0;
 
-    private void Start()
+    protected override void StartMinigame()
     {
         UpdateText();
-        StartMinigame();
-    }
-
-    public void StartMinigame()
-    {
         StartCoroutine(SpawnEmail());
     }
 
-    private void Update()
-    {
-
-        if (emailsCaught == emailGoal) 
-        {
-            if (goodEmails > badEmails)
-            {
-                MinigameWon();
-            } 
-            else 
-            {
-                MinigameLost();
-            }
-        }
-    }
-
-    IEnumerator SpawnEmail()
+    private IEnumerator SpawnEmail()
     {
         while (true)
         {
@@ -89,6 +68,20 @@ public class PhishingEmail : MonoBehaviour, IMinigame
         {
             badEmails++;
         }
+        
+        // Check win condition
+        if (emailsCaught == emailGoal) 
+        {
+            if (goodEmails > badEmails)
+            {
+                MinigameWon();
+            } 
+            else 
+            {
+                MinigameLost();
+            }
+        }
+        
         UpdateText();
     }
 
@@ -100,8 +93,7 @@ public class PhishingEmail : MonoBehaviour, IMinigame
 
     private void MinigameLost()
     {
-        Debug.Log("Got to many scam emails! Closing the game...");
+        Debug.Log("Got too many scam emails! Closing the game...");
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
-        // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
     }
 }

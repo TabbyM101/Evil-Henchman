@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using System;
 
-public class DelayedDelivery : MonoBehaviour, IMinigame
+public class DelayedDelivery : AMinigame
 {
 
     private bool gameRunning = false;
@@ -33,7 +33,7 @@ public class DelayedDelivery : MonoBehaviour, IMinigame
     private int maxBoxes = 15;
     private int currentBoxes = 0;
 
-    public void StartMinigame()
+    protected override void StartMinigame()
     {
         gameRunning = true;
         correctBoxes = 0;
@@ -44,18 +44,6 @@ public class DelayedDelivery : MonoBehaviour, IMinigame
 
         SpawnBox();
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        StartMinigame();   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
 
     private void SpawnBox()
     {
