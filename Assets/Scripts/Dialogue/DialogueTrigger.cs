@@ -10,7 +10,6 @@ public class DialogueTrigger : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(0)) {
-            Debug.Log("Triggering!!");
             manager.StartDialogue(dialogue);
         }
     }

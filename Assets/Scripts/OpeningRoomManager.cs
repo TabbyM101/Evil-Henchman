@@ -163,7 +163,6 @@ public class OpeningRoomManager : MonoBehaviour
             AudioManager.Current.PlayClip("notification");
             jobNotif.SetActive(true);
             jobNotifSent = true;
-            Debug.Log("Sent job notif");
         }
         else if (!emailNotifSent) {
             // send email with task

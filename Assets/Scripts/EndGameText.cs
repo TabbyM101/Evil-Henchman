@@ -23,7 +23,6 @@ public class EndGameText : MonoBehaviour
         var wonGamesPercent = wonGames / (float)playedGames;
 
         profitsGraph.fillAmount = lostGames;
-        Debug.Log(wonGamesPercent);
         profitsPercentage.text = (int)(wonGamesPercent * 100) + "%";
         
         if (wonGamesPercent >= 0.6) {

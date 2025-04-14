@@ -87,13 +87,11 @@ public class PhishingEmail : AMinigame
 
     private void MinigameWon()
     {
-        Debug.Log("Won Phishing Email!");
         MinigameManager.Current.EndMinigame(CompletionState.Completed);
     }
 
     private void MinigameLost()
     {
-        Debug.Log("Got too many scam emails! Closing the game...");
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
     }
 }

@@ -23,7 +23,6 @@ public class MinigameManager : MonoBehaviour
     // Minigames will call EndMinigame when they finish
     public void EndMinigame(CompletionState state)
     {
-        Debug.Log($"MinigameManager: Game ended with state {state}");
         MinigameEnded?.Invoke(state);
         if (curTicket.sceneType is Ticket.TicketMinigameType.AdditiveScene)
         {

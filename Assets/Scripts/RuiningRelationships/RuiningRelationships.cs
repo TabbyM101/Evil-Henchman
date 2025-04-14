@@ -262,14 +262,11 @@ public class RuiningRelationships : AMinigame
 
     private void MinigameWon()
     {
-        Debug.Log("Won Ruining Relationships!");
         MinigameManager.Current.EndMinigame(CompletionState.Completed);
     }
 
     private void MinigameLost()
     {
-        Debug.Log("Lost Ruining Relationships...");
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
-        // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
     }
 }

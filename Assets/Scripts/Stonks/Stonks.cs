@@ -125,7 +125,6 @@ public class Stonks : AMinigame
     private float PercentageToPosition(float percentage)
     {
         float barHeight = topBound - bottomBound;
-//        Debug.Log((percentage / 100f) * barHeight + bottomBound);
         return (percentage / 100f) * barHeight + bottomBound;
     }
 

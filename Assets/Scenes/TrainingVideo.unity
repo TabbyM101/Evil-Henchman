@@ -606,6 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a270e1333e84b138af4a1fce6bb40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupTrash: {fileID: 0}
 --- !u!1 &177597746
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +949,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a2b4202c00a85415eaff118e59b6dac0, type: 2}
+  sharedProfile: {fileID: 11400000, guid: faabee7729c6e4255aa762eeaa223783, type: 2}
 --- !u!23 &333511160
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -972,7 +973,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b0d8a464e4f384be0a7124d47d4b206a, type: 2}
+  - {fileID: 2100000, guid: 9101e450864284ad4b307303c7396b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

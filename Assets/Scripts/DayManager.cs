@@ -80,7 +80,6 @@ public class DayManager : MonoBehaviour
         SelectTaskDisplay.minigameIsOpen = false; // If you fail a day mid-minigame, this needs to be reset
         if (isLastDay)
         {
-            Debug.Log("No more days.");
             return;
         }
 
@@ -123,8 +122,6 @@ public class DayManager : MonoBehaviour
             TicketManager.Current.pendingTickets.Enqueue(minigame);
             IncompleteMinigameCount++;
         }
-
-        Debug.Log($"Day index {dayNumber} started");
 
         MinigameManager.Current.MinigameEnded += UpdateEndState;
 

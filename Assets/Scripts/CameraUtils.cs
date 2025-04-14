@@ -47,7 +47,7 @@ public class CameraUtils : MonoBehaviour
                 status = ZoomEscMenuCoroutine(onComplete);
                 break;
             default:
-                Debug.Log("Given Wrong Enum");
+                Debug.LogError("Given Wrong Enum");
                 return false;
         }
 

@@ -75,8 +75,6 @@ public class SimonSays : AMinigame
             // Wait a moment at this color
             yield return new WaitForSeconds(flashDuration);
 
-            Debug.Log($"Picked {color}");
-
             switch (color)
             {
                 case SimonSaysColor.TOPRIGHT:
@@ -118,8 +116,6 @@ public class SimonSays : AMinigame
             return;
         }
 
-        Debug.Log("Picked correct color!");
-
         // Did this conclude a round?
         if (colorIndex == curRound - 1)
         {
@@ -143,7 +139,6 @@ public class SimonSays : AMinigame
 
     private void IncrementRound()
     {
-        Debug.Log("Round complete. Advancing to next!");
         curRound++;
         colorIndex = 0;
         roundText.text = $"{curRound} out of {numOfRounds}";
@@ -152,15 +147,12 @@ public class SimonSays : AMinigame
 
     private void MinigameWon()
     {
-        Debug.Log("Won Simon Says!");
         MinigameManager.Current.EndMinigame(CompletionState.Completed);
     }
 
     private void MinigameLost()
     {
-        Debug.Log("Picked incorrect color! Closing the game...");
         MinigameManager.Current.EndMinigame(CompletionState.Failed);
-        // StartMinigame(); this line would restart the minigame, but it is set to end the minigame via the manager above
     }
 
     private void GenerateColorSequence()

@@ -166,12 +166,10 @@ public class DelayedDelivery : AMinigame
 
         if (evilPoints >= 8)
         {
-            Debug.Log("Won Delayed Delivery");
             MinigameManager.Current.EndMinigame(CompletionState.Completed);
         }
         else
         {
-            Debug.Log("Lost Delayed Delivery!");
             MinigameManager.Current.EndMinigame(CompletionState.Failed);
         }
     }

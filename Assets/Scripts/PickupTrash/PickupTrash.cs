@@ -77,7 +77,6 @@ public class PickupTrash : MonoBehaviour
 
     private void RoomClean()
     {
-        Debug.Log("Done!");
         GameObject[] trash = GameObject.FindGameObjectsWithTag("Trash");
         foreach(GameObject t in trash)
         {

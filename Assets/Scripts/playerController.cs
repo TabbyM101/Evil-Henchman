@@ -107,8 +107,6 @@ public class PlayerController : MonoBehaviour
             }
             var clickableObject = hit.collider.gameObject.GetComponent<IClickableObject>();
             clickableObject?.ClickableObject_Clicked(hit);
-
-            Debug.Log(hit.collider.gameObject.name);
         }
     }
 

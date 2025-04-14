@@ -44,7 +44,6 @@ public class SelectTaskDisplay : MonoBehaviour
 
     public void UpdateTickets(List<Ticket> list)
     {
-        Debug.Log("updating tickets");
         tickets = list;
     }
 
@@ -215,22 +214,17 @@ public class SelectTaskDisplay : MonoBehaviour
         AudioManager.Current.PlayClip("rotateCards");
         selectFrontTicketButton.gameObject.SetActive(false);
 
-        Debug.Log(tickets.Count);
         if (tickets.Count == 2)
         {
-            Debug.Log("2 tickets !!");
             if (rotateLeft) animator.SetTrigger("RotateLeft2Cards");
             else animator.SetTrigger("RotateRight2Cards");
         }
         else
         {
-            Debug.Log("NOT 2 tickets !!");
             if (rotateLeft) animator.SetTrigger("RotateLeft");
             else animator.SetTrigger("RotateRight");
         }
-
-        Debug.Log("left: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RotateLeft2Cards"));
-        Debug.Log("right: " + animator.GetCurrentAnimatorStateInfo(0).IsName("RotateRight2Cards"));
+        
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
         SnapBackToStartPos(true);

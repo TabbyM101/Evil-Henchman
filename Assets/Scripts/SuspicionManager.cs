@@ -66,7 +66,6 @@ public class SuspicionManager : MonoBehaviour
             }
             baseDialogue.DialogueLines[0].DialogueLine.DialogueLine = negativeResponses[Standing];
         }
-        Debug.Log($"Current Suspicion is {Standing}");
 
         if (Standing == 0) {
             DialogueManager.Current.StartDialogue(baseDialogue, failedDayTalking: true);

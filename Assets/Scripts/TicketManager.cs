@@ -29,7 +29,6 @@ public class TicketManager : MonoBehaviour
     {
         if (pendingTickets.Count == 0)
         {
-            Debug.Log("All tickets printed!");
             return;
         }
 
