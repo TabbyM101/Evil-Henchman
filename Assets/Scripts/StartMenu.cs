@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class StartMenu : MonoBehaviour
 {
+    #if UNITY_EDITOR
+    [SerializeField] private bool skipIntro;
+    #endif
     [SerializeField] private Transform stickyNoteZoomPos;
     [SerializeField] private GameObject interactionText;
     [SerializeField] private GameObject optionsPanel;
@@ -41,6 +44,13 @@ public class StartMenu : MonoBehaviour
         AudioManager.Current.PlayClip("place_ticket");
         optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
+        #if UNITY_EDITOR
+        if (skipIntro)
+        {
+            CameraUtils.Current.Zoom(CameraPos.PlayerView, () => DayManager.Current.StartNewDay());
+            return;
+        }
+        #endif
         CameraUtils.Current.Zoom(CameraPos.PlayerView, () => SceneManager.LoadScene("TutorialRoomScene"));
     }
 
