@@ -46,6 +46,18 @@ public class DayManager : MonoBehaviour
         GoToMainMenu();
     }
 
+    private void HandleSceneUnloading()
+    {
+        /*// Clean up tweens globally
+        foreach (var obj in ))
+        {
+            if (obj != null)
+                LeanTween.cancel(obj);
+        }*/
+        LeanTween.cancelAll();
+    }
+
+
     private void OnDestroy()
     {
         if (MinigameManager.Current != null)
@@ -163,6 +175,7 @@ public class DayManager : MonoBehaviour
     // End the day without saving any stats
     public void FailDay()
     {
+        HandleSceneUnloading();
         SceneManager.LoadScene("EndDayScreen");
     }
 
@@ -173,6 +186,7 @@ public class DayManager : MonoBehaviour
         CompletedScore += CompletedMinigameCount;
         WonScore += WonMinigameCount;
         Standing = SuspicionManager.Current.Standing;
+        HandleSceneUnloading();
         SceneManager.LoadScene("EndDayScreen");
     }
 }

@@ -1870,15 +1870,15 @@ MonoBehaviour:
   CompletionSlider: {fileID: 95779817}
   timeLeftText: {fileID: 2133271895}
   NumberOfPipesToSpawn: 5
-  timeLeft: 90
+  timeLeft: 30
   goalAmount: 100
-  goalRate: 10
-  tickRate: 3
+  goalRate: 30
+  tickRate: 1.5
   CloggedEfficiencyMin: 1
   CloggedEfficiencyMax: 4
-  plumberSpawnRateMin: 1
-  plumberSpawnRateMax: 8
-  secondPlumberSpawnChance: 0.2
+  plumberSpawnRateMin: 3
+  plumberSpawnRateMax: 7
+  secondPlumberSpawnChance: 0.1
 --- !u!1 &1488861879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,7 +2586,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004992133}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 136.91, y: 136.91, z: 136.91}
   m_ConstrainProportionsScale: 1
@@ -2605,7 +2605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004992133}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2643,7 +2643,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004992133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

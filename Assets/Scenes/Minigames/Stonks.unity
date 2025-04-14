@@ -213,8 +213,8 @@ RectTransform:
   m_LocalScale: {x: 0.0006, y: 0.0006, z: 0.0006}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2030328214}
   - {fileID: 2004992134}
+  - {fileID: 2030328214}
   - {fileID: 319921528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -358,17 +358,17 @@ MonoBehaviour:
   fish: {fileID: 594340260}
   bounceDamping: 0.6
   minMoveInterval: 0.2
-  maxMoveInterval: 4
-  minFishSpeed: 30
-  maxFishSpeed: 200
-  maxFishViolence: 89
-  minFishViolence: 30
-  delayStart: 2
+  maxMoveInterval: 1.5
+  minFishSpeed: 170
+  maxFishSpeed: 350
+  maxFishViolence: 100
+  minFishViolence: 65
+  delayStart: 1
   score: 0
-  time: 40
+  time: 15
   timeText: {fileID: 1169576264}
-  increaseSpeed: 4
-  decreaseSpeed: 4
+  increaseSpeed: 9
+  decreaseSpeed: 9
   scoreText: {fileID: 441651519}
   goodFeedback: {fileID: 1897827471}
   badFeedback: {fileID: 1336777923}
@@ -2788,13 +2788,7 @@ MonoBehaviour:
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   gridSize: {x: 40, y: 200}
   grid: {fileID: 0}
-  points:
-  - {x: 0, y: 50}
-  - {x: 1.19, y: 53.5}
-  - {x: 10, y: 47.2}
-  - {x: 13.28, y: 50}
-  - {x: 0, y: 50}
-  - {x: 0, y: 50}
+  points: []
   thickness: 10
 --- !u!222 &1730780722
 CanvasRenderer:
@@ -2893,7 +2887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1840463632
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3373,7 +3367,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004992133}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 136.91, y: 136.91, z: 136.91}
   m_ConstrainProportionsScale: 1
@@ -3392,7 +3386,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004992133}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3430,7 +3424,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004992133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
