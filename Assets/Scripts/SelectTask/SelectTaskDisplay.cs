@@ -82,9 +82,11 @@ public class SelectTaskDisplay : MonoBehaviour
         if (isTutorialScene) return;
 
         tickets[selectedTicketIdx].state = state;
-
-        CameraUtils.Current.Zoom(CameraPos.PlayerView,
-            () => { MinigameManager.Current.MinigameEnded -= OnMinigameEnded; });
+        if (tickets[selectedTicketIdx].sceneType is Ticket.TicketMinigameType.NoScene)
+        {
+            // Office minigame complete, must zoom in to see bot message
+            CameraUtils.Current.Zoom(CameraPos.Computer);
+        }
     }
 
     public void Rotate(bool rotateLeft)
