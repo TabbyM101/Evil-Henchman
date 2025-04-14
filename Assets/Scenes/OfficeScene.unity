@@ -3674,6 +3674,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -21.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6097953584559682200, guid: 5ea7acaf09c7a4ee1afe7fa93412d193, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276790320368815360, guid: 5ea7acaf09c7a4ee1afe7fa93412d193, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8997256337808449969, guid: 5ea7acaf09c7a4ee1afe7fa93412d193, type: 3}
       propertyPath: m_Name
       value: SelectedTaskScreen
