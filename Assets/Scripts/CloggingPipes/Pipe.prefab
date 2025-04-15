@@ -99,12 +99,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBarObject: {fileID: 7903699824536202753}
+  particlePrefab: {fileID: 1623042319757596670, guid: e2925dcd1831cb947911bf97bb99227e, type: 3}
+  possibleSprites:
+  - {fileID: -1559932114, guid: 1ac7f2d3f824e054c8e297139ba8891f, type: 3}
+  - {fileID: -120973, guid: 1ac7f2d3f824e054c8e297139ba8891f, type: 3}
+  - {fileID: 1193449951, guid: 1ac7f2d3f824e054c8e297139ba8891f, type: 3}
+  - {fileID: -2022795462, guid: 1ac7f2d3f824e054c8e297139ba8891f, type: 3}
+  - {fileID: -684470588, guid: f88811b379b4c80488008a2444b102d5, type: 3}
+  particleDropInterval: 0.8
   TargetAmountToClog: 100
   FillRate: 50
   FillDecayRate: 10
   plumberSpot: {fileID: 7291811653770192903}
   pipeImage: {fileID: 6761582548871887350}
   cloggedColor: {r: 0.17698114, g: 0.2528302, b: 0.19323452, a: 1}
+  yOffset: 1
 --- !u!114 &4760147731645916664
 MonoBehaviour:
   m_ObjectHideFlags: 0
