@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day4NewsHighSus
+  m_EditorClassIdentifier: 
+  Headline: Mal Work Environment
+  Content: "Mal Enterprises has been known as a tough place to work for years, but
+    has it gone too far. It feels in the past months, the work environment over there
+    has become harsher. Or has it? Some people argue that it has always been that
+    bad, people are only now starting to speak out about it.\r\n\nBut this is overall
+    a good thing that this news is breaking. Mal must be held accountable for their
+    actions and the more that comes to light means that they can be appropriately
+    reprimanded. Mal for too long has been able to hide under their \u201Ciron curtain\u201D
+    where employees are known not to speak about the environment. Hopefully with
+    some coming forward, more will be inspired to do so themselves.\r"
+  Author: Auguste Lapomme
+  SuspicionReq: 1
+  MinimumSuspicionReq: 0
+  MaximumSuspicionReq: 50

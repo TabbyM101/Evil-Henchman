@@ -22,7 +22,7 @@ public class EndGameText : MonoBehaviour
         var lostGames = playedGames - wonGames;
         var wonGamesPercent = wonGames / (float)playedGames;
 
-        profitsGraph.fillAmount = lostGames / 100;
+        profitsGraph.fillAmount = (float)lostGames / playedGames;
         profitsPercentage.text = (int)(wonGamesPercent * 100) + "%";
         
         if (wonGamesPercent >= 0.6) {

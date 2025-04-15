@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b86debf5aa50646a6327bf1a96e10e, type: 3}
+  m_Name: Day4NewsLowSus
+  m_EditorClassIdentifier: 
+  Headline: Mal Work Environment
+  Content: "Mal Enterprises has been known as a tough place to work for years but
+    the employees seem happy. While their core pillars of Submit, Serve, Sabotage
+    may seem harsh, the people who work their swear by them. We interviewed manager
+    Emily Carraway about her experience there.\r\nShe emphasizes her love for the
+    company and how they have treated her like family. She understands that it has
+    been 5 years since she got promoted but she says this is just because the company
+    has high expectations for her. She clarifies that these are not overbearing on
+    her, but instead allow her to strive to be even better.\r"
+  Author: Auguste Lapomme
+  SuspicionReq: 1
+  MinimumSuspicionReq: 50
+  MaximumSuspicionReq: 100

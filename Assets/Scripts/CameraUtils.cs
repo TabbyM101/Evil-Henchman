@@ -17,6 +17,7 @@ public class CameraUtils : MonoBehaviour
     [SerializeField] private Transform zoomPlayerViewPos;
     [SerializeField] private Transform zoomBillboardPos;
     [SerializeField] private Transform zoomEscMenuPos;
+    [SerializeField] private GameObject escHelp;
 
     private void Awake()
     {
@@ -61,6 +62,7 @@ public class CameraUtils : MonoBehaviour
     {
         if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomBillboardPos, onComplete));
+        if (escHelp != null) escHelp.SetActive(true);
         return true;
     }
 
@@ -69,6 +71,7 @@ public class CameraUtils : MonoBehaviour
     {
         if (!canMove) return false;
         StartCoroutine(ZoomCoroutine(zoomComputerPos, onComplete));
+        if (escHelp != null) escHelp.SetActive(true);
         return true;
     }
 
@@ -77,6 +80,7 @@ public class CameraUtils : MonoBehaviour
     {
         if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomPlayerViewPos, onComplete));
+        if (escHelp != null) escHelp.SetActive(false);
         return true;
     }
 
@@ -85,6 +89,7 @@ public class CameraUtils : MonoBehaviour
     {
         if (!canMove || lockedInDialogue) return false;
         StartCoroutine(ZoomCoroutine(zoomEscMenuPos, onComplete));
+        if (escHelp != null) escHelp.SetActive(false);
         return true;
     }
 
