@@ -58,6 +58,7 @@ public class PickupObject : MonoBehaviour
     {
         if (heldItem && heldItem.GetComponent<Trash>())
         {
+            AudioManager.Current.PlayClip("throw");
             Rigidbody rb = heldItem.GetComponent<Rigidbody>();
             rb.isKinematic = false;
             Vector3 throwDirection = (point - heldItem.transform.position).normalized;
