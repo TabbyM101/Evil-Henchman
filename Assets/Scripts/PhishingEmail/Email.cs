@@ -49,6 +49,7 @@ public class Email : MonoBehaviour
             caught = true;
             hook.caughtFish = this.gameObject;
             this.gameObject.transform.SetParent(other.gameObject.transform);
+            AudioManager.Current.PlayClip("WaterBubbles");
         }
     }
 }

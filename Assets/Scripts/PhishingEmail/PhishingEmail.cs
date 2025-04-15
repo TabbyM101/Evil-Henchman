@@ -8,7 +8,8 @@ public class PhishingEmail : AMinigame
     [SerializeField] private int emailGoal = 5;
     [SerializeField] private GameObject emailSpawnObject;
     [SerializeField] private GameObject emailParent;
-    [SerializeField] private GameObject emailPrefab;
+    [SerializeField] private GameObject goodEmail;
+    [SerializeField] private GameObject badEmail;
     [SerializeField] private TextMeshProUGUI scoreText;
     private int emailsCaught = 0;
     private int goodEmails = 0;
@@ -24,20 +25,18 @@ public class PhishingEmail : AMinigame
     {
         while (true)
         {
-            var email = Instantiate(emailPrefab, new Vector3(0,0,0), Quaternion.identity);
-            EmailPosition(email);
-            var emailComponent = email.GetComponent<Email>();
-            emailComponent.isGood = Random.value > 0.7;
-            Color color;
-            if (emailComponent.isGood)
+            var email = gameObject;
+            bool isGood = Random.value > 0.7;
+            if (isGood)
             {
-                color = Color.green;
+                email = Instantiate(goodEmail, new Vector3(0,0,0), Quaternion.identity);
             }
             else 
             {
-                color = Color.red;
+                email = Instantiate(badEmail, new Vector3(0,0,0), Quaternion.identity);
             }
-            email.GetComponent<Image>().color = color;
+            EmailPosition(email);
+            var emailComponent = email.GetComponent<Email>();
             emailComponent.swimmingSpeed = Random.Range(5, 15);
             emailComponent.swimmingHeight = Random.Range(5, 50);
             emailComponent.canvasTransform = emailSpawnObject.GetComponent<RectTransform>();

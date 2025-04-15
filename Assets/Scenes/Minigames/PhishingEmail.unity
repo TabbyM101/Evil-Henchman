@@ -283,7 +283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 61.5, y: 30.000069}
+  m_AnchoredPosition: {x: 2.300003, y: 92.6}
   m_SizeDelta: {x: 5, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &140705069
@@ -957,7 +957,8 @@ MonoBehaviour:
   emailGoal: 5
   emailSpawnObject: {fileID: 72779340}
   emailParent: {fileID: 785317997}
-  emailPrefab: {fileID: 2932342849194100231, guid: 2f9b3e91131e54787933dca513253182, type: 3}
+  goodEmail: {fileID: 2932342849194100231, guid: 2f9b3e91131e54787933dca513253182, type: 3}
+  badEmail: {fileID: 2932342849194100231, guid: 5c06bf3cc115242579b9424b195676ca, type: 3}
   scoreText: {fileID: 2145365536}
 --- !u!4 &1300752853
 Transform:
@@ -1009,8 +1010,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.899986, y: 150}
-  m_SizeDelta: {x: 40, y: 50}
+  m_AnchoredPosition: {x: 45.77, y: 168.89}
+  m_SizeDelta: {x: 153.54, y: 112.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382211852
 MonoBehaviour:
@@ -1025,14 +1026,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5736508, g: 0.36418653, b: 0.8301887, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7b698dffb15fb4a89b6d81932aa25653, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

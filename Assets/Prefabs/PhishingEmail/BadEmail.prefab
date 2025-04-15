@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3762111275336232118}
   - component: {fileID: 3937576803559589592}
   - component: {fileID: 212476769390268234}
-  - component: {fileID: 2901096966005427494}
+  - component: {fileID: 436417636178523310}
   m_Layer: 5
-  m_Name: Email
+  m_Name: BadEmail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 403.9, y: -29}
-  m_SizeDelta: {x: 79.6875, y: 56.25}
+  m_SizeDelta: {x: 89.0625, y: 51.5625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2350757866563257593
 CanvasRenderer:
@@ -62,14 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1795600406, guid: e30ed7740c7bf469f87bfa93a16e6220, type: 3}
+  m_Sprite: {fileID: -1327648348, guid: d8f2b33c4be5a43f7a4cafa1b9a78800, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimmingSpeed: 6
   swimmingHeight: 30
-  isGood: 1
+  isGood: 0
   canvasTransform: {fileID: 0}
 --- !u!65 &3937576803559589592
 BoxCollider:
@@ -114,8 +114,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 79.345726, y: 55.38941, z: 1}
-  m_Center: {x: -0.10171284, y: 0.15259099, z: 0}
+  m_Size: {x: 88.90789, y: 51.066082, z: 1}
+  m_Center: {x: 0.000009313226, y: -0.025429763, z: 0}
 --- !u!54 &212476769390268234
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &2901096966005427494
+--- !u!95 &436417636178523310
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ Animator:
   m_GameObject: {fileID: 2932342849194100231}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ae1bf814448e4d1e8e36c40bf006f3a, type: 2}
+  m_Controller: {fileID: 9100000, guid: e778cd315dc4f4d1791fff593baffb07, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
