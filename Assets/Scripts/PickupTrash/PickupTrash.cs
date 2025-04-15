@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PickupTrash : MonoBehaviour
@@ -6,6 +7,9 @@ public class PickupTrash : MonoBehaviour
     [SerializeField] private GameObject mainTrashCan;
     [SerializeField] private GameObject spawnZone;
     [SerializeField] private GameObject[] trashObjects;
+    [SerializeField] private GameObject[] trashScored;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int goal;
     private int score;
     public static PickupTrash Current;
@@ -25,6 +29,11 @@ public class PickupTrash : MonoBehaviour
     public void Score()
     {
         score++;
+        scoreText.text = $"Pickup Trash:\n {score}/{goal}";
+        if (trashScored.Length >= score - 1)
+        {
+            trashScored[score - 1].SetActive(true);
+        }
         if (score == goal)
         {
             RoomClean();
@@ -35,6 +44,8 @@ public class PickupTrash : MonoBehaviour
     {
         ogTrashCan.SetActive(false);
         mainTrashCan.SetActive(true);
+        canvas.SetActive(true);
+        scoreText.text = $"Pickup Trash:\n {score}/{goal}";
     }
 
     private void SpawnTrash()
@@ -84,6 +95,11 @@ public class PickupTrash : MonoBehaviour
         }
         ogTrashCan.SetActive(true);
         mainTrashCan.SetActive(false);
+        canvas.SetActive(false);
+        foreach(GameObject t in trashScored)
+        {
+            t.SetActive(false);
+        }
         MinigameManager.Current.EndMinigame(CompletionState.Completed);
         gameObject.SetActive(false);
     }
