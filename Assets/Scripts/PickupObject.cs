@@ -37,6 +37,11 @@ public class PickupObject : MonoBehaviour
             {
                 AudioManager.Current.PlayClip("place_ticket");
                 SelectTaskManager.Current.tickets.Add(ticket);
+                var child = heldItem.transform.GetChild(0);
+                if (child is not null)
+                {
+                    child.GetComponent<Canvas>().sortingOrder = 0;
+                }
             }
             heldItem.transform.position = ray.point;
             heldItem.transform.SetParent(parent.transform, true);
