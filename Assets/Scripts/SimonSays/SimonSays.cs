@@ -79,15 +79,19 @@ public class SimonSays : AMinigame
             {
                 case SimonSaysColor.TOPRIGHT:
                     topRight.image.color = Color.black;
+                    AudioManager.Current.PlayClip("beep1");
                     break;
                 case SimonSaysColor.BOTRIGHT:
                     botRight.image.color = Color.black;
+                    AudioManager.Current.PlayClip("beep2");
                     break;
                 case SimonSaysColor.BOTLEFT:
                     botLeft.image.color = Color.black;
+                    AudioManager.Current.PlayClip("beep3");
                     break;
                 case SimonSaysColor.TOPLEFT:
                     topLeft.image.color = Color.black;
+                    AudioManager.Current.PlayClip("beep4");
                     break;
             }
 
@@ -110,6 +114,7 @@ public class SimonSays : AMinigame
     // Bound to button onClicks
     public void PickColor(int color)
     {
+        AudioManager.Current.PlayClip("mouseClick");
         if (color != (int)colorSequence[colorIndex])
         {
             MinigameLost();
