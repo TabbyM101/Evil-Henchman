@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392d62f0a04f15046b00f4a18f7f358b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicksToRemove: 4
+  clicksToRemove: 3
   timeToUnclog: 5
   clickTimer: 3
   clickAnimation: {fileID: 3925086515534141129}
@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3699694958348691654
 RectTransform:
   m_ObjectHideFlags: 0

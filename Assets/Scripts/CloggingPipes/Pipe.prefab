@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBarObject: {fileID: 7903699824536202753}
   TargetAmountToClog: 100
-  FillRate: 30
+  FillRate: 50
   FillDecayRate: 10
   plumberSpot: {fileID: 7291811653770192903}
   pipeImage: {fileID: 6761582548871887350}

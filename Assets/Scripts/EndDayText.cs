@@ -32,7 +32,7 @@ public class EndDayText : MonoBehaviour
 
         dayCount.text = "Day " + DayManager.Current.dayNumber;
 
-        profitsGraph.fillAmount = lostGames;
+        profitsGraph.fillAmount = lostGames / 100;
         profitsPercentage.text = (int)(wonGamesPercent * 100) + "%";
 
         tasksCompletedText.text = "Tasks Completed: " + (int)(playedGames / (IncompleteMinigames + playedGames) * 100);

@@ -170,6 +170,7 @@ public class RuiningRelationships : AMinigame
     }
 
     public void SelectParagraph(bool isGood) {
+        AudioManager.Current.PlayClip("mouseClick");
         if (currentRound == 1) {
             if (isGood) {
                 currentParagraph = source.To1Good;

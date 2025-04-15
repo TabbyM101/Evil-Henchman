@@ -4,7 +4,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Current;
         
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     public enum SongChoice
     {

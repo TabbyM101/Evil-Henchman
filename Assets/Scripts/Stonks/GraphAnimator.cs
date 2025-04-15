@@ -2,17 +2,13 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GraphAnimator : MonoBehaviour
 {
     public UILineRenderer[] lines;
 
     public float time = 1f;
-
-    private void OnEnable()
-    {
-        //AnimateLines();
-    }
 
     public void Activate()
     {
@@ -92,9 +88,14 @@ public class GraphAnimator : MonoBehaviour
             
             LeanTween.value(gameObject, (value) =>
             {
+                if (this == null || line == null || line.points == null || index >= line.points.Count)
+                    return;
+
                 line.points[index] = value;
                 line.SetVerticesDirty();
             }, start, end, time);
+
         });
     }
+
 }

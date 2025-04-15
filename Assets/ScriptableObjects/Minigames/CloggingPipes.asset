@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0fdc2a767b4779825166436fdca5f1, type: 3}
   m_Name: CloggingPipes
   m_EditorClassIdentifier: 
+  ticketSceneType: 0
   minigameScene: CloggingPipes
   ticketColor: {r: 0.24147378, g: 0.5018867, b: 0.2498745, a: 0.32941177}
   ticketName: Clogging Pipes
-  ticketDescription: 'Clog the pipes of the opposing company '
+  ticketDescription: 'Clog the pipes of the opposing company to reduce their efficiency!
+    Plumbers will try to unclog the pipes, so make sure you scare them off! '

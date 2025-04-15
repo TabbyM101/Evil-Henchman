@@ -40,7 +40,7 @@ public class DelayedDelivery : AMinigame
         wrongBoxes = 0;
         evilPoints = 0;
 
-        scoreText.text = "Correct: 0 | Evil Points: 0";
+        scoreText.text = "Organized: 0 | Disorganized (Good for Mal): 0";
 
         SpawnBox();
     }
@@ -108,21 +108,25 @@ public class DelayedDelivery : AMinigame
 
     public void OnRedBinClicked()
     {
+        AudioManager.Current.PlayClip("mouseClick");
         CheckBin(0); // Red Bin
     }
 
     public void OnGreenBinClicked()
     {
+        AudioManager.Current.PlayClip("mouseClick");
         CheckBin(1); // Green Bin
     }
 
     public void OnBlueBinClicked()
     {
+        AudioManager.Current.PlayClip("mouseClick");
         CheckBin(2); // Blue Bin
     }
 
     private void CheckBin(int binIndex)
     {
+        Debug.Log("checking bin " + binIndex);
         if (currentBox == null) return;
 
         int correctColorIndex = 3;
@@ -157,7 +161,7 @@ public class DelayedDelivery : AMinigame
 
     private void UpdateScore()
     {
-        scoreText.text = $"Correct: {correctBoxes} | Evil Points: {evilPoints}";
+        scoreText.text = $"Organized: {correctBoxes} | Disorganized (Good for Mal): {evilPoints}";
     }
 
     private void EndGame()

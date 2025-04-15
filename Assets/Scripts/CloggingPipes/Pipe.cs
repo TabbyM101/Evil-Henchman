@@ -19,6 +19,13 @@ public class Pipe : MonoBehaviour
     [SerializeField] public Color cloggedColor;
     private float currentAmount;
 
+    private CloggingPipes minigame;
+
+    public void SetMinigameManager(CloggingPipes manager)
+    {
+        minigame = manager;
+    }
+    
     private void Awake()
     {
         progressBar = progressBarObject.GetComponent<Slider>();
@@ -74,6 +81,8 @@ public class Pipe : MonoBehaviour
         clogged = true;
         pipeImage.color = cloggedColor;
         currentAmount = 0;
+
+        minigame?.OnFirstClog(); // cleaner and safer!
     }
     
     public void UnclogPipe()
