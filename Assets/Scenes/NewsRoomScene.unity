@@ -338,6 +338,7 @@ MonoBehaviour:
   zoomPlayerViewPos: {fileID: 726910873}
   zoomBillboardPos: {fileID: 314563641}
   zoomEscMenuPos: {fileID: 1729682269}
+  escHelp: {fileID: 0}
 --- !u!114 &155252677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,7 +640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74e916cab19e3d340a65a96b9c71888a, type: 2}
+  - {fileID: 2100000, guid: f19be8f5cd11d4f4b9ad6e1517a29d91, type: 2}
   - {fileID: 2100000, guid: 3d7423d5a60fe5346a33c085a1780c17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
