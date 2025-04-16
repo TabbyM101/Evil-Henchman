@@ -15,7 +15,6 @@ MonoBehaviour:
   sceneType: 0
   Minigames:
   - {fileID: 11400000, guid: 3377c5df0f9e64077a91b1013b608425, type: 2}
-  - {fileID: 11400000, guid: 64da155d25abd48b8af95e6add278aa5, type: 2}
   - {fileID: 11400000, guid: 7892aab6f18b74f4f8cf565be5e93d8b, type: 2}
   - {fileID: 11400000, guid: 9e88b77e8095a8f4e8e9c1dd3e070ef4, type: 2}
   - {fileID: 11400000, guid: c9cb851dc63f34b88abd1dbf379e5d8f, type: 2}

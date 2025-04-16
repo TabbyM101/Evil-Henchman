@@ -3130,7 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132dbcca594f4ab4a989d1cd166e0058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntro: 1
+  skipIntro: 0
   stickyNoteZoomPos: {fileID: 4824813645406285014}
   interactionText: {fileID: 1190240215}
   optionsPanel: {fileID: 1244388213}
