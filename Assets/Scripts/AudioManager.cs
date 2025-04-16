@@ -52,6 +52,6 @@ public class AudioManager : MonoBehaviour
     // Play a clip from the AudioManager
     public void PlayClip(string audioClip)
     {
-        AudioSource.PlayClipAtPoint(ClipWithName(audioClip), gameObject.transform.position);
+        AudioSource.PlayClipAtPoint(ClipWithName(audioClip), gameObject.transform.position, audioSource.volume);
     }
 }
