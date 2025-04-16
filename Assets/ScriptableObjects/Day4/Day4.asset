@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8d04b3369015a4481d36f614c23b49, type: 3}
+  m_Name: Day4
+  m_EditorClassIdentifier: 
+  sceneType: 0
+  Minigames:
+  - {fileID: 11400000, guid: 3377c5df0f9e64077a91b1013b608425, type: 2}
+  - {fileID: 11400000, guid: 64da155d25abd48b8af95e6add278aa5, type: 2}
+  - {fileID: 11400000, guid: 7892aab6f18b74f4f8cf565be5e93d8b, type: 2}
+  - {fileID: 11400000, guid: 9e88b77e8095a8f4e8e9c1dd3e070ef4, type: 2}
+  - {fileID: 11400000, guid: c9cb851dc63f34b88abd1dbf379e5d8f, type: 2}
+  startDay: {fileID: 11400000, guid: 58bcc5f0fbb0940a1b28b2a46df06b41, type: 2}
+  Articles:
+  - {fileID: 11400000, guid: bd41eeb4dd6419f4f9e538c9cbab087e, type: 2}
+  - {fileID: 11400000, guid: 9a4a09e7da41ba0488bc3e3177f34c10, type: 2}
+  - {fileID: 11400000, guid: fac416e8a26b49f42afff38dc51d3eca, type: 2}
+  - {fileID: 11400000, guid: 004fd9b2f76d8114488f8cf74781374b, type: 2}

@@ -152,6 +152,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 176afd20435c35547848da6d0597750a, type: 2}
   - {fileID: 11400000, guid: 15dabe957362f4c7198e3fabe6707a2e, type: 2}
   - {fileID: 11400000, guid: fd5bc70185ea549659d6618632a793aa, type: 2}
+  - {fileID: 11400000, guid: 0eeaa9a3b3ce54fd2be46a137038aeb2, type: 2}
 --- !u!4 &181124500
 Transform:
   m_ObjectHideFlags: 0
@@ -198,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530aa24b4cc647899c7e21a8f9d65378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!82 &342201079
 AudioSource:
   m_ObjectHideFlags: 0
@@ -211,7 +213,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0

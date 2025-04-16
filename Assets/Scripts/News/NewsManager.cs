@@ -27,7 +27,7 @@ public class NewsManager : MonoBehaviour
         newsIcon.SetActive(true);
         newsPanel.SetActive(true);
         bool firstArticle = true;
-        dayIndicator.text = "Day " + DayManager.Current.dayNumber;
+        dayIndicator.text = "Day " + (DayManager.Current.dayNumber + 1);
         foreach (NewsArticleObj article in articles) {
             if (!article.SuspicionReq || (DayManager.Current.Standing > article.MinimumSuspicionReq && DayManager.Current.Standing <= article.MaximumSuspicionReq)) {
                 NewsArticle obj = Instantiate(newsPrefab, articleSpawn);

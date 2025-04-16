@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeText: {fileID: 591339506}
   numOfHours: 8
-  realtimeSecondsPerIngameHour: 60
+  realtimeSecondsPerIngameHour: 55
 --- !u!114 &591339506
 MonoBehaviour:
   m_ObjectHideFlags: 0
