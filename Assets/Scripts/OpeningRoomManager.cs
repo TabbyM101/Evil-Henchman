@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class OpeningRoomManager : MonoBehaviour
 {
-    private static bool openingSceneStart = false;
-    private static bool jobNotifSent = false;
-    private static bool emailNotifSent = false;
+    private bool openingSceneStart = false;
+    private bool jobNotifSent = false;
+    private bool emailNotifSent = false;
     private bool firstSending = false;
 
     [Header("Notifications")]

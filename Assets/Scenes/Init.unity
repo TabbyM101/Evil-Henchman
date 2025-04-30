@@ -151,8 +151,6 @@ MonoBehaviour:
   dayObjs:
   - {fileID: 11400000, guid: 176afd20435c35547848da6d0597750a, type: 2}
   - {fileID: 11400000, guid: 15dabe957362f4c7198e3fabe6707a2e, type: 2}
-  - {fileID: 11400000, guid: fd5bc70185ea549659d6618632a793aa, type: 2}
-  - {fileID: 11400000, guid: 0eeaa9a3b3ce54fd2be46a137038aeb2, type: 2}
 --- !u!4 &181124500
 Transform:
   m_ObjectHideFlags: 0
