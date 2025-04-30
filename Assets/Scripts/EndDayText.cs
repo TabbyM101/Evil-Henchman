@@ -30,7 +30,7 @@ public class EndDayText : MonoBehaviour
         var lostGames = playedGames - wonGames;
         var wonGamesPercent = wonGames / (float)playedGames;
 
-        dayCount.text = "Day " + DayManager.Current.dayNumber + 1;
+        dayCount.text = "Day " + (DayManager.Current.dayNumber + 1);
 
         profitsGraph.fillAmount = (float)lostGames / playedGames;
         profitsPercentage.text = (int)(wonGamesPercent * 100) + "%";
