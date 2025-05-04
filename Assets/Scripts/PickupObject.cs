@@ -62,7 +62,8 @@ public class PickupObject : MonoBehaviour
             Rigidbody rb = heldItem.GetComponent<Rigidbody>();
             rb.isKinematic = false;
             Vector3 throwDirection = (point - heldItem.transform.position).normalized;
-            rb.AddForce(throwDirection * 5, ForceMode.Impulse);
+            throwDirection.y += .2f;
+            rb.AddForce(throwDirection * 4, ForceMode.Impulse);
             heldItem.transform.SetParent(null, true);
             heldItem = null;
         }

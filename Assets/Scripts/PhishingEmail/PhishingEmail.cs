@@ -26,7 +26,7 @@ public class PhishingEmail : AMinigame
         while (true)
         {
             var email = gameObject;
-            bool isGood = Random.value > 0.7;
+            bool isGood = Random.value >= 0.5;
             if (isGood)
             {
                 email = Instantiate(goodEmail, new Vector3(0,0,0), Quaternion.identity);

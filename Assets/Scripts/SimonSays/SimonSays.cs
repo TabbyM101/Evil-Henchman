@@ -114,7 +114,22 @@ public class SimonSays : AMinigame
     // Bound to button onClicks
     public void PickColor(int color)
     {
-        AudioManager.Current.PlayClip("mouseClick");
+        switch (color)
+        {
+            case (int) SimonSaysColor.TOPRIGHT:
+                AudioManager.Current.PlayClip("beep1");
+                break;
+            case (int) SimonSaysColor.BOTRIGHT:
+                AudioManager.Current.PlayClip("beep2");
+                break;
+            case (int) SimonSaysColor.BOTLEFT:
+                AudioManager.Current.PlayClip("beep3");
+                break;
+            case (int) SimonSaysColor.TOPLEFT:
+                AudioManager.Current.PlayClip("beep4");
+                break;
+        }
+        
         if (color != (int)colorSequence[colorIndex])
         {
             MinigameLost();

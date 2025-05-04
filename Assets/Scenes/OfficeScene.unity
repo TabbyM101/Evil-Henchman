@@ -2249,6 +2249,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8255137105341990023, guid: df71a6a4401b84e8c8e8eb12a16a22d5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3869826
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255137105341990023, guid: df71a6a4401b84e8c8e8eb12a16a22d5, type: 3}
+      propertyPath: m_Center.y
+      value: 0.34774172
+      objectReference: {fileID: 0}
     - target: {fileID: 8347130927386263422, guid: df71a6a4401b84e8c8e8eb12a16a22d5, type: 3}
       propertyPath: m_SortingOrder
       value: 0
