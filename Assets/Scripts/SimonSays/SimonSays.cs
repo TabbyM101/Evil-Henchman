@@ -75,6 +75,11 @@ public class SimonSays : AMinigame
             // Wait a moment at this color
             yield return new WaitForSeconds(flashDuration);
 
+            var origTopLeftCol = topLeft.image.color;
+            var origTopRightCol = topRight.image.color;
+            var originalBotLeftCol = botLeft.image.color;
+            var originalBotRightCol = botRight.image.color;
+
             switch (color)
             {
                 case SimonSaysColor.TOPRIGHT:
@@ -98,10 +103,10 @@ public class SimonSays : AMinigame
             // Flash for a moment before changing back to original color
             yield return new WaitForSeconds(flashDuration);
 
-            topLeft.image.color = Color.white;
-            topRight.image.color = Color.white;
-            botLeft.image.color = Color.white;
-            botRight.image.color = Color.white;
+            topLeft.image.color = origTopLeftCol;
+            topRight.image.color = origTopRightCol;
+            botLeft.image.color = originalBotLeftCol;
+            botRight.image.color = originalBotRightCol;
         }
 
         topLeft.interactable = true;
